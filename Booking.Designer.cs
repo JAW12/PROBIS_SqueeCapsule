@@ -1,4 +1,6 @@
-﻿namespace PROBIS_SqueeCapsule
+﻿using System;
+
+namespace PROBIS_SqueeCapsule
 {
     partial class Booking
     {
@@ -85,6 +87,7 @@
             this.bookingToolStripMenuItem.Name = "bookingToolStripMenuItem";
             this.bookingToolStripMenuItem.Size = new System.Drawing.Size(107, 29);
             this.bookingToolStripMenuItem.Text = "Booking";
+            this.bookingToolStripMenuItem.Click += new System.EventHandler(this.bookingToolStripMenuItem_Click);
             // 
             // peminjamanFasilitasToolStripMenuItem
             // 
@@ -92,6 +95,7 @@
             this.peminjamanFasilitasToolStripMenuItem.Name = "peminjamanFasilitasToolStripMenuItem";
             this.peminjamanFasilitasToolStripMenuItem.Size = new System.Drawing.Size(239, 29);
             this.peminjamanFasilitasToolStripMenuItem.Text = "Peminjaman Fasilitas";
+            this.peminjamanFasilitasToolStripMenuItem.Click += new System.EventHandler(this.peminjamanFasilitasToolStripMenuItem_Click);
             // 
             // stokFasilitasToolStripMenuItem
             // 
@@ -99,6 +103,7 @@
             this.stokFasilitasToolStripMenuItem.Name = "stokFasilitasToolStripMenuItem";
             this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
             this.stokFasilitasToolStripMenuItem.Text = "Stok Fasilitas";
+            this.stokFasilitasToolStripMenuItem.Click += new System.EventHandler(this.stokFasilitasToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
@@ -159,10 +164,10 @@
             this.btnTambah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTambah.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTambah.ForeColor = System.Drawing.Color.White;
-            this.btnTambah.Location = new System.Drawing.Point(970, 56);
+            this.btnTambah.Location = new System.Drawing.Point(917, 56);
             this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(200, 50);
-            this.btnTambah.TabIndex = 5;
+            this.btnTambah.Size = new System.Drawing.Size(253, 50);
+            this.btnTambah.TabIndex = 0;
             this.btnTambah.Text = "Tambah Booking";
             this.btnTambah.UseVisualStyleBackColor = false;
             this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
@@ -184,7 +189,7 @@
             this.tbSearch.Location = new System.Drawing.Point(115, 136);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(198, 29);
-            this.tbSearch.TabIndex = 7;
+            this.tbSearch.TabIndex = 1;
             // 
             // lblSTanggal
             // 
@@ -203,7 +208,7 @@
             this.dateTglAwal.Location = new System.Drawing.Point(461, 136);
             this.dateTglAwal.Name = "dateTglAwal";
             this.dateTglAwal.Size = new System.Drawing.Size(152, 29);
-            this.dateTglAwal.TabIndex = 9;
+            this.dateTglAwal.TabIndex = 2;
             // 
             // dateTglAkhir
             // 
@@ -212,7 +217,7 @@
             this.dateTglAkhir.Location = new System.Drawing.Point(644, 136);
             this.dateTglAkhir.Name = "dateTglAkhir";
             this.dateTglAkhir.Size = new System.Drawing.Size(152, 29);
-            this.dateTglAkhir.TabIndex = 11;
+            this.dateTglAkhir.TabIndex = 3;
             // 
             // lblSPenghubung
             // 
@@ -242,7 +247,7 @@
             this.cbFilter.Location = new System.Drawing.Point(934, 136);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(233, 30);
-            this.cbFilter.TabIndex = 13;
+            this.cbFilter.TabIndex = 4;
             // 
             // lblH1
             // 
@@ -273,7 +278,7 @@
             this.dgvBooking.RowHeadersWidth = 51;
             this.dgvBooking.RowTemplate.Height = 24;
             this.dgvBooking.Size = new System.Drawing.Size(1147, 562);
-            this.dgvBooking.TabIndex = 15;
+            this.dgvBooking.TabIndex = 5;
             // 
             // Tgl
             // 

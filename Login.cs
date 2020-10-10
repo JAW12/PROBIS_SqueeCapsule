@@ -14,15 +14,36 @@ namespace PROBIS_SqueeCapsule
     public partial class Login : Form
     {
         bool Eye = false;
-        Database db;
-        Model m;
+        public static Database db;
+
+        public static Login login;
+        public static Home home;
+        public static Booking booking;
+        public static BookingCheckIn booking_checkin;
+        public static BookingCheckOut booking_checkout;
+        public static BookingDetail booking_detail;
+        public static BookingDetailKamar booking_detail_kamar;
+        public static BookingUbah booking_ubah;
+        public static PeminjamanFasilitas peminjaman_fasilitas;
+        public static PeminjamanFasilitasInput peminjaman_fasilitas_input;
+        public static StokFasilitas stok_fasilitas;
+
         public Login()
         {
+            login = this;
             InitializeComponent();
             db = new Database();
-            //m = new BookingModel(db.getConnection());
-            //List<Object[]> obj = m.getAll();
-            //MessageBox.Show(obj.Count.ToString());
+
+            //KamarModel m = new KamarModel();
+            //m.nomor = "301";    
+            //m.jenis = "1";
+            //m.harga = "300000";
+            //m.status = "1";
+            //bool berhasil = m.save();
+            //if (berhasil)
+            //{
+            //    MessageBox.Show("berhasil");
+            //}
         }
 
         private void pbEye_Click(object sender, EventArgs e)
@@ -72,6 +93,26 @@ namespace PROBIS_SqueeCapsule
             else if (!Eye)
             {
                 pbEye.BackgroundImage = Properties.Resources.eyehide;
+            }
+        }
+
+        public static void reset()
+        {
+
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if(home != null)
+            {
+                home.Show();
+                this.Hide();
+            }
+            else
+            {
+                home = new Home();
+                home.Show();
+                this.Hide();
             }
         }
     }

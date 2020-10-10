@@ -34,16 +34,16 @@
             this.btnKumpul = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.dgvFasilitas = new System.Windows.Forms.DataGridView();
-            this.lblSTotal = new System.Windows.Forms.Label();
-            this.lblSNoKamar = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.lblNoKamar = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tersedia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sudah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Jumlah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblSTotal = new System.Windows.Forms.Label();
+            this.lblSNoKamar = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblNoKamar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,49 +124,7 @@
             this.dgvFasilitas.RowHeadersWidth = 51;
             this.dgvFasilitas.RowTemplate.Height = 24;
             this.dgvFasilitas.Size = new System.Drawing.Size(772, 393);
-            this.dgvFasilitas.TabIndex = 24;
-            // 
-            // lblSTotal
-            // 
-            this.lblSTotal.AutoSize = true;
-            this.lblSTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblSTotal.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSTotal.Location = new System.Drawing.Point(61, 76);
-            this.lblSTotal.Name = "lblSTotal";
-            this.lblSTotal.Size = new System.Drawing.Size(59, 20);
-            this.lblSTotal.TabIndex = 25;
-            this.lblSTotal.Text = "Total:";
-            // 
-            // lblSNoKamar
-            // 
-            this.lblSNoKamar.AutoSize = true;
-            this.lblSNoKamar.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSNoKamar.Location = new System.Drawing.Point(12, 47);
-            this.lblSNoKamar.Name = "lblSNoKamar";
-            this.lblSNoKamar.Size = new System.Drawing.Size(108, 20);
-            this.lblSNoKamar.TabIndex = 26;
-            this.lblSNoKamar.Text = "No. Kamar:";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(146, 76);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(116, 20);
-            this.lblTotal.TabIndex = 28;
-            this.lblTotal.Text = "Rp. 100.000";
-            // 
-            // lblNoKamar
-            // 
-            this.lblNoKamar.AutoSize = true;
-            this.lblNoKamar.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNoKamar.Location = new System.Drawing.Point(146, 47);
-            this.lblNoKamar.Name = "lblNoKamar";
-            this.lblNoKamar.Size = new System.Drawing.Size(32, 20);
-            this.lblNoKamar.TabIndex = 29;
-            this.lblNoKamar.Text = "A1";
+            this.dgvFasilitas.TabIndex = 0;
             // 
             // ID
             // 
@@ -210,6 +168,48 @@
             this.Jumlah.MinimumWidth = 6;
             this.Jumlah.Name = "Jumlah";
             this.Jumlah.ReadOnly = true;
+            // 
+            // lblSTotal
+            // 
+            this.lblSTotal.AutoSize = true;
+            this.lblSTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSTotal.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSTotal.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblSTotal.Location = new System.Drawing.Point(61, 76);
+            this.lblSTotal.Name = "lblSTotal";
+            this.lblSTotal.Size = new System.Drawing.Size(59, 20);
+            this.lblSTotal.TabIndex = 25;
+            this.lblSTotal.Text = "Total:";
+            // 
+            // lblSNoKamar
+            // 
+            this.lblSNoKamar.AutoSize = true;
+            this.lblSNoKamar.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSNoKamar.Location = new System.Drawing.Point(12, 47);
+            this.lblSNoKamar.Name = "lblSNoKamar";
+            this.lblSNoKamar.Size = new System.Drawing.Size(108, 20);
+            this.lblSNoKamar.TabIndex = 26;
+            this.lblSNoKamar.Text = "No. Kamar:";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(146, 76);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(116, 20);
+            this.lblTotal.TabIndex = 28;
+            this.lblTotal.Text = "Rp. 100.000";
+            // 
+            // lblNoKamar
+            // 
+            this.lblNoKamar.AutoSize = true;
+            this.lblNoKamar.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoKamar.Location = new System.Drawing.Point(146, 47);
+            this.lblNoKamar.Name = "lblNoKamar";
+            this.lblNoKamar.Size = new System.Drawing.Size(32, 20);
+            this.lblNoKamar.TabIndex = 29;
+            this.lblNoKamar.Text = "A1";
             // 
             // PeminjamanFasilitasInput
             // 

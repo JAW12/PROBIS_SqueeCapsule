@@ -66,6 +66,7 @@
             this.bookingToolStripMenuItem.Name = "bookingToolStripMenuItem";
             this.bookingToolStripMenuItem.Size = new System.Drawing.Size(107, 29);
             this.bookingToolStripMenuItem.Text = "Booking";
+            this.bookingToolStripMenuItem.Click += new System.EventHandler(this.bookingToolStripMenuItem_Click);
             // 
             // peminjamanFasilitasToolStripMenuItem
             // 
@@ -73,6 +74,7 @@
             this.peminjamanFasilitasToolStripMenuItem.Name = "peminjamanFasilitasToolStripMenuItem";
             this.peminjamanFasilitasToolStripMenuItem.Size = new System.Drawing.Size(239, 29);
             this.peminjamanFasilitasToolStripMenuItem.Text = "Peminjaman Fasilitas";
+            this.peminjamanFasilitasToolStripMenuItem.Click += new System.EventHandler(this.peminjamanFasilitasToolStripMenuItem_Click);
             // 
             // stokFasilitasToolStripMenuItem
             // 
@@ -81,6 +83,7 @@
             this.stokFasilitasToolStripMenuItem.Name = "stokFasilitasToolStripMenuItem";
             this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
             this.stokFasilitasToolStripMenuItem.Text = "Stok Fasilitas";
+            this.stokFasilitasToolStripMenuItem.Click += new System.EventHandler(this.stokFasilitasToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
@@ -132,7 +135,7 @@
             this.dgvFasilitas.RowHeadersWidth = 51;
             this.dgvFasilitas.RowTemplate.Height = 24;
             this.dgvFasilitas.Size = new System.Drawing.Size(1158, 687);
-            this.dgvFasilitas.TabIndex = 17;
+            this.dgvFasilitas.TabIndex = 0;
             // 
             // No
             // 

@@ -167,7 +167,7 @@
             this.dgvPeminjaman.RowHeadersWidth = 51;
             this.dgvPeminjaman.RowTemplate.Height = 24;
             this.dgvPeminjaman.Size = new System.Drawing.Size(772, 432);
-            this.dgvPeminjaman.TabIndex = 19;
+            this.dgvPeminjaman.TabIndex = 0;
             // 
             // No
             // 

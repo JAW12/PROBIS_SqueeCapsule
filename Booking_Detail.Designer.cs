@@ -305,7 +305,7 @@
             this.dgvDetail.RowHeadersWidth = 51;
             this.dgvDetail.RowTemplate.Height = 24;
             this.dgvDetail.Size = new System.Drawing.Size(772, 432);
-            this.dgvDetail.TabIndex = 19;
+            this.dgvDetail.TabIndex = 0;
             // 
             // No
             // 
@@ -373,7 +373,7 @@
             this.btnAction.Location = new System.Drawing.Point(588, 818);
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(200, 50);
-            this.btnAction.TabIndex = 22;
+            this.btnAction.TabIndex = 1;
             this.btnAction.Text = "Check In";
             this.btnAction.UseVisualStyleBackColor = false;
             // 
@@ -386,7 +386,7 @@
             this.btnCancel.Location = new System.Drawing.Point(17, 818);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(200, 50);
-            this.btnCancel.TabIndex = 22;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             // 

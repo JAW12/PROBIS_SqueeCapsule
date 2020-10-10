@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.lblX = new System.Windows.Forms.Label();
             this.lbl_ = new System.Windows.Forms.Label();
             this.tbUsername = new System.Windows.Forms.TextBox();
@@ -73,7 +74,7 @@
             this.tbUsername.Location = new System.Drawing.Point(149, 339);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(242, 32);
-            this.tbUsername.TabIndex = 3;
+            this.tbUsername.TabIndex = 0;
             // 
             // tbPassword
             // 
@@ -82,7 +83,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(242, 32);
-            this.tbPassword.TabIndex = 3;
+            this.tbPassword.TabIndex = 1;
             // 
             // btnLogin
             // 
@@ -92,16 +93,17 @@
             this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(174)))), ((int)(((byte)(65)))));
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(176, 411);
+            this.btnLogin.Location = new System.Drawing.Point(176, 422);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(186, 50);
-            this.btnLogin.TabIndex = 4;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // pbPassword
             // 
-            this.pbPassword.BackgroundImage = global::PROBIS_SqueeCapsule.Properties.Resources.pass;
+            this.pbPassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbPassword.BackgroundImage")));
             this.pbPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbPassword.Location = new System.Drawing.Point(112, 375);
             this.pbPassword.Name = "pbPassword";
@@ -111,7 +113,7 @@
             // 
             // pbUsername
             // 
-            this.pbUsername.BackgroundImage = global::PROBIS_SqueeCapsule.Properties.Resources.user;
+            this.pbUsername.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbUsername.BackgroundImage")));
             this.pbUsername.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbUsername.Location = new System.Drawing.Point(112, 339);
             this.pbUsername.Name = "pbUsername";
@@ -121,7 +123,7 @@
             // 
             // pbEye
             // 
-            this.pbEye.BackgroundImage = global::PROBIS_SqueeCapsule.Properties.Resources.eyehide;
+            this.pbEye.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbEye.BackgroundImage")));
             this.pbEye.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbEye.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbEye.Location = new System.Drawing.Point(398, 375);
@@ -135,7 +137,7 @@
             // 
             // pbLogo
             // 
-            this.pbLogo.BackgroundImage = global::PROBIS_SqueeCapsule.Properties.Resources.logo;
+            this.pbLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbLogo.BackgroundImage")));
             this.pbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbLogo.Location = new System.Drawing.Point(117, 38);
             this.pbLogo.Name = "pbLogo";

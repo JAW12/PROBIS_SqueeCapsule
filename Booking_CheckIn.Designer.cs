@@ -36,6 +36,10 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.dgvKamar = new System.Windows.Forms.DataGridView();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoKamar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jenis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblSJFamily = new System.Windows.Forms.Label();
             this.lblSJSingle = new System.Windows.Forms.Label();
             this.lblSJumlah = new System.Windows.Forms.Label();
@@ -51,10 +55,6 @@
             this.lblSTersisa = new System.Windows.Forms.Label();
             this.lblTFamily = new System.Windows.Forms.Label();
             this.lblTSingle = new System.Windows.Forms.Label();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoKamar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Jenis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +110,7 @@
             this.btnAction.Location = new System.Drawing.Point(588, 536);
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(200, 50);
-            this.btnAction.TabIndex = 22;
+            this.btnAction.TabIndex = 2;
             this.btnAction.Text = "Kumpul";
             this.btnAction.UseVisualStyleBackColor = false;
             // 
@@ -123,7 +123,7 @@
             this.btnReset.Location = new System.Drawing.Point(12, 536);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(200, 50);
-            this.btnReset.TabIndex = 22;
+            this.btnReset.TabIndex = 3;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
             // 
@@ -133,7 +133,7 @@
             this.tbSearch.Location = new System.Drawing.Point(88, 52);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(250, 28);
-            this.tbSearch.TabIndex = 23;
+            this.tbSearch.TabIndex = 0;
             this.tbSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dgvKamar
@@ -153,7 +153,35 @@
             this.dgvKamar.RowHeadersWidth = 51;
             this.dgvKamar.RowTemplate.Height = 24;
             this.dgvKamar.Size = new System.Drawing.Size(772, 332);
-            this.dgvKamar.TabIndex = 24;
+            this.dgvKamar.TabIndex = 1;
+            // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.MinimumWidth = 6;
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            // 
+            // NoKamar
+            // 
+            this.NoKamar.HeaderText = "No Kamar";
+            this.NoKamar.MinimumWidth = 6;
+            this.NoKamar.Name = "NoKamar";
+            this.NoKamar.ReadOnly = true;
+            // 
+            // Jenis
+            // 
+            this.Jenis.HeaderText = "Jenis Kamar";
+            this.Jenis.MinimumWidth = 6;
+            this.Jenis.Name = "Jenis";
+            this.Jenis.ReadOnly = true;
+            // 
+            // Check
+            // 
+            this.Check.HeaderText = "Check";
+            this.Check.MinimumWidth = 6;
+            this.Check.Name = "Check";
+            this.Check.ReadOnly = true;
             // 
             // lblSJFamily
             // 
@@ -313,34 +341,6 @@
             this.lblTSingle.Size = new System.Drawing.Size(20, 20);
             this.lblTSingle.TabIndex = 39;
             this.lblTSingle.Text = "0";
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.MinimumWidth = 6;
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            // 
-            // NoKamar
-            // 
-            this.NoKamar.HeaderText = "No Kamar";
-            this.NoKamar.MinimumWidth = 6;
-            this.NoKamar.Name = "NoKamar";
-            this.NoKamar.ReadOnly = true;
-            // 
-            // Jenis
-            // 
-            this.Jenis.HeaderText = "Jenis Kamar";
-            this.Jenis.MinimumWidth = 6;
-            this.Jenis.Name = "Jenis";
-            this.Jenis.ReadOnly = true;
-            // 
-            // Check
-            // 
-            this.Check.HeaderText = "Check";
-            this.Check.MinimumWidth = 6;
-            this.Check.Name = "Check";
-            this.Check.ReadOnly = true;
             // 
             // BookingCheckIn
             // 

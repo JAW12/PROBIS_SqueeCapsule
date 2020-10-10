@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Net;
+using System.Net.Sockets;
 using Oracle.ManagedDataAccess.Client;
 
 
@@ -8,20 +10,39 @@ namespace PROBIS_SqueeCapsule
 {
     public class Database
     {
-        OracleConnection conn;
+        public static OracleConnection conn;
+
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
+
         public Database(string datasource, string ip, string user, string pass)
         {
             conn = new OracleConnection($"Data Source=" +
                     "(DESCRIPTION=" +
                     "(ADDRESS_LIST= (ADDRESS=(PROTOCOL=TCP)" +
-                    "(HOST= " + ip + ")(PORT=1521)))" +
+                    "(HOST= " + GetLocalIPAddress() + ")(PORT=1521)))" +
                     "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=" + datasource + ")));" +
                     "user id=" + user + ";password=" + pass);
         }
 
         public Database()
         {
-            conn = new OracleConnection("Data Source=XE;Persist Security Info=False;Integrated Security=False;User ID=proyekbisnis1;Password=***********;Unicode=True");
+            conn = new OracleConnection($"Data Source=" +
+                                "(DESCRIPTION=" +
+                                "(ADDRESS_LIST= (ADDRESS=(PROTOCOL=TCP)" +
+                                "(HOST= " + GetLocalIPAddress() + ")(PORT=1521)))" +
+                                "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));" +
+                                "user id=proyekbisnis1;password=proyekbisnis1"); 
             try
             {
                 conn.Open();
@@ -30,6 +51,31 @@ namespace PROBIS_SqueeCapsule
             catch (Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void test()
+        {
+            conn.Close();
+            conn.Open();
+            try
+            {
+                OracleCommand cmd = new OracleCommand("select * from tamu", conn);
+                OracleDataReader reader = cmd.ExecuteReader();
+                List<Object[]> obj = new List<Object[]>();
+                while (reader.Read())
+                {
+                    Object[] row = new Object[reader.FieldCount];
+                    int fieldCount = reader.GetValues(row);
+                    obj.Add(row);
+                }
+                conn.Close();
+                System.Windows.Forms.MessageBox.Show(obj.Count.ToString());
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                conn.Close();
             }
         }
 

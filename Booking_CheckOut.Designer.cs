@@ -79,7 +79,7 @@
             this.btnBayar.Location = new System.Drawing.Point(388, 438);
             this.btnBayar.Name = "btnBayar";
             this.btnBayar.Size = new System.Drawing.Size(200, 50);
-            this.btnBayar.TabIndex = 22;
+            this.btnBayar.TabIndex = 3;
             this.btnBayar.Text = "Bayar";
             this.btnBayar.UseVisualStyleBackColor = false;
             // 
@@ -92,7 +92,7 @@
             this.btnReset.Location = new System.Drawing.Point(12, 438);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(200, 50);
-            this.btnReset.TabIndex = 22;
+            this.btnReset.TabIndex = 4;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
             // 
@@ -137,7 +137,7 @@
             this.tbTambahan.Location = new System.Drawing.Point(248, 85);
             this.tbTambahan.Name = "tbTambahan";
             this.tbTambahan.Size = new System.Drawing.Size(285, 32);
-            this.tbTambahan.TabIndex = 25;
+            this.tbTambahan.TabIndex = 0;
             this.tbTambahan.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblSKeterangan
@@ -159,7 +159,7 @@
             this.tbKeterangan.Multiline = true;
             this.tbKeterangan.Name = "tbKeterangan";
             this.tbKeterangan.Size = new System.Drawing.Size(285, 161);
-            this.tbKeterangan.TabIndex = 25;
+            this.tbKeterangan.TabIndex = 1;
             // 
             // lblSTotal
             // 
@@ -202,7 +202,7 @@
             this.tbPembayaran.Location = new System.Drawing.Point(248, 337);
             this.tbPembayaran.Name = "tbPembayaran";
             this.tbPembayaran.Size = new System.Drawing.Size(285, 32);
-            this.tbPembayaran.TabIndex = 25;
+            this.tbPembayaran.TabIndex = 2;
             this.tbPembayaran.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lblKembalian

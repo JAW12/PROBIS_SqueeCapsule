@@ -67,6 +67,7 @@
             this.bookingToolStripMenuItem.Name = "bookingToolStripMenuItem";
             this.bookingToolStripMenuItem.Size = new System.Drawing.Size(107, 29);
             this.bookingToolStripMenuItem.Text = "Booking";
+            this.bookingToolStripMenuItem.Click += new System.EventHandler(this.bookingToolStripMenuItem_Click);
             // 
             // peminjamanFasilitasToolStripMenuItem
             // 
@@ -75,6 +76,7 @@
             this.peminjamanFasilitasToolStripMenuItem.Name = "peminjamanFasilitasToolStripMenuItem";
             this.peminjamanFasilitasToolStripMenuItem.Size = new System.Drawing.Size(239, 29);
             this.peminjamanFasilitasToolStripMenuItem.Text = "Peminjaman Fasilitas";
+            this.peminjamanFasilitasToolStripMenuItem.Click += new System.EventHandler(this.peminjamanFasilitasToolStripMenuItem_Click);
             // 
             // stokFasilitasToolStripMenuItem
             // 
@@ -82,6 +84,7 @@
             this.stokFasilitasToolStripMenuItem.Name = "stokFasilitasToolStripMenuItem";
             this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
             this.stokFasilitasToolStripMenuItem.Text = "Stok Fasilitas";
+            this.stokFasilitasToolStripMenuItem.Click += new System.EventHandler(this.stokFasilitasToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
@@ -122,7 +125,7 @@
             this.tbSearch.Location = new System.Drawing.Point(116, 62);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(207, 29);
-            this.tbSearch.TabIndex = 9;
+            this.tbSearch.TabIndex = 0;
             // 
             // lblSSearch
             // 
@@ -151,7 +154,7 @@
             this.dgvKamar.RowHeadersWidth = 51;
             this.dgvKamar.RowTemplate.Height = 24;
             this.dgvKamar.Size = new System.Drawing.Size(1158, 644);
-            this.dgvKamar.TabIndex = 16;
+            this.dgvKamar.TabIndex = 1;
             // 
             // No
             // 

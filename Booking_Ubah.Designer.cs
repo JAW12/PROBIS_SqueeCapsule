@@ -197,7 +197,7 @@
             this.btnAction.Location = new System.Drawing.Point(588, 303);
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(200, 50);
-            this.btnAction.TabIndex = 22;
+            this.btnAction.TabIndex = 7;
             this.btnAction.Text = "Tambah";
             this.btnAction.UseVisualStyleBackColor = false;
             // 
@@ -210,7 +210,7 @@
             this.btnReset.Location = new System.Drawing.Point(12, 303);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(200, 50);
-            this.btnReset.TabIndex = 22;
+            this.btnReset.TabIndex = 8;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
             // 
@@ -220,7 +220,7 @@
             this.tbNama.Location = new System.Drawing.Point(122, 50);
             this.tbNama.Name = "tbNama";
             this.tbNama.Size = new System.Drawing.Size(250, 28);
-            this.tbNama.TabIndex = 23;
+            this.tbNama.TabIndex = 0;
             this.tbNama.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbEmail
@@ -229,7 +229,7 @@
             this.tbEmail.Location = new System.Drawing.Point(122, 89);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(250, 28);
-            this.tbEmail.TabIndex = 23;
+            this.tbEmail.TabIndex = 2;
             this.tbEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbTelepon
@@ -238,7 +238,7 @@
             this.tbTelepon.Location = new System.Drawing.Point(538, 49);
             this.tbTelepon.Name = "tbTelepon";
             this.tbTelepon.Size = new System.Drawing.Size(250, 28);
-            this.tbTelepon.TabIndex = 23;
+            this.tbTelepon.TabIndex = 1;
             this.tbTelepon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericSingle
@@ -247,7 +247,7 @@
             this.numericSingle.Location = new System.Drawing.Point(122, 151);
             this.numericSingle.Name = "numericSingle";
             this.numericSingle.Size = new System.Drawing.Size(193, 28);
-            this.numericSingle.TabIndex = 24;
+            this.numericSingle.TabIndex = 3;
             this.numericSingle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // numericFamily
@@ -256,7 +256,7 @@
             this.numericFamily.Location = new System.Drawing.Point(538, 151);
             this.numericFamily.Name = "numericFamily";
             this.numericFamily.Size = new System.Drawing.Size(250, 28);
-            this.numericFamily.TabIndex = 24;
+            this.numericFamily.TabIndex = 4;
             this.numericFamily.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dateCIN
@@ -265,7 +265,7 @@
             this.dateCIN.Location = new System.Drawing.Point(122, 201);
             this.dateCIN.Name = "dateCIN";
             this.dateCIN.Size = new System.Drawing.Size(250, 28);
-            this.dateCIN.TabIndex = 25;
+            this.dateCIN.TabIndex = 5;
             // 
             // dateCOUT
             // 
@@ -273,7 +273,7 @@
             this.dateCOUT.Location = new System.Drawing.Point(538, 201);
             this.dateCOUT.Name = "dateCOUT";
             this.dateCOUT.Size = new System.Drawing.Size(250, 28);
-            this.dateCOUT.TabIndex = 25;
+            this.dateCOUT.TabIndex = 6;
             // 
             // lblSPerkiraan
             // 
