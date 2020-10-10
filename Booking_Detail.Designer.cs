@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookingDetail));
             this.lbl_ = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
             this.lblJudul = new System.Windows.Forms.Label();
@@ -394,7 +395,7 @@
             // 
             // pbNota
             // 
-            this.pbNota.BackgroundImage = global::PROBIS_SqueeCapsule.Properties.Resources.receipt;
+            this.pbNota.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbNota.BackgroundImage")));
             this.pbNota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbNota.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbNota.Location = new System.Drawing.Point(659, 12);
