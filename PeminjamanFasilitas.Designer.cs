@@ -42,6 +42,7 @@
             this.NoKamar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).BeginInit();
             this.SuspendLayout();
@@ -80,6 +81,8 @@
             // 
             // stokFasilitasToolStripMenuItem
             // 
+            this.stokFasilitasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.laporanToolStripMenuItem});
             this.stokFasilitasToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stokFasilitasToolStripMenuItem.Name = "stokFasilitasToolStripMenuItem";
             this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
@@ -184,6 +187,12 @@
             this.Action.Name = "Action";
             this.Action.ReadOnly = true;
             // 
+            // laporanToolStripMenuItem
+            // 
+            this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
+            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
+            this.laporanToolStripMenuItem.Text = "Laporan Stok Fasilitas";
+            // 
             // PeminjamanFasilitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -224,5 +233,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoKamar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
         private System.Windows.Forms.DataGridViewButtonColumn Action;
+        private System.Windows.Forms.ToolStripMenuItem laporanToolStripMenuItem;
     }
 }

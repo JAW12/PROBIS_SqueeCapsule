@@ -37,6 +37,7 @@
             this.lbl_ = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.laporanStokFasilitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -74,6 +75,8 @@
             // 
             // stokFasilitasToolStripMenuItem
             // 
+            this.stokFasilitasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.laporanStokFasilitasToolStripMenuItem});
             this.stokFasilitasToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stokFasilitasToolStripMenuItem.Name = "stokFasilitasToolStripMenuItem";
             this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
@@ -122,6 +125,12 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // laporanStokFasilitasToolStripMenuItem
+            // 
+            this.laporanStokFasilitasToolStripMenuItem.Name = "laporanStokFasilitasToolStripMenuItem";
+            this.laporanStokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
+            this.laporanStokFasilitasToolStripMenuItem.Text = "Laporan Stok Fasilitas";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -154,5 +163,6 @@
         private System.Windows.Forms.Label lbl_;
         private System.Windows.Forms.Label lblX;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem laporanStokFasilitasToolStripMenuItem;
     }
 }

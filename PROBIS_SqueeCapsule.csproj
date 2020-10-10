@@ -203,6 +203,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="goblin.ico" />
+    <None Include="Resources\graph.png" />
+    <None Include="Resources\report.png" />
+    <None Include="Resources\receipt.png" />
+    <None Include="receipt.png" />
     <None Include="Resources\edith.png" />
     <None Include="Resources\edit.png" />
   </ItemGroup>

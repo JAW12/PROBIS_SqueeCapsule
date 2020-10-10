@@ -41,6 +41,7 @@
             this.Jenis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Jumlah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).BeginInit();
             this.SuspendLayout();
@@ -78,6 +79,8 @@
             // 
             // stokFasilitasToolStripMenuItem
             // 
+            this.stokFasilitasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.laporanToolStripMenuItem});
             this.stokFasilitasToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stokFasilitasToolStripMenuItem.ForeColor = System.Drawing.Color.SlateBlue;
             this.stokFasilitasToolStripMenuItem.Name = "stokFasilitasToolStripMenuItem";
@@ -129,12 +132,12 @@
             this.Jenis,
             this.Jumlah,
             this.Harga});
-            this.dgvFasilitas.Location = new System.Drawing.Point(12, 54);
+            this.dgvFasilitas.Location = new System.Drawing.Point(12, 53);
             this.dgvFasilitas.Name = "dgvFasilitas";
             this.dgvFasilitas.ReadOnly = true;
             this.dgvFasilitas.RowHeadersWidth = 51;
             this.dgvFasilitas.RowTemplate.Height = 24;
-            this.dgvFasilitas.Size = new System.Drawing.Size(1158, 687);
+            this.dgvFasilitas.Size = new System.Drawing.Size(1158, 688);
             this.dgvFasilitas.TabIndex = 0;
             // 
             // No
@@ -171,6 +174,12 @@
             this.Harga.MinimumWidth = 6;
             this.Harga.Name = "Harga";
             this.Harga.ReadOnly = true;
+            // 
+            // laporanToolStripMenuItem
+            // 
+            this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
+            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
+            this.laporanToolStripMenuItem.Text = "Laporan Stok Fasilitas";
             // 
             // StokFasilitas
             // 
@@ -209,5 +218,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Jenis;
         private System.Windows.Forms.DataGridViewTextBoxColumn Jumlah;
         private System.Windows.Forms.DataGridViewTextBoxColumn Harga;
+        private System.Windows.Forms.ToolStripMenuItem laporanToolStripMenuItem;
     }
 }

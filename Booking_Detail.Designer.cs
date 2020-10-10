@@ -59,8 +59,10 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnAction = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.pbNota = new System.Windows.Forms.PictureBox();
             this.pbEdit = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNota)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEdit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -390,11 +392,23 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             // 
+            // pbNota
+            // 
+            this.pbNota.BackgroundImage = global::PROBIS_SqueeCapsule.Properties.Resources.receipt;
+            this.pbNota.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbNota.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbNota.Location = new System.Drawing.Point(659, 12);
+            this.pbNota.Name = "pbNota";
+            this.pbNota.Size = new System.Drawing.Size(30, 30);
+            this.pbNota.TabIndex = 23;
+            this.pbNota.TabStop = false;
+            // 
             // pbEdit
             // 
             this.pbEdit.BackgroundImage = global::PROBIS_SqueeCapsule.Properties.Resources.edit;
             this.pbEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbEdit.Location = new System.Drawing.Point(758, 73);
+            this.pbEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbEdit.Location = new System.Drawing.Point(695, 12);
             this.pbEdit.Name = "pbEdit";
             this.pbEdit.Size = new System.Drawing.Size(30, 30);
             this.pbEdit.TabIndex = 23;
@@ -405,6 +419,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 890);
+            this.Controls.Add(this.pbNota);
             this.Controls.Add(this.pbEdit);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAction);
@@ -437,6 +452,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingDetail";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNota)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEdit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -476,5 +492,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Jenis;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
         private System.Windows.Forms.DataGridViewButtonColumn Action;
+        private System.Windows.Forms.PictureBox pbNota;
     }
 }

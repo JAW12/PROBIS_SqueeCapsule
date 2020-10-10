@@ -61,8 +61,13 @@ namespace PROBIS_SqueeCapsule
             this.lblSSingle = new System.Windows.Forms.Label();
             this.lblSFamily = new System.Windows.Forms.Label();
             this.lblFamily = new System.Windows.Forms.Label();
+            this.pbLaporan = new System.Windows.Forms.PictureBox();
+            this.pbGrafik = new System.Windows.Forms.PictureBox();
+            this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLaporan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGrafik)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -99,6 +104,8 @@ namespace PROBIS_SqueeCapsule
             // 
             // stokFasilitasToolStripMenuItem
             // 
+            this.stokFasilitasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.laporanToolStripMenuItem});
             this.stokFasilitasToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stokFasilitasToolStripMenuItem.Name = "stokFasilitasToolStripMenuItem";
             this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
@@ -368,11 +375,41 @@ namespace PROBIS_SqueeCapsule
             this.lblFamily.TabIndex = 4;
             this.lblFamily.Text = "0";
             // 
+            // pbLaporan
+            // 
+            this.pbLaporan.BackgroundImage = global::PROBIS_SqueeCapsule.Properties.Resources.report;
+            this.pbLaporan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbLaporan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbLaporan.Location = new System.Drawing.Point(809, 56);
+            this.pbLaporan.Name = "pbLaporan";
+            this.pbLaporan.Size = new System.Drawing.Size(48, 50);
+            this.pbLaporan.TabIndex = 24;
+            this.pbLaporan.TabStop = false;
+            // 
+            // pbGrafik
+            // 
+            this.pbGrafik.BackgroundImage = global::PROBIS_SqueeCapsule.Properties.Resources.graph;
+            this.pbGrafik.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbGrafik.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbGrafik.Location = new System.Drawing.Point(863, 56);
+            this.pbGrafik.Name = "pbGrafik";
+            this.pbGrafik.Size = new System.Drawing.Size(48, 50);
+            this.pbGrafik.TabIndex = 24;
+            this.pbGrafik.TabStop = false;
+            // 
+            // laporanToolStripMenuItem
+            // 
+            this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
+            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
+            this.laporanToolStripMenuItem.Text = "Laporan Stok Fasilitas";
+            // 
             // Booking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 753);
+            this.Controls.Add(this.pbLaporan);
+            this.Controls.Add(this.pbGrafik);
             this.Controls.Add(this.dgvBooking);
             this.Controls.Add(this.lblH1);
             this.Controls.Add(this.cbFilter);
@@ -400,6 +437,8 @@ namespace PROBIS_SqueeCapsule
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLaporan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGrafik)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,5 +477,8 @@ namespace PROBIS_SqueeCapsule
         private System.Windows.Forms.DataGridViewTextBoxColumn TglCOUT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewButtonColumn Action;
+        private System.Windows.Forms.PictureBox pbGrafik;
+        private System.Windows.Forms.PictureBox pbLaporan;
+        private System.Windows.Forms.ToolStripMenuItem laporanToolStripMenuItem;
     }
 }
