@@ -16,6 +16,7 @@ namespace PROBIS_SqueeCapsule
         bool Eye = false;
         public static Database db;
 
+
         public static Login login;
         public static Home home;
         public static Booking booking;
