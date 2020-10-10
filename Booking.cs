@@ -35,17 +35,7 @@ namespace PROBIS_SqueeCapsule
 
         private void bookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Login.booking != null)
-            {
-                Login.booking.Show();
-                this.Hide();
-            }
-            else
-            {
-                Login.booking = new Booking();
-                Login.booking.Show();
-                this.Hide();
-            }
+
         }
 
         private void peminjamanFasilitasToolStripMenuItem_Click(object sender, EventArgs e)

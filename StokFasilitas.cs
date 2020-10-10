@@ -65,17 +65,7 @@ namespace PROBIS_SqueeCapsule
 
         private void stokFasilitasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Login.stok_fasilitas != null)
-            {
-                Login.stok_fasilitas.Show();
-                this.Hide();
-            }
-            else
-            {
-                Login.stok_fasilitas = new StokFasilitas();
-                Login.stok_fasilitas.Show();
-                this.Hide();
-            }
+
         }
     }
 }

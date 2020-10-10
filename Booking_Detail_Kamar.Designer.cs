@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookingDetailKamar));
             this.lbl_ = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
             this.lblH1 = new System.Windows.Forms.Label();
@@ -305,6 +306,7 @@
             this.Controls.Add(this.lbl_);
             this.Controls.Add(this.lblX);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BookingDetailKamar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingDetailKamar";

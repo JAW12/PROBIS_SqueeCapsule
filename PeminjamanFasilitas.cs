@@ -50,17 +50,7 @@ namespace PROBIS_SqueeCapsule
 
         private void peminjamanFasilitasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Login.peminjaman_fasilitas != null)
-            {
-                Login.peminjaman_fasilitas.Show();
-                this.Hide();
-            }
-            else
-            {
-                Login.peminjaman_fasilitas = new PeminjamanFasilitas();
-                Login.peminjaman_fasilitas.Show();
-                this.Hide();
-            }
+
         }
 
         private void stokFasilitasToolStripMenuItem_Click(object sender, EventArgs e)

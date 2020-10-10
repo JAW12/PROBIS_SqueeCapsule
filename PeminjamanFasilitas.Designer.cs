@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PeminjamanFasilitas));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.bookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peminjamanFasilitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokFasilitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_ = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
@@ -42,7 +44,6 @@
             this.NoKamar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +78,6 @@
             this.peminjamanFasilitasToolStripMenuItem.Name = "peminjamanFasilitasToolStripMenuItem";
             this.peminjamanFasilitasToolStripMenuItem.Size = new System.Drawing.Size(239, 29);
             this.peminjamanFasilitasToolStripMenuItem.Text = "Peminjaman Fasilitas";
-            this.peminjamanFasilitasToolStripMenuItem.Click += new System.EventHandler(this.peminjamanFasilitasToolStripMenuItem_Click);
             // 
             // stokFasilitasToolStripMenuItem
             // 
@@ -88,6 +88,12 @@
             this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
             this.stokFasilitasToolStripMenuItem.Text = "Stok Fasilitas";
             this.stokFasilitasToolStripMenuItem.Click += new System.EventHandler(this.stokFasilitasToolStripMenuItem_Click);
+            // 
+            // laporanToolStripMenuItem
+            // 
+            this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
+            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
+            this.laporanToolStripMenuItem.Text = "Laporan Stok Fasilitas";
             // 
             // logOutToolStripMenuItem
             // 
@@ -187,12 +193,6 @@
             this.Action.Name = "Action";
             this.Action.ReadOnly = true;
             // 
-            // laporanToolStripMenuItem
-            // 
-            this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
-            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
-            this.laporanToolStripMenuItem.Text = "Laporan Stok Fasilitas";
-            // 
             // PeminjamanFasilitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -205,6 +205,7 @@
             this.Controls.Add(this.lblX);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "PeminjamanFasilitas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -30,10 +30,12 @@ namespace PROBIS_SqueeCapsule
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Booking));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.bookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peminjamanFasilitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokFasilitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_ = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
@@ -63,7 +65,6 @@ namespace PROBIS_SqueeCapsule
             this.lblFamily = new System.Windows.Forms.Label();
             this.pbLaporan = new System.Windows.Forms.PictureBox();
             this.pbGrafik = new System.Windows.Forms.PictureBox();
-            this.laporanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLaporan)).BeginInit();
@@ -92,7 +93,6 @@ namespace PROBIS_SqueeCapsule
             this.bookingToolStripMenuItem.Name = "bookingToolStripMenuItem";
             this.bookingToolStripMenuItem.Size = new System.Drawing.Size(107, 29);
             this.bookingToolStripMenuItem.Text = "Booking";
-            this.bookingToolStripMenuItem.Click += new System.EventHandler(this.bookingToolStripMenuItem_Click);
             // 
             // peminjamanFasilitasToolStripMenuItem
             // 
@@ -111,6 +111,12 @@ namespace PROBIS_SqueeCapsule
             this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
             this.stokFasilitasToolStripMenuItem.Text = "Stok Fasilitas";
             this.stokFasilitasToolStripMenuItem.Click += new System.EventHandler(this.stokFasilitasToolStripMenuItem_Click);
+            // 
+            // laporanToolStripMenuItem
+            // 
+            this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
+            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
+            this.laporanToolStripMenuItem.Text = "Laporan Stok Fasilitas";
             // 
             // logOutToolStripMenuItem
             // 
@@ -388,7 +394,7 @@ namespace PROBIS_SqueeCapsule
             // 
             // pbGrafik
             // 
-            this.pbGrafik.BackgroundImage = global::PROBIS_SqueeCapsule.Properties.Resources.graph;
+            this.pbGrafik.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbGrafik.BackgroundImage")));
             this.pbGrafik.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbGrafik.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbGrafik.Location = new System.Drawing.Point(863, 56);
@@ -396,12 +402,6 @@ namespace PROBIS_SqueeCapsule
             this.pbGrafik.Size = new System.Drawing.Size(48, 50);
             this.pbGrafik.TabIndex = 24;
             this.pbGrafik.TabStop = false;
-            // 
-            // laporanToolStripMenuItem
-            // 
-            this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
-            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
-            this.laporanToolStripMenuItem.Text = "Laporan Stok Fasilitas";
             // 
             // Booking
             // 
@@ -430,6 +430,7 @@ namespace PROBIS_SqueeCapsule
             this.Controls.Add(this.lblX);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Booking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

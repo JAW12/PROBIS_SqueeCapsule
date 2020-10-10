@@ -33,11 +33,11 @@
             this.bookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peminjamanFasilitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokFasilitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laporanStokFasilitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_ = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.laporanStokFasilitasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +83,12 @@
             this.stokFasilitasToolStripMenuItem.Text = "Stok Fasilitas";
             this.stokFasilitasToolStripMenuItem.Click += new System.EventHandler(this.stokFasilitasToolStripMenuItem_Click);
             // 
+            // laporanStokFasilitasToolStripMenuItem
+            // 
+            this.laporanStokFasilitasToolStripMenuItem.Name = "laporanStokFasilitasToolStripMenuItem";
+            this.laporanStokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
+            this.laporanStokFasilitasToolStripMenuItem.Text = "Laporan Stok Fasilitas";
+            // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -125,12 +131,6 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // laporanStokFasilitasToolStripMenuItem
-            // 
-            this.laporanStokFasilitasToolStripMenuItem.Name = "laporanStokFasilitasToolStripMenuItem";
-            this.laporanStokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
-            this.laporanStokFasilitasToolStripMenuItem.Text = "Laporan Stok Fasilitas";
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -141,6 +141,7 @@
             this.Controls.Add(this.lblX);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
