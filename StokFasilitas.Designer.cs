@@ -35,7 +35,14 @@
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_ = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
+            this.dgvFasilitas = new System.Windows.Forms.DataGridView();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jenis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Jumlah = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -107,11 +114,67 @@
             this.lblX.Text = "X";
             this.lblX.Click += new System.EventHandler(this.lblX_Click);
             // 
+            // dgvFasilitas
+            // 
+            this.dgvFasilitas.AllowUserToAddRows = false;
+            this.dgvFasilitas.AllowUserToDeleteRows = false;
+            this.dgvFasilitas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFasilitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFasilitas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.No,
+            this.Nama,
+            this.Jenis,
+            this.Jumlah,
+            this.Harga});
+            this.dgvFasilitas.Location = new System.Drawing.Point(12, 54);
+            this.dgvFasilitas.Name = "dgvFasilitas";
+            this.dgvFasilitas.ReadOnly = true;
+            this.dgvFasilitas.RowHeadersWidth = 51;
+            this.dgvFasilitas.RowTemplate.Height = 24;
+            this.dgvFasilitas.Size = new System.Drawing.Size(1158, 687);
+            this.dgvFasilitas.TabIndex = 17;
+            // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.MinimumWidth = 6;
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            // 
+            // Nama
+            // 
+            this.Nama.HeaderText = "Nama Fasilitas";
+            this.Nama.MinimumWidth = 6;
+            this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
+            // 
+            // Jenis
+            // 
+            this.Jenis.HeaderText = "Jenis Fasilitas";
+            this.Jenis.MinimumWidth = 6;
+            this.Jenis.Name = "Jenis";
+            this.Jenis.ReadOnly = true;
+            // 
+            // Jumlah
+            // 
+            this.Jumlah.HeaderText = "Jumlah Tersedia";
+            this.Jumlah.MinimumWidth = 6;
+            this.Jumlah.Name = "Jumlah";
+            this.Jumlah.ReadOnly = true;
+            // 
+            // Harga
+            // 
+            this.Harga.HeaderText = "Harga Peminjaman";
+            this.Harga.MinimumWidth = 6;
+            this.Harga.Name = "Harga";
+            this.Harga.ReadOnly = true;
+            // 
             // StokFasilitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 753);
+            this.Controls.Add(this.dgvFasilitas);
             this.Controls.Add(this.lbl_);
             this.Controls.Add(this.lblX);
             this.Controls.Add(this.menuStrip1);
@@ -122,6 +185,7 @@
             this.Text = "StokFasilitas";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFasilitas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +200,11 @@
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.Label lbl_;
         private System.Windows.Forms.Label lblX;
+        private System.Windows.Forms.DataGridView dgvFasilitas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Jenis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Jumlah;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Harga;
     }
 }

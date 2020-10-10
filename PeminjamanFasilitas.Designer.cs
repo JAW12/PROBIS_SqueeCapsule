@@ -35,7 +35,15 @@
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lbl_ = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.lblSSearch = new System.Windows.Forms.Label();
+            this.dgvKamar = new System.Windows.Forms.DataGridView();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NoKamar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -107,11 +115,80 @@
             this.lblX.Text = "X";
             this.lblX.Click += new System.EventHandler(this.lblX_Click);
             // 
+            // tbSearch
+            // 
+            this.tbSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbSearch.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSearch.Location = new System.Drawing.Point(116, 62);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(207, 29);
+            this.tbSearch.TabIndex = 9;
+            // 
+            // lblSSearch
+            // 
+            this.lblSSearch.AutoSize = true;
+            this.lblSSearch.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSSearch.Location = new System.Drawing.Point(19, 65);
+            this.lblSSearch.Name = "lblSSearch";
+            this.lblSSearch.Size = new System.Drawing.Size(91, 23);
+            this.lblSSearch.TabIndex = 8;
+            this.lblSSearch.Text = "Search :";
+            // 
+            // dgvKamar
+            // 
+            this.dgvKamar.AllowUserToAddRows = false;
+            this.dgvKamar.AllowUserToDeleteRows = false;
+            this.dgvKamar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvKamar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKamar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.No,
+            this.NoKamar,
+            this.Nama,
+            this.Action});
+            this.dgvKamar.Location = new System.Drawing.Point(12, 97);
+            this.dgvKamar.Name = "dgvKamar";
+            this.dgvKamar.ReadOnly = true;
+            this.dgvKamar.RowHeadersWidth = 51;
+            this.dgvKamar.RowTemplate.Height = 24;
+            this.dgvKamar.Size = new System.Drawing.Size(1158, 644);
+            this.dgvKamar.TabIndex = 16;
+            // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.MinimumWidth = 6;
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            // 
+            // NoKamar
+            // 
+            this.NoKamar.HeaderText = "Nomor Kamar";
+            this.NoKamar.MinimumWidth = 6;
+            this.NoKamar.Name = "NoKamar";
+            this.NoKamar.ReadOnly = true;
+            // 
+            // Nama
+            // 
+            this.Nama.HeaderText = "Nama Tamu";
+            this.Nama.MinimumWidth = 6;
+            this.Nama.Name = "Nama";
+            this.Nama.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.MinimumWidth = 6;
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            // 
             // PeminjamanFasilitas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 753);
+            this.Controls.Add(this.dgvKamar);
+            this.Controls.Add(this.tbSearch);
+            this.Controls.Add(this.lblSSearch);
             this.Controls.Add(this.lbl_);
             this.Controls.Add(this.lblX);
             this.Controls.Add(this.menuStrip1);
@@ -122,6 +199,7 @@
             this.Text = "PeminjamanFasilitas";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +214,12 @@
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.Label lbl_;
         private System.Windows.Forms.Label lblX;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Label lblSSearch;
+        private System.Windows.Forms.DataGridView dgvKamar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NoKamar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
+        private System.Windows.Forms.DataGridViewButtonColumn Action;
     }
 }

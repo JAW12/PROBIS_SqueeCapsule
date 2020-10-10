@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PROBIS_SqueeCapsule
 {
-    public partial class Booking : Form
+    public partial class PeminjamanFasilitasInput : Form
     {
-        public Booking()
+        public PeminjamanFasilitasInput()
         {
             InitializeComponent();
         }
@@ -28,11 +28,6 @@ namespace PROBIS_SqueeCapsule
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnTambah_Click(object sender, EventArgs e)
         {
 
         }

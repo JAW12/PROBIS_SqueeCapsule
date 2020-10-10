@@ -36,8 +36,12 @@
     <ApplicationIcon>goblin.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>packages\Oracle.ManagedDataAccess.19.9.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +53,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database.cs" />
+    <Compile Include="PeminjamanFasilitas_Input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PeminjamanFasilitas_Input.Designer.cs">
+      <DependentUpon>PeminjamanFasilitas_Input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Booking_CheckOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Booking_CheckOut.Designer.cs">
+      <DependentUpon>Booking_CheckOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Booking_CheckIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Booking_CheckIn.Designer.cs">
+      <DependentUpon>Booking_CheckIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Booking_Detail_Kamar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Booking_Detail_Kamar.Designer.cs">
+      <DependentUpon>Booking_Detail_Kamar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Booking_Ubah.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Booking_Ubah.Designer.cs">
+      <DependentUpon>Booking_Ubah.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Booking_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Booking_Detail.Designer.cs">
+      <DependentUpon>Booking_Detail.cs</DependentUpon>
+    </Compile>
     <Compile Include="StokFasilitas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +122,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PeminjamanFasilitas_Input.resx">
+      <DependentUpon>PeminjamanFasilitas_Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Booking_CheckOut.resx">
+      <DependentUpon>Booking_CheckOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Booking_CheckIn.resx">
+      <DependentUpon>Booking_CheckIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Booking_Detail_Kamar.resx">
+      <DependentUpon>Booking_Detail_Kamar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Booking_Ubah.resx">
+      <DependentUpon>Booking_Ubah.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Booking_Detail.resx">
+      <DependentUpon>Booking_Detail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StokFasilitas.resx">
       <DependentUpon>StokFasilitas.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +165,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,6 +202,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="goblin.ico" />
+    <None Include="Resources\edith.png" />
+    <None Include="Resources\edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,10 +14,15 @@ namespace PROBIS_SqueeCapsule
     public partial class Login : Form
     {
         bool Eye = false;
-
+        Database db;
+        Model m;
         public Login()
         {
             InitializeComponent();
+            db = new Database();
+            //m = new BookingModel(db.getConnection());
+            //List<Object[]> obj = m.getAll();
+            //MessageBox.Show(obj.Count.ToString());
         }
 
         private void pbEye_Click(object sender, EventArgs e)
