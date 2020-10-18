@@ -201,6 +201,7 @@
             this.btnAction.TabIndex = 7;
             this.btnAction.Text = "Tambah";
             this.btnAction.UseVisualStyleBackColor = false;
+            this.btnAction.Click += new System.EventHandler(this.btnAction_Click);
             // 
             // btnReset
             // 
@@ -223,6 +224,7 @@
             this.tbNama.Size = new System.Drawing.Size(250, 28);
             this.tbNama.TabIndex = 0;
             this.tbNama.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbNama.Leave += new System.EventHandler(this.tbNama_Leave);
             // 
             // tbEmail
             // 
@@ -232,6 +234,7 @@
             this.tbEmail.Size = new System.Drawing.Size(250, 28);
             this.tbEmail.TabIndex = 2;
             this.tbEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbEmail.Leave += new System.EventHandler(this.tbEmail_Leave);
             // 
             // tbTelepon
             // 
@@ -241,6 +244,7 @@
             this.tbTelepon.Size = new System.Drawing.Size(250, 28);
             this.tbTelepon.TabIndex = 1;
             this.tbTelepon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbTelepon.Leave += new System.EventHandler(this.tbTelepon_Leave);
             // 
             // numericSingle
             // 
@@ -250,6 +254,7 @@
             this.numericSingle.Size = new System.Drawing.Size(193, 28);
             this.numericSingle.TabIndex = 3;
             this.numericSingle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericSingle.ValueChanged += new System.EventHandler(this.numericSingle_ValueChanged);
             // 
             // numericFamily
             // 
@@ -259,6 +264,7 @@
             this.numericFamily.Size = new System.Drawing.Size(250, 28);
             this.numericFamily.TabIndex = 4;
             this.numericFamily.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericFamily.ValueChanged += new System.EventHandler(this.numericFamily_ValueChanged);
             // 
             // dateCIN
             // 
@@ -295,7 +301,7 @@
             this.lblPerkiraan.Name = "lblPerkiraan";
             this.lblPerkiraan.Size = new System.Drawing.Size(249, 33);
             this.lblPerkiraan.TabIndex = 26;
-            this.lblPerkiraan.Text = "Rp. 500.000.000";
+            this.lblPerkiraan.Text = "Rp. 0";
             this.lblPerkiraan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblSTelepon
@@ -344,6 +350,7 @@
             this.Name = "BookingUbah";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingUbah";
+            this.VisibleChanged += new System.EventHandler(this.BookingUbah_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.numericSingle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFamily)).EndInit();
             this.ResumeLayout(false);

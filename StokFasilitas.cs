@@ -63,9 +63,15 @@ namespace PROBIS_SqueeCapsule
             }
         }
 
-        private void stokFasilitasToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StokFasilitas_VisibleChanged(object sender, EventArgs e)
         {
-
+            if (this.Visible)
+            {
+                String query = "Select NAMA_FASILITAS as FASILITAS, JUMLAH_TERSEDIA as JUMLAH, 'Rp.'||TO_CHAR(BIAYA_PEMINJAMAN, '999G990D00', 'NLS_NUMERIC_CHARACTERS = '',.''')|| ' / ITEM' as HARGA from fasilitas";
+                DataTable dt = Login.db.executeDataTable(query);
+                dgvFasilitas.Columns.Clear();
+                dgvFasilitas.DataSource = dt;
+            }
         }
     }
 }
