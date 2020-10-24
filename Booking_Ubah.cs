@@ -153,7 +153,16 @@ namespace PROBIS_SqueeCapsule
                 //data valid, cek mode insert/update
                 if(mode == "Insert")
                 {
-                    insert(tbNama.Text, tbTelepon.Text, tbEmail.Text, Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value), dateCIN.Value.ToString(), dateCOUT.Value.ToString(),dateCOUT.Text);
+                    bool cek = Insert(tbNama.Text, tbTelepon.Text, tbEmail.Text, Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value), dateCIN.Value.ToString(), dateCOUT.Value.ToString(),dateCOUT.Text);
+
+                    if (cek)
+                    {
+                        MessageBox.Show("Insert Berhasil");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Insert Gagal");
+                    }
                 }
             }
         }
@@ -163,7 +172,7 @@ namespace PROBIS_SqueeCapsule
             mode = "Insert";
         }
 
-        private void insert(String nama, String telp, String email, int single, int family, String checkindate, String checkoutdate, String cek)
+        private bool Insert(String nama, String telp, String email, int single, int family, String checkindate, String checkoutdate, String cek)
         {
             String query = "Select * from kamar where STATUS_TERSEDIA = 1";
             DataTable dt = Login.db.executeDataTable(query);
@@ -171,22 +180,56 @@ namespace PROBIS_SqueeCapsule
             List<string> kamarFamily = new List<string>();
             int jumlah = (single * 250000) + (family * 750000);
             string empty = "";
+            //get kamar tersedia
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                if(dt.Rows[i]["JENIS_KAMAR"].ToString() == "0")
+                if(dt.Rows[i]["STATUS_TERSEDIA"].ToString() == "1")
                 {
-                    kamarSingle.Add(dt.Rows[i]["ROW_ID_KAMAR"].ToString());
-                }
-                else
-                {
-                    kamarFamily.Add(dt.Rows[i]["ROW_ID_KAMAR"].ToString());
+                    if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "0")
+                    {
+                        kamarSingle.Add(dt.Rows[i]["ROW_ID_KAMAR"].ToString());
+                    }
+                    else
+                    {
+                        kamarFamily.Add(dt.Rows[i]["ROW_ID_KAMAR"].ToString());
+                    }
                 }
             }
-            if(cek == DateTime.Now.ToLongDateString())
+            if((kamarSingle.Count < single)||(kamarFamily.Count < family)){
+                return false;
+            }
+            //insert into tamu
+            query = "Insert into TAMU(ROW_ID_TAMU,NAMA_TAMU,NOMOR_TELEPON,EMAIL) VALUES(" +
+                 $"'{1}'," + 
+                 $"'{nama}'," + 
+                 $"'{telp}'," + 
+                 $"'{email}'" + ")";
+            Login.db.executeNonQuery(query);
+            //select id yg baru diinsert
+            query = "Select ROW_ID_TAMU from TAMU where NAMA_TAMU="+ $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
+            String id_tamu=Login.db.executeScalar(query).ToString();
+
+            //insert hbooking
+            if (cek == DateTime.Now.ToLongDateString())
+            {
+                query = "Insert into H_BOOKING(ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,TANGGAL_CHECK_IN, STATUS_BOOKING, SUBTOTAL,BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA) VALUES(" +
+                    $"'{1}'," +
+                    $"'{id_tamu}'," +
+                    $"'{single}'," +
+                    $"'{family}'," +
+                    $"to_Date('{checkindate}','dd/MM/yyyy hh24:mi:ss'), " +
+                    $"'{0}'," +
+                    $"'{jumlah}'," +
+                    $"'{0}'," +
+                    $"'{empty}'," +
+                    $"'{jumlah}'" +
+                     ")";
+            }
+            else
             {
                 query = "Insert into H_BOOKING(ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,TANGGAL_CHECK_IN, TANGGAL_CHECK_OUT, STATUS_BOOKING, SUBTOTAL,BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA) VALUES(" +
                     $"'{1}'," +
-                    $"'{1}'," +
+                    $"'{id_tamu}'," +
                     $"'{single}'," +
                     $"'{family}'," +
                     $"to_Date('{checkindate}','dd/MM/yyyy hh24:mi:ss'), " +
@@ -198,24 +241,17 @@ namespace PROBIS_SqueeCapsule
                     $"'{jumlah}'" +
                      ")";
             }
-            else
-            {
-                MessageBox.Show("Test");
-                query = "Insert into H_BOOKING VALUES(" +
-                    "'1'," +
-                    $"'a'," +
-                    $"'{single}'," +
-                    $"'{family}'," +
-                    $"'{checkindate}'," +
-                    $"'{checkoutdate}'," +
-                    $"'0'," +
-                    $"'{jumlah}'," +
-                    $"'0'," +
-                    $"'{empty}'," +
-                    $"'{jumlah}'," +
-                     ")";
-            }
             Login.db.executeNonQuery(query);
+            //insert kamar
+            for (int i = 0; i < single; i++)
+            {
+                query = "UPDATE KAMAR SET STATUS_TERSEDIA="+
+                $"'{1}' WHERE ROW_ID_KAMAR=" +
+                $"'{kamarSingle.Count}'," +
+                ")";
+                Login.db.executeNonQuery(query);
+            }
+            return true;
         }
     }
 }
