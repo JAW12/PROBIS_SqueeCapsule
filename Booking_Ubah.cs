@@ -19,6 +19,8 @@ namespace PROBIS_SqueeCapsule
         }
         //mode insert/update
         String mode = "Insert";
+        //set variabel
+        int id_tamu = 0;
         private void lblX_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -83,7 +85,7 @@ namespace PROBIS_SqueeCapsule
         {
             //cek regex
             bool cekUsername = validateName(tbNama.Text);
-            if(!cekUsername)
+            if (!cekUsername)
             {
                 tbNama.BackColor = Color.Red;
             }
@@ -144,20 +146,27 @@ namespace PROBIS_SqueeCapsule
 
         private void btnAction_Click(object sender, EventArgs e)
         {
-            if(tbNama.BackColor == Color.Red || tbTelepon.BackColor == Color.Red || tbEmail.BackColor == Color.Red)
+            if (tbNama.BackColor == Color.Red || tbTelepon.BackColor == Color.Red || tbEmail.BackColor == Color.Red)
             {
                 MessageBox.Show("Ditemukan data yang tidak sesuai");
             }
             else
             {
                 //data valid, cek mode insert/update
-                if(mode == "Insert")
+                if (mode == "Insert")
                 {
-                    bool cek = Insert(tbNama.Text, tbTelepon.Text, tbEmail.Text, Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value), dateCIN.Value.ToString(), dateCOUT.Value.ToString(),dateCOUT.Text);
+                    bool cek = Insert(tbNama.Text, tbTelepon.Text, tbEmail.Text, Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value), dateCIN.Value.ToString(), dateCOUT.Value.ToString(), dateCOUT.Text);
 
                     if (cek)
                     {
                         MessageBox.Show("Insert Berhasil");
+                        String query = "Select ROW_ID_BOOKING from H_BOOKING WHERE TANGGAL_CHECK_IN="+
+                        $"to_Date('{dateCIN.Value.ToString()}','dd/MM/yyyy hh24:mi:ss')";
+                        int id_booking = Convert.ToInt32(Login.db.executeScalar(query));
+                        Login.booking_detail = new BookingDetail();
+                        Login.booking_detail.id_booking = id_booking;
+                        Login.booking_detail.Show();
+                        this.Hide();
                     }
                     else
                     {
@@ -176,45 +185,34 @@ namespace PROBIS_SqueeCapsule
         {
             String query = "Select * from kamar where STATUS_TERSEDIA = 1";
             DataTable dt = Login.db.executeDataTable(query);
-            List<string> kamarSingle = new List<string>();
-            List<string> kamarFamily = new List<string>();
             int jumlah = (single * 250000) + (family * 750000);
             string empty = "";
+            //MessageBox.Show(id_tamu.ToString());
             //get kamar tersedia
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                if(dt.Rows[i]["STATUS_TERSEDIA"].ToString() == "1")
-                {
-                    if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "0")
-                    {
-                        kamarSingle.Add(dt.Rows[i]["ROW_ID_KAMAR"].ToString());
-                    }
-                    else
-                    {
-                        kamarFamily.Add(dt.Rows[i]["ROW_ID_KAMAR"].ToString());
-                    }
-                }
-            }
-            if((kamarSingle.Count < single)||(kamarFamily.Count < family)){
-                return false;
-            }
-            //insert into tamu
-            query = "Insert into TAMU(ROW_ID_TAMU,NAMA_TAMU,NOMOR_TELEPON,EMAIL) VALUES(" +
-                 $"'{1}'," + 
-                 $"'{nama}'," + 
-                 $"'{telp}'," + 
-                 $"'{email}'" + ")";
-            Login.db.executeNonQuery(query);
-            //select id yg baru diinsert
-            query = "Select ROW_ID_TAMU from TAMU where NAMA_TAMU="+ $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
-            String id_tamu=Login.db.executeScalar(query).ToString();
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    if(dt.Rows[i]["STATUS_TERSEDIA"].ToString() == "1")
+            //    {
+            //        if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "0")
+            //        {
+            //            kamarSingle.Add(dt.Rows[i]["ROW_ID_KAMAR"].ToString());
+            //        }
+            //        else
+            //        {
+            //            kamarFamily.Add(dt.Rows[i]["ROW_ID_KAMAR"].ToString());
+            //        }
+            //    }
+            //}
+            //if((kamarSingle.Count < single)||(kamarFamily.Count < family)){
+            //    return false;
+            //}
 
             //insert hbooking
             if (cek == DateTime.Now.ToLongDateString())
             {
                 query = "Insert into H_BOOKING(ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,TANGGAL_CHECK_IN, STATUS_BOOKING, SUBTOTAL,BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA) VALUES(" +
                     $"'{1}'," +
-                    $"'{id_tamu}'," +
+                    $"'{id_tamu.ToString()}'," +
                     $"'{single}'," +
                     $"'{family}'," +
                     $"to_Date('{checkindate}','dd/MM/yyyy hh24:mi:ss'), " +
@@ -229,7 +227,7 @@ namespace PROBIS_SqueeCapsule
             {
                 query = "Insert into H_BOOKING(ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,TANGGAL_CHECK_IN, TANGGAL_CHECK_OUT, STATUS_BOOKING, SUBTOTAL,BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA) VALUES(" +
                     $"'{1}'," +
-                    $"'{id_tamu}'," +
+                    $"'{id_tamu.ToString()}'," +
                     $"'{single}'," +
                     $"'{family}'," +
                     $"to_Date('{checkindate}','dd/MM/yyyy hh24:mi:ss'), " +
@@ -243,15 +241,48 @@ namespace PROBIS_SqueeCapsule
             }
             Login.db.executeNonQuery(query);
             //insert kamar
-            for (int i = 0; i < single; i++)
-            {
-                query = "UPDATE KAMAR SET STATUS_TERSEDIA="+
-                $"'{1}' WHERE ROW_ID_KAMAR=" +
-                $"'{kamarSingle.Count}'," +
-                ")";
-                Login.db.executeNonQuery(query);
-            }
+            //for (int i = 0; i < single; i++)
+            //{
+            //    query = "UPDATE KAMAR SET STATUS_TERSEDIA="+
+            //    $"'{1}' WHERE ROW_ID_KAMAR=" +
+            //    $"'{kamarSingle.Count}'," +
+            //    ")";
+            //    Login.db.executeNonQuery(query);
+            //}
             return true;
+        }
+
+        private void btnCekUser_Click(object sender, EventArgs e)
+        {
+            id_tamu = cekTamu(tbNama.Text,tbTelepon.Text,tbEmail.Text);
+            //MessageBox.Show(id_tamu.ToString());
+        }
+
+        private int cekTamu(string nama,string telp, string email)
+        {
+            string query = "";
+            //select id yg baru diinsert
+            query = "Select COUNT(ROW_ID_TAMU) from TAMU where NAMA_TAMU=" + $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
+            int jumlah_tamu = Convert.ToInt32(Login.db.executeScalar(query));
+            if(jumlah_tamu > 0)
+            {
+                query = "Select ROW_ID_TAMU as count from TAMU where NAMA_TAMU=" + $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
+                int id_tamu = Convert.ToInt32(Login.db.executeScalar(query));
+                return id_tamu;
+            }
+            else
+            {
+                //insert into tamu
+                query = "Insert into TAMU(ROW_ID_TAMU,NAMA_TAMU,NOMOR_TELEPON,EMAIL) VALUES(" +
+                 $"'{1}'," +
+                $"'{nama}'," +
+                $"'{telp}'," +
+                $"'{email}'" + ")";
+                Login.db.executeNonQuery(query);
+                query = "Select ROW_ID_TAMU as count from TAMU where NAMA_TAMU=" + $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
+                int id_tamu = Convert.ToInt32(Login.db.executeScalar(query));
+                return id_tamu;
+            }
         }
     }
 }

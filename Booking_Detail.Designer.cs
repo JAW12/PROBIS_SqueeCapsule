@@ -309,6 +309,7 @@
             this.dgvDetail.RowTemplate.Height = 24;
             this.dgvDetail.Size = new System.Drawing.Size(772, 432);
             this.dgvDetail.TabIndex = 0;
+            this.dgvDetail.VisibleChanged += new System.EventHandler(this.dgvDetail_VisibleChanged);
             // 
             // No
             // 
@@ -392,6 +393,7 @@
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // pbNota
             // 
