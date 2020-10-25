@@ -252,7 +252,7 @@ namespace PROBIS_SqueeCapsule
             return true;
         }
 
-        private void btnCekUser_Click(object sender, EventArgs e)
+        private void btnPilihTamu_Click(object sender, EventArgs e)
         {
             id_tamu = cekTamu(tbNama.Text,tbTelepon.Text,tbEmail.Text);
             //MessageBox.Show(id_tamu.ToString());

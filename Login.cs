@@ -97,24 +97,44 @@ namespace PROBIS_SqueeCapsule
             }
         }
 
-        public static void reset()
+        public void reset()
         {
-
+            tbUsername.Clear();
+            tbPassword.Clear();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(home != null)
+            String username = tbUsername.Text.ToString();
+            String password = tbPassword.Text.ToString();
+            if(username == "admin")
             {
-                home.Show();
-                this.Hide();
+                if(password == "admin")
+                {
+                    if (home != null)
+                    {
+                        reset();
+                        home.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        reset();
+                        home = new Home();
+                        home.Show();
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Password salah");
+                }
             }
             else
             {
-                home = new Home();
-                home.Show();
-                this.Hide();
+                MessageBox.Show("User tidak ada");
             }
+            
         }
     }
 }

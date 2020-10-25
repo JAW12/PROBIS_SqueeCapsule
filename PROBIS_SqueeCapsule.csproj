@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Booking_Tamu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Booking_Tamu.Designer.cs">
+      <DependentUpon>Booking_Tamu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="PeminjamanFasilitas_Input.cs">
@@ -126,6 +132,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Booking_Tamu.resx">
+      <DependentUpon>Booking_Tamu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PeminjamanFasilitas_Input.resx">
       <DependentUpon>PeminjamanFasilitas_Input.cs</DependentUpon>
     </EmbeddedResource>

@@ -53,7 +53,7 @@
             this.lblSPerkiraan = new System.Windows.Forms.Label();
             this.lblPerkiraan = new System.Windows.Forms.Label();
             this.lblSTelepon = new System.Windows.Forms.Label();
-            this.btnCekUser = new System.Windows.Forms.Button();
+            this.btnPilihTamu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericSingle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFamily)).BeginInit();
             this.SuspendLayout();
@@ -317,26 +317,26 @@
             this.lblSTelepon.Text = "No. Telepon:";
             this.lblSTelepon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnCekUser
+            // btnPilihTamu
             // 
-            this.btnCekUser.BackColor = System.Drawing.Color.MediumBlue;
-            this.btnCekUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCekUser.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCekUser.ForeColor = System.Drawing.Color.White;
-            this.btnCekUser.Location = new System.Drawing.Point(295, 303);
-            this.btnCekUser.Name = "btnCekUser";
-            this.btnCekUser.Size = new System.Drawing.Size(200, 50);
-            this.btnCekUser.TabIndex = 28;
-            this.btnCekUser.Text = "Cek Tamu";
-            this.btnCekUser.UseVisualStyleBackColor = false;
-            this.btnCekUser.Click += new System.EventHandler(this.btnCekUser_Click);
+            this.btnPilihTamu.BackColor = System.Drawing.Color.MediumBlue;
+            this.btnPilihTamu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPilihTamu.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPilihTamu.ForeColor = System.Drawing.Color.White;
+            this.btnPilihTamu.Location = new System.Drawing.Point(295, 303);
+            this.btnPilihTamu.Name = "btnPilihTamu";
+            this.btnPilihTamu.Size = new System.Drawing.Size(200, 50);
+            this.btnPilihTamu.TabIndex = 28;
+            this.btnPilihTamu.Text = "Pilih Tamu";
+            this.btnPilihTamu.UseVisualStyleBackColor = false;
+            this.btnPilihTamu.Click += new System.EventHandler(this.btnPilihTamu_Click);
             // 
             // BookingUbah
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 366);
-            this.Controls.Add(this.btnCekUser);
+            this.Controls.Add(this.btnPilihTamu);
             this.Controls.Add(this.lblSPerkiraan);
             this.Controls.Add(this.lblPerkiraan);
             this.Controls.Add(this.dateCOUT);
@@ -399,6 +399,6 @@
         private System.Windows.Forms.Label lblSPerkiraan;
         private System.Windows.Forms.Label lblPerkiraan;
         private System.Windows.Forms.Label lblSTelepon;
-        private System.Windows.Forms.Button btnCekUser;
+        private System.Windows.Forms.Button btnPilihTamu;
     }
 }

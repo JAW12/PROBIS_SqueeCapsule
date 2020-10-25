@@ -203,6 +203,7 @@ namespace PROBIS_SqueeCapsule
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(198, 29);
             this.tbSearch.TabIndex = 1;
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
             // 
             // lblSTanggal
             // 
@@ -222,6 +223,7 @@ namespace PROBIS_SqueeCapsule
             this.dateTglAwal.Name = "dateTglAwal";
             this.dateTglAwal.Size = new System.Drawing.Size(152, 29);
             this.dateTglAwal.TabIndex = 2;
+            this.dateTglAwal.ValueChanged += new System.EventHandler(this.dateTglAwal_ValueChanged);
             // 
             // dateTglAkhir
             // 
@@ -231,6 +233,7 @@ namespace PROBIS_SqueeCapsule
             this.dateTglAkhir.Name = "dateTglAkhir";
             this.dateTglAkhir.Size = new System.Drawing.Size(152, 29);
             this.dateTglAkhir.TabIndex = 3;
+            this.dateTglAkhir.ValueChanged += new System.EventHandler(this.dateTglAkhir_ValueChanged);
             // 
             // lblSPenghubung
             // 
@@ -254,13 +257,20 @@ namespace PROBIS_SqueeCapsule
             // 
             // cbFilter
             // 
-            this.cbFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbFilter.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbFilter.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Items.AddRange(new object[] {
+            "Semua Ditampilkan",
+            "Dibatalkan",
+            "Belum Check In",
+            "Sedang Menginap",
+            "Sudah Check Out"});
             this.cbFilter.Location = new System.Drawing.Point(934, 136);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(233, 30);
             this.cbFilter.TabIndex = 4;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             // 
             // lblH1
             // 
@@ -435,6 +445,7 @@ namespace PROBIS_SqueeCapsule
             this.Name = "Booking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Booking";
+            this.VisibleChanged += new System.EventHandler(this.Booking_VisibleChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).EndInit();
