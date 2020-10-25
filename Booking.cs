@@ -223,7 +223,6 @@ namespace PROBIS_SqueeCapsule
         public void loadDataBooking(String kode, DateTime tglAwal, DateTime tglAkhir, String filter)
         {
             loadDGV(kode, tglAwal, tglAkhir, filter);
-
         }
 
         private void dateTglAwal_ValueChanged(object sender, EventArgs e)
