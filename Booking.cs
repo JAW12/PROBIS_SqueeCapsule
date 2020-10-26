@@ -97,6 +97,8 @@ namespace PROBIS_SqueeCapsule
 
         public void loadDGV(String kode, DateTime tglAwal, DateTime tglAkhir, String filter)
         {
+            String awal = tglAwal.ToString("dd/MM/yyyy");
+            String akhir = tglAkhir.ToString("dd/MM/yyyy");
             String queryf = "";
             if (filter == "Dibatalkan")
             {
@@ -128,8 +130,8 @@ namespace PROBIS_SqueeCapsule
                     $"hb.row_id_booking as \"Kode Booking\", " +
                     $"hb.jumlah_kamar_single as \"Jml Kamar Single\", " +
                     $"hb.jumlah_kamar_family as \"Jml Kamar Family\", " +
-                    $"to_char(hb.tanggal_check_in, 'Mon DD, YYYY') as \"Tgl Check In\", " +
-                    $"to_char(hb.tanggal_check_out, 'Mon DD, YYYY') as \"Tgl Check Out\", " +
+                    $"to_char(hb.tanggal_check_in, 'DD/MM/YYYY') as \"Tgl Check In\", " +
+                    $"to_char(hb.tanggal_check_out, 'DD/MM/YYYY') as \"Tgl Check Out\", " +
                     $"case when hb.status_booking = -1 then 'Dibatalkan' " +
                     $"when hb.status_booking = 0 then 'Belum Check In' " +
                     $"when hb.status_booking = 1 then 'Sedang Menginap' " +
@@ -138,8 +140,8 @@ namespace PROBIS_SqueeCapsule
                     $"from h_booking hb, tamu t " +
                     $"where t.row_id_tamu = hb.row_id_tamu " +
                     $"and hb.tanggal_check_out is null " +
-                    $"and cast(hb.tanggal_check_in as date) <= :tglAkhir " +
-                    $"and hb.row_id_booking like '%{kode}%' " +
+                    $"and hb.tanggal_check_in <= to_date('{akhir}', 'DD/MM/YYYY') " +
+                    $"and (hb.row_id_booking like '%{kode}%' or lower(t.nama_tamu) like '%{kode.ToLower()}%') " +
                     queryf;
                 OracleCommand cmd = new OracleCommand(query, conn);
                 cmd.Parameters.Add("tglAkhir", OracleDbType.Date).Value = tglAkhir;
@@ -154,8 +156,8 @@ namespace PROBIS_SqueeCapsule
                     $"hb.row_id_booking as \"Kode Booking\", " +
                     $"hb.jumlah_kamar_single as \"Jml Kamar Single\", " +
                     $"hb.jumlah_kamar_family as \"Jml Kamar Family\", " +
-                    $"to_char(hb.tanggal_check_in, 'Mon DD, YYYY') as \"Tgl Check In\", " +
-                    $"to_char(hb.tanggal_check_out, 'Mon DD, YYYY') as \"Tgl Check Out\", " +
+                    $"to_char(hb.tanggal_check_in, 'DD/MM/YYYY') as \"Tgl Check In\", " +
+                    $"to_char(hb.tanggal_check_out, 'DD/MM/YYYY') as \"Tgl Check Out\", " +
                     $"case when hb.status_booking = -1 then 'Dibatalkan' " +
                     $"when hb.status_booking = 0 then 'Belum Check In' " +
                     $"when hb.status_booking = 1 then 'Sedang Menginap' " +
@@ -164,9 +166,9 @@ namespace PROBIS_SqueeCapsule
                     $"from h_booking hb, tamu t " +
                     $"where t.row_id_tamu = hb.row_id_tamu " +
                     $"and hb.tanggal_check_out is not null " +
-                    $"and cast(hb.tanggal_check_in as date) <= :tglAkhir " +
-                    $"and cast(hb.tanggal_check_out as date) >= :tglAwal " +
-                    $"and hb.row_id_booking like '%{kode}%' " +
+                    $"and hb.tanggal_check_in <= to_date('{akhir}', 'DD/MM/YYYY') " +
+                    $"and hb.tanggal_check_out >= to_date('{awal}', 'DD/MM/YYYY') " +
+                    $"and (hb.row_id_booking like '%{kode}%' or lower(t.nama_tamu) like '%{kode.ToLower()}%') " +
                     queryf;
                 cmd = new OracleCommand(query, conn);
                 cmd.Parameters.Add("tglAwal", OracleDbType.Date).Value = tglAwal;
@@ -191,14 +193,21 @@ namespace PROBIS_SqueeCapsule
             int jml = Convert.ToInt32(Login.db.executeScalar("select count(*) from kamar where jenis_kamar = 0"));
             foreach (DataGridViewRow dgvRow in dgvBooking.Rows)
             {
+                DateTime dcheckout = DateTime.Now;
+                String checkout = dgvRow.Cells["Tgl Check Out"].Value.ToString();
+                if(checkout != "")
+                {
+                    dcheckout = Convert.ToDateTime(checkout);
+                }
+
                 if (dgvRow.Cells["Tgl Check Out"].Value.ToString() == "" && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
                 {
                     jml -= Convert.ToInt32(dgvRow.Cells["Jml Kamar Single"].Value);
                 }
-                //else if (dgvRow.Cells["Tgl Check Out"].Value != null  dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
-                //{
-                //    jml -= Convert.ToInt32(dgvRow.Cells["Jml Kamar Single"].Value);
-                //}
+                else if (dgvRow.Cells["Tgl Check Out"].Value != null && dcheckout.ToShortDateString() != dateTglAwal.Value.ToShortDateString() && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
+                {
+                    jml -= Convert.ToInt32(dgvRow.Cells["Jml Kamar Single"].Value);
+                }
             }
             lblSingle.Text = jml.ToString();
         }
@@ -208,14 +217,21 @@ namespace PROBIS_SqueeCapsule
             int jml = Convert.ToInt32(Login.db.executeScalar("select count(*) from kamar where jenis_kamar = 1"));
             foreach (DataGridViewRow dgvRow in dgvBooking.Rows)
             {
+                DateTime dcheckout = DateTime.Now;
+                String checkout = dgvRow.Cells["Tgl Check Out"].Value.ToString();
+                if (checkout != "")
+                {
+                    dcheckout = Convert.ToDateTime(checkout);
+                }
+
                 if (dgvRow.Cells["Tgl Check Out"].Value.ToString() == "" && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
                 {
                     jml -= Convert.ToInt32(dgvRow.Cells["Jml Kamar Family"].Value);
                 }
-                //else if (dgvRow.Cells["Tgl Check Out"].Value != null  dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
-                //{
-                //    jml -= Convert.ToInt32(dgvRow.Cells["Jml Kamar Single"].Value);
-                //}
+                else if (dgvRow.Cells["Tgl Check Out"].Value != null && dcheckout.ToShortDateString() != dateTglAwal.Value.ToShortDateString() && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
+                {
+                    jml -= Convert.ToInt32(dgvRow.Cells["Jml Kamar Family"].Value);
+                }
             }
             lblFamily.Text = jml.ToString();
         }
