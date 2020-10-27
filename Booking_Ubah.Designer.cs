@@ -54,6 +54,7 @@
             this.lblPerkiraan = new System.Windows.Forms.Label();
             this.lblSTelepon = new System.Windows.Forms.Label();
             this.btnPilihTamu = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericSingle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFamily)).BeginInit();
             this.SuspendLayout();
@@ -95,7 +96,7 @@
             // lblH1
             // 
             this.lblH1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblH1.Location = new System.Drawing.Point(16, 244);
+            this.lblH1.Location = new System.Drawing.Point(16, 268);
             this.lblH1.Name = "lblH1";
             this.lblH1.Size = new System.Drawing.Size(774, 2);
             this.lblH1.TabIndex = 15;
@@ -196,7 +197,7 @@
             this.btnAction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAction.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAction.ForeColor = System.Drawing.Color.White;
-            this.btnAction.Location = new System.Drawing.Point(588, 303);
+            this.btnAction.Location = new System.Drawing.Point(588, 327);
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(200, 50);
             this.btnAction.TabIndex = 7;
@@ -210,7 +211,7 @@
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.ForeColor = System.Drawing.Color.White;
-            this.btnReset.Location = new System.Drawing.Point(12, 303);
+            this.btnReset.Location = new System.Drawing.Point(12, 327);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(200, 50);
             this.btnReset.TabIndex = 8;
@@ -289,7 +290,7 @@
             this.lblSPerkiraan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSPerkiraan.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSPerkiraan.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSPerkiraan.Location = new System.Drawing.Point(276, 259);
+            this.lblSPerkiraan.Location = new System.Drawing.Point(276, 283);
             this.lblSPerkiraan.Name = "lblSPerkiraan";
             this.lblSPerkiraan.Size = new System.Drawing.Size(233, 25);
             this.lblSPerkiraan.TabIndex = 27;
@@ -298,7 +299,7 @@
             // lblPerkiraan
             // 
             this.lblPerkiraan.Font = new System.Drawing.Font("Verdana", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerkiraan.Location = new System.Drawing.Point(539, 255);
+            this.lblPerkiraan.Location = new System.Drawing.Point(539, 279);
             this.lblPerkiraan.Name = "lblPerkiraan";
             this.lblPerkiraan.Size = new System.Drawing.Size(249, 33);
             this.lblPerkiraan.TabIndex = 26;
@@ -323,7 +324,7 @@
             this.btnPilihTamu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPilihTamu.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPilihTamu.ForeColor = System.Drawing.Color.White;
-            this.btnPilihTamu.Location = new System.Drawing.Point(295, 303);
+            this.btnPilihTamu.Location = new System.Drawing.Point(295, 327);
             this.btnPilihTamu.Name = "btnPilihTamu";
             this.btnPilihTamu.Size = new System.Drawing.Size(200, 50);
             this.btnPilihTamu.TabIndex = 28;
@@ -331,11 +332,25 @@
             this.btnPilihTamu.UseVisualStyleBackColor = false;
             this.btnPilihTamu.Click += new System.EventHandler(this.btnPilihTamu_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.Location = new System.Drawing.Point(119, 242);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(554, 17);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Apabila tgl checkout dan checkin sama, maka dianggap tidak ada tgl checkout";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // BookingUbah
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 366);
+            this.ClientSize = new System.Drawing.Size(800, 390);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPilihTamu);
             this.Controls.Add(this.lblSPerkiraan);
             this.Controls.Add(this.lblPerkiraan);
@@ -400,5 +415,6 @@
         private System.Windows.Forms.Label lblPerkiraan;
         private System.Windows.Forms.Label lblSTelepon;
         private System.Windows.Forms.Button btnPilihTamu;
+        private System.Windows.Forms.Label label1;
     }
 }
