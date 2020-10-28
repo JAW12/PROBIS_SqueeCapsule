@@ -309,7 +309,6 @@
             this.dgvDetail.RowTemplate.Height = 24;
             this.dgvDetail.Size = new System.Drawing.Size(772, 432);
             this.dgvDetail.TabIndex = 0;
-            this.dgvDetail.VisibleChanged += new System.EventHandler(this.dgvDetail_VisibleChanged);
             // 
             // No
             // 
@@ -380,6 +379,7 @@
             this.btnAction.TabIndex = 1;
             this.btnAction.Text = "Check In";
             this.btnAction.UseVisualStyleBackColor = false;
+            this.btnAction.Click += new System.EventHandler(this.btnAction_Click);
             // 
             // btnCancel
             // 
@@ -455,6 +455,7 @@
             this.Name = "BookingDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingDetail";
+            this.VisibleChanged += new System.EventHandler(this.BookingDetail_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNota)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEdit)).EndInit();

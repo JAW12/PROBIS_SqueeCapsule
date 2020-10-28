@@ -28,6 +28,7 @@ namespace PROBIS_SqueeCapsule
         public static PeminjamanFasilitas peminjaman_fasilitas;
         public static PeminjamanFasilitasInput peminjaman_fasilitas_input;
         public static StokFasilitas stok_fasilitas;
+        public static int id_booking;
 
         public Login()
         {

@@ -164,7 +164,7 @@ namespace PROBIS_SqueeCapsule
                         $"to_Date('{dateCIN.Value.ToString()}','dd/MM/yyyy hh24:mi:ss')";
                         int id_booking = Convert.ToInt32(Login.db.executeScalar(query));
                         Login.booking_detail = new BookingDetail();
-                        Login.booking_detail.id_booking = id_booking;
+                        Login.id_booking = id_booking;
                         Login.booking_detail.Show();
                         this.Hide();
                     }
@@ -283,6 +283,11 @@ namespace PROBIS_SqueeCapsule
                 int id_tamu = Convert.ToInt32(Login.db.executeScalar(query));
                 return id_tamu;
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -56,6 +56,7 @@
             this.lblSTersisa = new System.Windows.Forms.Label();
             this.lblTFamily = new System.Windows.Forms.Label();
             this.lblTSingle = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,6 +115,7 @@
             this.btnAction.TabIndex = 2;
             this.btnAction.Text = "Kumpul";
             this.btnAction.UseVisualStyleBackColor = false;
+            this.btnAction.Click += new System.EventHandler(this.btnAction_Click);
             // 
             // btnReset
             // 
@@ -127,11 +129,12 @@
             this.btnReset.TabIndex = 3;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // tbSearch
             // 
             this.tbSearch.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(88, 52);
+            this.tbSearch.Location = new System.Drawing.Point(88, 51);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(250, 28);
             this.tbSearch.TabIndex = 0;
@@ -155,6 +158,8 @@
             this.dgvKamar.RowTemplate.Height = 24;
             this.dgvKamar.Size = new System.Drawing.Size(772, 332);
             this.dgvKamar.TabIndex = 1;
+            this.dgvKamar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKamar_CellClick);
+            this.dgvKamar.VisibleChanged += new System.EventHandler(this.dgvKamar_VisibleChanged);
             // 
             // No
             // 
@@ -343,11 +348,25 @@
             this.lblTSingle.TabIndex = 39;
             this.lblTSingle.Text = "0";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.Green;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.Font = new System.Drawing.Font("Verdana", 10F);
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(355, 50);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(101, 29);
+            this.btnSearch.TabIndex = 40;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = false;
+            // 
             // BookingCheckIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblSTFamily);
             this.Controls.Add(this.lblSTSingle);
             this.Controls.Add(this.lblSTersisa);
@@ -410,5 +429,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoKamar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Jenis;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
