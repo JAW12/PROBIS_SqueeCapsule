@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Oracle.ManagedDataAccess.Client;
 
 namespace PROBIS_SqueeCapsule
@@ -92,6 +93,7 @@ namespace PROBIS_SqueeCapsule
                 loadDataBooking(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
                 loadJmlKamarSingle();
                 loadJmlKamarFamily();
+                cekEnableTambahBooking();
             }
         }
 
@@ -236,6 +238,13 @@ namespace PROBIS_SqueeCapsule
             lblFamily.Text = jml.ToString();
         }
 
+        public void cekEnableTambahBooking()
+        {
+            int jmlSingle = int.Parse(lblSingle.Text.ToString());
+            int jmlFamily = int.Parse(lblFamily.Text.ToString());
+            btnTambah.Enabled = jmlSingle > 0 || jmlFamily > 0;
+        }
+
         public void loadDataBooking(String kode, DateTime tglAwal, DateTime tglAkhir, String filter)
         {
             loadDGV(kode, tglAwal, tglAkhir, filter);
@@ -246,6 +255,7 @@ namespace PROBIS_SqueeCapsule
             loadDataBooking(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
             loadJmlKamarSingle();
             loadJmlKamarFamily();
+            cekEnableTambahBooking();
         }
 
         private void dateTglAkhir_ValueChanged(object sender, EventArgs e)
@@ -253,6 +263,7 @@ namespace PROBIS_SqueeCapsule
             loadDataBooking(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
             loadJmlKamarSingle();
             loadJmlKamarFamily();
+            cekEnableTambahBooking();
         }
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
