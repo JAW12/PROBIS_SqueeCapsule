@@ -127,7 +127,7 @@ namespace PROBIS_SqueeCapsule
                 DataTable dt = new DataTable();
                 DataTable temp = new DataTable();
                 String query = $"select " +
-                    $"trim(to_char(hb.insert_at, 'Mon DD, YYYY')) as Tgl, " +
+                    $"trim(to_char(hb.insert_at, 'Mon DD, YYYY')) as \"Tgl\", " +
                     $"t.nama_tamu as \"Nama Pemesan\", " +
                     $"hb.row_id_booking as \"Kode Booking\", " +
                     $"hb.jumlah_kamar_single as \"Jml Kamar Single\", " +
@@ -153,7 +153,7 @@ namespace PROBIS_SqueeCapsule
 
                 temp = new DataTable();
                 query = $"select " +
-                    $"trim(to_char(hb.insert_at, 'Mon DD, YYYY')) as Tgl, " +
+                    $"trim(to_char(hb.insert_at, 'Mon DD, YYYY')) as \"Tgl\", " +
                     $"t.nama_tamu as \"Nama Pemesan\", " +
                     $"hb.row_id_booking as \"Kode Booking\", " +
                     $"hb.jumlah_kamar_single as \"Jml Kamar Single\", " +
