@@ -90,7 +90,7 @@ namespace PROBIS_SqueeCapsule
         {
             if(this.Visible == true)
             {
-                loadDataBooking(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+                loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
                 loadJmlKamarSingle();
                 loadJmlKamarFamily();
                 cekEnableTambahBooking();
@@ -245,14 +245,9 @@ namespace PROBIS_SqueeCapsule
             btnTambah.Enabled = jmlSingle > 0 || jmlFamily > 0;
         }
 
-        public void loadDataBooking(String kode, DateTime tglAwal, DateTime tglAkhir, String filter)
-        {
-            loadDGV(kode, tglAwal, tglAkhir, filter);
-        }
-
         private void dateTglAwal_ValueChanged(object sender, EventArgs e)
         {
-            loadDataBooking(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+            loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
             loadJmlKamarSingle();
             loadJmlKamarFamily();
             cekEnableTambahBooking();
@@ -260,7 +255,7 @@ namespace PROBIS_SqueeCapsule
 
         private void dateTglAkhir_ValueChanged(object sender, EventArgs e)
         {
-            loadDataBooking(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+            loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
             loadJmlKamarSingle();
             loadJmlKamarFamily();
             cekEnableTambahBooking();
@@ -268,14 +263,14 @@ namespace PROBIS_SqueeCapsule
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadDataBooking(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+            loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
         }
 
         private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == (char)Keys.Enter)
             {
-                loadDataBooking(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+                loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
             }
         }
     }
