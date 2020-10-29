@@ -56,7 +56,6 @@
             this.lblSTersisa = new System.Windows.Forms.Label();
             this.lblTFamily = new System.Windows.Forms.Label();
             this.lblTSingle = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -348,25 +347,11 @@
             this.lblTSingle.TabIndex = 39;
             this.lblTSingle.Text = "0";
             // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.Green;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Verdana", 10F);
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(355, 50);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(101, 29);
-            this.btnSearch.TabIndex = 40;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            // 
             // BookingCheckIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblSTFamily);
             this.Controls.Add(this.lblSTSingle);
             this.Controls.Add(this.lblSTersisa);
@@ -429,6 +414,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NoKamar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Jenis;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Check;
-        private System.Windows.Forms.Button btnSearch;
     }
 }

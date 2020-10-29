@@ -180,8 +180,7 @@ namespace PROBIS_SqueeCapsule
             MessageBox.Show("Insert Successful");
             Login.booking = new Booking();
             Login.booking.Show();
-            this.Hide();
-        }
+            this.Hide();        }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
