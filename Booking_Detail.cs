@@ -44,7 +44,7 @@ namespace PROBIS_SqueeCapsule
 
         private String formatSeparator(int input)
         {
-            return String.Format("{0:#,##0.000}", input);
+            return String.Format("{0:#,##0}", input);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -62,13 +62,23 @@ namespace PROBIS_SqueeCapsule
             this.Hide();
         }
 
+        public void resetDGV(ref DataGridView dgv)
+        {
+            dgv.Rows.Clear();
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                dgv.Columns[i].Visible = true;
+            }
+        }
+
         public void loadSuggestionKamar(int single, int family)
         {
             String query;
             DataTable dt;
 
             //reset dgv
-            dgvDetail.Rows.Clear();
+            resetDGV(ref dgvDetail);
+            dgvDetail.Columns["Subtotal"].Visible = false;
 
             query = "Select NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR from KAMAR K where STATUS_TERSEDIA = 1";
             dt = Login.db.executeDataTable(query);
@@ -98,13 +108,25 @@ namespace PROBIS_SqueeCapsule
             DataTable dt;
 
             //reset dgv
-            dgvDetail.Rows.Clear();
+            resetDGV(ref dgvDetail);
 
             //get data
-            query = "Select NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR from KAMAR K where STATUS_TERSEDIA = 1";
+            query = $"SELECT * FROM V_DETAIL_BOOKING_KAMAR WHERE ROW_ID_BOOKING = {Login.id_booking}";
             dt = Login.db.executeDataTable(query);
 
-            dgvDetail.DataSource = dt;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                int harga = Convert.ToInt32(dt.Rows[i]["SUBTOTAL"]) + Convert.ToInt32(dt.Rows[i]["HARGA_KAMAR"]);
+
+                dgvDetail.Rows.Add(
+                    (i + 1).ToString(),
+                    dt.Rows[i]["NOMOR_KAMAR"],
+                    dt.Rows[i]["JENIS_KAMAR"],
+                    formatSeparator(harga)
+                );
+            }
+
+            //dgvDetail.DataSource = dt;
         }
 
         public void loadData()
@@ -127,12 +149,17 @@ namespace PROBIS_SqueeCapsule
             single = Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_SINGLE"]);
             lblFamily.Text = dt.Rows[0]["JUMLAH_KAMAR_FAMILY"].ToString();
             family = Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_FAMILY"]);
-            lblTotal.Text = dt.Rows[0]["TOTAL_HARGA"].ToString();
+            if (dt.Rows[0]["TOTAL_HARGA"] == DBNull.Value)
+            {
+                lblTotal.Text = "Rp. 0,-";
+            }
+            else
+            {
+                lblTotal.Text = "Rp. " + formatSeparator(Convert.ToInt32(dt.Rows[0]["TOTAL_HARGA"]));
+            }
             lblNama.Text = dt.Rows[0]["NAMA_TAMU"].ToString();
             lblEmail.Text = dt.Rows[0]["EMAIL"].ToString();
             lblTelepon.Text = dt.Rows[0]["NOMOR_TELEPON"].ToString();
-            dgvDetail.Columns[3].Visible = false;
-            dgvDetail.Columns[4].Visible = false;
 
             // atur judul
             String kodebooking = dt.Rows[0]["ROW_ID_BOOKING"].ToString();
@@ -166,7 +193,9 @@ namespace PROBIS_SqueeCapsule
 
                 //tampilkan kamar yang dibooking apabila sudah checkin / dibatalkan
                 loadBookedRooms();
-            }            
+            }
+
+            //MessageBox.Show("Status Booking : " + statusbooking);
         }
 
         private void BookingDetail_VisibleChanged(object sender, EventArgs e)
@@ -179,6 +208,25 @@ namespace PROBIS_SqueeCapsule
             Login.booking_checkin = new BookingCheckIn();
             Login.booking_checkin.Show();
             this.Hide();
+        }
+
+        private void pbEdit_Click(object sender, EventArgs e)
+        {
+            BookingUbah formUbah = new BookingUbah("Update", Login.id_booking);
+
+            formUbah.ShowDialog();
+        }
+
+        private void dgvDetail_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                String nomorkamar_str = dgvDetail.Rows[e.RowIndex].Cells["NoKamar"].Value.ToString();
+                int nokamar = Convert.ToInt32(nomorkamar_str);
+
+                BookingDetailKamar detailkamar = new BookingDetailKamar(Login.id_booking, nokamar);
+                detailkamar.Show();
+            }
         }
     }
 }

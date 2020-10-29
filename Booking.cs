@@ -276,17 +276,20 @@ namespace PROBIS_SqueeCapsule
 
         private void dgvBooking_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            String row_id_booking = dgvBooking.Rows[e.RowIndex].Cells["Kode Booking"].Value.ToString();
-            Login.id_booking = Convert.ToInt32(row_id_booking);
+            if (e.RowIndex >= 0)
+            {
+                String row_id_booking = dgvBooking.Rows[e.RowIndex].Cells["Kode Booking"].Value.ToString();
+                Login.id_booking = Convert.ToInt32(row_id_booking);
 
-            if (Login.booking_detail != null)
-            {
-                Login.booking_detail.Show();
-            }
-            else
-            {
-                Login.booking_detail = new BookingDetail();
-                Login.booking_detail.Show();
+                if (Login.booking_detail != null)
+                {
+                    Login.booking_detail.Show();
+                }
+                else
+                {
+                    Login.booking_detail = new BookingDetail();
+                    Login.booking_detail.Show();
+                }
             }
         }
     }

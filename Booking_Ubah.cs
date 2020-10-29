@@ -13,17 +13,111 @@ namespace PROBIS_SqueeCapsule
 {
     public partial class BookingUbah : Form
     {
+        //mode insert/update
+        private String mode;
+
+        //set variabel
+        private int id_tamu = 0;
+
+        private int id_booking;
+
+        private Boolean tanggalValid;
+
         public BookingUbah()
         {
             InitializeComponent();
+            this.mode = "Insert";
+            btnAction.Text = "Tambah";
         }
-        //mode insert/update
-        String mode = "Insert";
-        //set variabel
-        int id_tamu = 0;
+
+        public BookingUbah(String mode, int idbooking)
+        {
+            InitializeComponent();
+            this.mode = mode;
+            this.id_booking = idbooking;
+
+            setFormMode();
+        }
+        
+        private void setFormMode()
+        {
+            if (mode == "Update")
+            {
+                lblKodeBooking.Text = "Kode Booking : " + id_booking + " - Update Data Tamu";
+
+                //dateCIN.Enabled = false;
+                //dateCOUT.Enabled = false;
+                //numericSingle.Enabled = false;
+                //numericFamily.Enabled = false;
+
+                dateCIN.Visible = false;
+                dateCOUT.Visible = false;
+                lblSTgl.Visible = false;
+                lblSCIN.Visible = false;
+                lblSCOUT.Visible = false;
+                numericSingle.Visible = false;
+                numericFamily.Visible = false;
+                lblSJumlah.Visible = false;
+                lblSSingle.Visible = false;
+                lblSFamily.Visible = false;
+                btnPilihTamu.Visible = false;
+                lblKeteranganTanggal.Visible = false;
+                lblSPerkiraan.Visible = false;
+                lblPerkiraan.Visible = false;
+                
+
+                btnAction.Text = "Simpan";
+
+                this.id_tamu = getIdTamu();
+                isiDataTamu();
+            }
+        }
+
+        private int getIdTamu()
+        {
+            int id = -1;
+            String query = $"select t.row_id_tamu from tamu t, h_booking hb where hb.ROW_ID_TAMU = t.ROW_ID_TAMU and hb.ROW_ID_BOOKING = {Login.id_booking}";
+            try
+            {
+                id = Convert.ToInt32(Login.db.executeScalar(query));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return id;
+        }
+
+        private void isiDataTamu()
+        {
+            String query = $"select t.* from tamu t where row_id_tamu = {id_tamu}";
+            DataTable dt = Login.db.executeDataTable(query);
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                tbNama.Text = row["NAMA_TAMU"].ToString();
+                tbTelepon.Text = row["NOMOR_TELEPON"].ToString();
+                tbEmail.Text = row["EMAIL"].ToString();
+            }
+            else
+            {
+                MessageBox.Show("Error : data tamu tidak ditemukan");
+            }
+        }
+       
         private void lblX_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (mode == "Update")
+            {                
+                this.Close();
+                Login.booking_detail.loadData();
+            }
+            else if (mode == "Insert")
+            {
+                // Application.Exit();
+            }
         }
 
         private void lbl__Click(object sender, EventArgs e)
@@ -143,6 +237,7 @@ namespace PROBIS_SqueeCapsule
             //pangil fungsi
             totalHarga(Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value));
         }
+       
 
         private void btnAction_Click(object sender, EventArgs e)
         {
@@ -155,30 +250,64 @@ namespace PROBIS_SqueeCapsule
                 //data valid, cek mode insert/update
                 if (mode == "Insert")
                 {
-                    bool cek = Insert(tbNama.Text, tbTelepon.Text, tbEmail.Text, Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value), dateCIN.Value.ToString(), dateCOUT.Value.ToString(), dateCOUT.Text);
-
-                    if (cek)
+                    if (!tanggalValid)
                     {
-                        MessageBox.Show("Insert Berhasil");
-                        String query = "Select ROW_ID_BOOKING from H_BOOKING WHERE TANGGAL_CHECK_IN="+
-                        $"to_Date('{dateCIN.Value.ToString()}','dd/MM/yyyy hh24:mi:ss')";
-                        int id_booking = Convert.ToInt32(Login.db.executeScalar(query));
-                        Login.booking_detail = new BookingDetail();
-                        Login.id_booking = id_booking;
-                        Login.booking_detail.Show();
-                        this.Hide();
+                        MessageBox.Show("Tanggal check in tidak boleh melebihi tanggal check out");
                     }
                     else
                     {
-                        MessageBox.Show("Insert Gagal");
+                        bool cek = Insert(tbNama.Text, tbTelepon.Text, tbEmail.Text, Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value), dateCIN.Value.ToString(), dateCOUT.Value.ToString(), dateCOUT.Text);
+
+                        if (cek)
+                        {
+                            MessageBox.Show("Insert Berhasil");
+                            String query = "Select ROW_ID_BOOKING from H_BOOKING WHERE TANGGAL_CHECK_IN=" +
+                            $"to_Date('{dateCIN.Value.ToString()}','dd/MM/yyyy hh24:mi:ss')";
+                            int id_booking = Convert.ToInt32(Login.db.executeScalar(query));
+                            Login.booking_detail = new BookingDetail();
+                            Login.id_booking = id_booking;
+                            Login.booking_detail.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Insert Gagal");
+                        }
                     }
+                    
                 }
+                else if (mode == "Update")
+                {
+                    ubahDataTamu();
+                }
+                
+            }
+        }
+
+        private void ubahDataTamu()
+        {
+            String nama = tbNama.Text.ToString();
+            String email = tbEmail.Text.ToString();
+            String nohp = tbTelepon.Text.ToString();
+
+            String query = $"update tamu set nama_tamu = '{nama}', nomor_telepon = '{nohp}', email = '{email}' where row_id_tamu = {id_tamu}";
+            Boolean result = Login.db.executeNonQuery(query);
+
+            if (result)
+            {
+                isiDataTamu();
+                MessageBox.Show("Update data tamu berhasil");
+            }
+            else
+            {
+                MessageBox.Show("Update data tamu gagal");
             }
         }
 
         private void BookingUbah_VisibleChanged(object sender, EventArgs e)
         {
-            mode = "Insert";
+            // jangan dihard code insert gini. nanti update mode ku ga jalan - winda
+            //mode = "Insert";
         }
 
         private bool Insert(String nama, String telp, String email, int single, int family, String checkindate, String checkoutdate, String cek)
@@ -286,6 +415,38 @@ namespace PROBIS_SqueeCapsule
         }
 
         private void btnReset_Click(object sender, EventArgs e)
+        {
+            isiDataTamu();
+        }
+
+        private void compareDates()
+        {
+            /* DateTime.Compare(d1,d2)
+                < 0 − If date1 is earlier than date2
+                = 0 − If date1 is the same as date2
+                > 0 − If date1 is later than date2
+             */
+
+            DateTime dcin = Convert.ToDateTime(dateCIN.Value);
+            DateTime dcout = Convert.ToDateTime(dateCOUT.Value);
+
+            int result = DateTime.Compare(dcin, dcout);
+            if (result > 0)
+            {
+                tanggalValid = false;
+            }
+            else
+            {
+                tanggalValid = true;
+            }
+        }
+
+        private void dateCIN_ValueChanged(object sender, EventArgs e)
+        {
+                        
+        }
+
+        private void dateCOUT_ValueChanged(object sender, EventArgs e)
         {
 
         }

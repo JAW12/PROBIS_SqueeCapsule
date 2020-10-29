@@ -54,7 +54,7 @@
             this.lblPerkiraan = new System.Windows.Forms.Label();
             this.lblSTelepon = new System.Windows.Forms.Label();
             this.btnPilihTamu = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblKeteranganTanggal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericSingle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFamily)).BeginInit();
             this.SuspendLayout();
@@ -276,6 +276,7 @@
             this.dateCIN.Name = "dateCIN";
             this.dateCIN.Size = new System.Drawing.Size(250, 28);
             this.dateCIN.TabIndex = 5;
+            this.dateCIN.ValueChanged += new System.EventHandler(this.dateCIN_ValueChanged);
             // 
             // dateCOUT
             // 
@@ -284,6 +285,7 @@
             this.dateCOUT.Name = "dateCOUT";
             this.dateCOUT.Size = new System.Drawing.Size(250, 28);
             this.dateCOUT.TabIndex = 6;
+            this.dateCOUT.ValueChanged += new System.EventHandler(this.dateCOUT_ValueChanged);
             // 
             // lblSPerkiraan
             // 
@@ -333,25 +335,25 @@
             this.btnPilihTamu.UseVisualStyleBackColor = false;
             this.btnPilihTamu.Click += new System.EventHandler(this.btnPilihTamu_Click);
             // 
-            // label1
+            // lblKeteranganTanggal
             // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(119, 242);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(554, 17);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Apabila tgl checkout dan checkin sama, maka dianggap tidak ada tgl checkout";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblKeteranganTanggal.AutoSize = true;
+            this.lblKeteranganTanggal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblKeteranganTanggal.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKeteranganTanggal.ForeColor = System.Drawing.Color.Maroon;
+            this.lblKeteranganTanggal.Location = new System.Drawing.Point(119, 242);
+            this.lblKeteranganTanggal.Name = "lblKeteranganTanggal";
+            this.lblKeteranganTanggal.Size = new System.Drawing.Size(554, 17);
+            this.lblKeteranganTanggal.TabIndex = 29;
+            this.lblKeteranganTanggal.Text = "Apabila tgl checkout dan checkin sama, maka dianggap tidak ada tgl checkout";
+            this.lblKeteranganTanggal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BookingUbah
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 390);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblKeteranganTanggal);
             this.Controls.Add(this.btnPilihTamu);
             this.Controls.Add(this.lblSPerkiraan);
             this.Controls.Add(this.lblPerkiraan);
@@ -416,6 +418,6 @@
         private System.Windows.Forms.Label lblPerkiraan;
         private System.Windows.Forms.Label lblSTelepon;
         private System.Windows.Forms.Button btnPilihTamu;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblKeteranganTanggal;
     }
 }

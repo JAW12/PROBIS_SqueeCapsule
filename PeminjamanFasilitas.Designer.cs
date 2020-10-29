@@ -40,10 +40,6 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.lblSSearch = new System.Windows.Forms.Label();
             this.dgvKamar = new System.Windows.Forms.DataGridView();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NoKamar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +63,7 @@
             // 
             this.bookingToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bookingToolStripMenuItem.Name = "bookingToolStripMenuItem";
-            this.bookingToolStripMenuItem.Size = new System.Drawing.Size(107, 29);
+            this.bookingToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.bookingToolStripMenuItem.Text = "Booking";
             this.bookingToolStripMenuItem.Click += new System.EventHandler(this.bookingToolStripMenuItem_Click);
             // 
@@ -76,7 +72,7 @@
             this.peminjamanFasilitasToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.peminjamanFasilitasToolStripMenuItem.ForeColor = System.Drawing.Color.SlateBlue;
             this.peminjamanFasilitasToolStripMenuItem.Name = "peminjamanFasilitasToolStripMenuItem";
-            this.peminjamanFasilitasToolStripMenuItem.Size = new System.Drawing.Size(239, 29);
+            this.peminjamanFasilitasToolStripMenuItem.Size = new System.Drawing.Size(237, 29);
             this.peminjamanFasilitasToolStripMenuItem.Text = "Peminjaman Fasilitas";
             // 
             // stokFasilitasToolStripMenuItem
@@ -85,21 +81,21 @@
             this.laporanToolStripMenuItem});
             this.stokFasilitasToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stokFasilitasToolStripMenuItem.Name = "stokFasilitasToolStripMenuItem";
-            this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
+            this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(158, 29);
             this.stokFasilitasToolStripMenuItem.Text = "Stok Fasilitas";
             this.stokFasilitasToolStripMenuItem.Click += new System.EventHandler(this.stokFasilitasToolStripMenuItem_Click);
             // 
             // laporanToolStripMenuItem
             // 
             this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
-            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
+            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(312, 30);
             this.laporanToolStripMenuItem.Text = "Laporan Stok Fasilitas";
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(103, 29);
             this.logOutToolStripMenuItem.Text = "Log Out";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
@@ -135,6 +131,7 @@
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(207, 29);
             this.tbSearch.TabIndex = 0;
+            this.tbSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyUp);
             // 
             // lblSSearch
             // 
@@ -152,11 +149,6 @@
             this.dgvKamar.AllowUserToDeleteRows = false;
             this.dgvKamar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvKamar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKamar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.No,
-            this.NoKamar,
-            this.Nama,
-            this.Action});
             this.dgvKamar.Location = new System.Drawing.Point(12, 97);
             this.dgvKamar.Name = "dgvKamar";
             this.dgvKamar.ReadOnly = true;
@@ -164,34 +156,7 @@
             this.dgvKamar.RowTemplate.Height = 24;
             this.dgvKamar.Size = new System.Drawing.Size(1158, 644);
             this.dgvKamar.TabIndex = 1;
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.MinimumWidth = 6;
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            // 
-            // NoKamar
-            // 
-            this.NoKamar.HeaderText = "Nomor Kamar";
-            this.NoKamar.MinimumWidth = 6;
-            this.NoKamar.Name = "NoKamar";
-            this.NoKamar.ReadOnly = true;
-            // 
-            // Nama
-            // 
-            this.Nama.HeaderText = "Nama Tamu";
-            this.Nama.MinimumWidth = 6;
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
-            // 
-            // Action
-            // 
-            this.Action.HeaderText = "Action";
-            this.Action.MinimumWidth = 6;
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
+            this.dgvKamar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKamar_CellDoubleClick);
             // 
             // PeminjamanFasilitas
             // 
@@ -230,10 +195,6 @@
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Label lblSSearch;
         private System.Windows.Forms.DataGridView dgvKamar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NoKamar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
-        private System.Windows.Forms.DataGridViewButtonColumn Action;
         private System.Windows.Forms.ToolStripMenuItem laporanToolStripMenuItem;
     }
 }

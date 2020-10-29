@@ -39,18 +39,13 @@
             this.lblJenis = new System.Windows.Forms.Label();
             this.lblNo = new System.Windows.Forms.Label();
             this.dgvPeminjaman = new System.Windows.Forms.DataGridView();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Jumlah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Biaya = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblSTotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblSJudul = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTotalPeminjaman = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblHargakamar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeminjaman)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,12 +151,6 @@
             this.dgvPeminjaman.AllowUserToDeleteRows = false;
             this.dgvPeminjaman.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPeminjaman.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPeminjaman.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.No,
-            this.Nama,
-            this.Jumlah,
-            this.Biaya,
-            this.Subtotal});
             this.dgvPeminjaman.Location = new System.Drawing.Point(16, 149);
             this.dgvPeminjaman.Name = "dgvPeminjaman";
             this.dgvPeminjaman.ReadOnly = true;
@@ -169,41 +158,6 @@
             this.dgvPeminjaman.RowTemplate.Height = 24;
             this.dgvPeminjaman.Size = new System.Drawing.Size(772, 432);
             this.dgvPeminjaman.TabIndex = 0;
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.MinimumWidth = 6;
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            // 
-            // Nama
-            // 
-            this.Nama.HeaderText = "Nama Fasilitas";
-            this.Nama.MinimumWidth = 6;
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
-            // 
-            // Jumlah
-            // 
-            this.Jumlah.HeaderText = "Jumlah";
-            this.Jumlah.MinimumWidth = 6;
-            this.Jumlah.Name = "Jumlah";
-            this.Jumlah.ReadOnly = true;
-            // 
-            // Biaya
-            // 
-            this.Biaya.HeaderText = "Biaya Peminjaman";
-            this.Biaya.MinimumWidth = 6;
-            this.Biaya.Name = "Biaya";
-            this.Biaya.ReadOnly = true;
-            // 
-            // Subtotal
-            // 
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.MinimumWidth = 6;
-            this.Subtotal.Name = "Subtotal";
-            this.Subtotal.ReadOnly = true;
             // 
             // lblSTotal
             // 
@@ -239,15 +193,15 @@
             this.lblSJudul.TabIndex = 23;
             this.lblSJudul.Text = "List Peminjaman Fasilitas:";
             // 
-            // label1
+            // lblTotalPeminjaman
             // 
-            this.label1.Font = new System.Drawing.Font("Verdana", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(562, 587);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(226, 33);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Rp. 500.000.000";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTotalPeminjaman.Font = new System.Drawing.Font("Verdana", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalPeminjaman.Location = new System.Drawing.Point(562, 587);
+            this.lblTotalPeminjaman.Name = "lblTotalPeminjaman";
+            this.lblTotalPeminjaman.Size = new System.Drawing.Size(226, 33);
+            this.lblTotalPeminjaman.TabIndex = 20;
+            this.lblTotalPeminjaman.Text = "Rp. 500.000.000";
+            this.lblTotalPeminjaman.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
@@ -273,15 +227,15 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "Total Biaya Kamar:";
             // 
-            // label4
+            // lblHargakamar
             // 
-            this.label4.Font = new System.Drawing.Font("Verdana", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(562, 622);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(226, 33);
-            this.label4.TabIndex = 20;
-            this.label4.Text = "Rp. 500.000.000";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblHargakamar.Font = new System.Drawing.Font("Verdana", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHargakamar.Location = new System.Drawing.Point(562, 622);
+            this.lblHargakamar.Name = "lblHargakamar";
+            this.lblHargakamar.Size = new System.Drawing.Size(226, 33);
+            this.lblHargakamar.TabIndex = 20;
+            this.lblHargakamar.Text = "Rp. 500.000.000";
+            this.lblHargakamar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // BookingDetailKamar
             // 
@@ -292,8 +246,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblSTotal);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblHargakamar);
+            this.Controls.Add(this.lblTotalPeminjaman);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.dgvPeminjaman);
             this.Controls.Add(this.lblSJenis);
@@ -330,14 +284,9 @@
         private System.Windows.Forms.Label lblSTotal;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblSJudul;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTotalPeminjaman;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Jumlah;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Biaya;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
+        private System.Windows.Forms.Label lblHargakamar;
     }
 }

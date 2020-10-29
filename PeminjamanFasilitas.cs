@@ -15,6 +15,7 @@ namespace PROBIS_SqueeCapsule
         public PeminjamanFasilitas()
         {
             InitializeComponent();
+            loadData();
         }
 
         private void lblX_Click(object sender, EventArgs e)
@@ -65,6 +66,49 @@ namespace PROBIS_SqueeCapsule
                 Login.stok_fasilitas = new StokFasilitas();
                 Login.stok_fasilitas.Show();
                 this.Hide();
+            }
+        }
+
+        private void loadData()
+        {
+            //ambil data penginapan yang status bookingnya = 1 (sedang menginap)
+            String query = "SELECT ROW_ID_BOOKING, NOMOR_KAMAR AS \"Nomor Kamar\", NAMA_TAMU AS \"Nama Tamu\" FROM V_DATA_PENGINAPAN WHERE STATUS_BOOKING = 1";
+            DataTable dt = Login.db.executeDataTable(query);
+            dgvKamar.DataSource = dt;
+
+            dgvKamar.Columns["ROW_ID_BOOKING"].Visible = false;
+        }
+
+        private void tbSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            String keyword = tbSearch.Text.ToString().ToUpper();
+            if (keyword.Length == 0)
+            {
+                loadData();
+            }
+            else
+            {
+                String query = $"SELECT ROW_ID_BOOKING, NOMOR_KAMAR AS \"Nomor Kamar\", NAMA_TAMU AS \"Nama Tamu\" FROM V_DATA_PENGINAPAN WHERE STATUS_BOOKING = 1 AND UPPER(NAMA_TAMU) LIKE '%{keyword}%' OR STATUS_BOOKING = 1 AND NOMOR_KAMAR LIKE '%{keyword}%'";
+                DataTable dt = Login.db.executeDataTable(query);
+                dgvKamar.DataSource = dt;
+
+                dgvKamar.Columns["ROW_ID_BOOKING"].Visible = false;
+            }
+        }
+
+        private void dgvKamar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                String nokamar_str = dgvKamar.Rows[e.RowIndex].Cells["Nomor Kamar"].Value.ToString();
+                String row_id_booking_str = dgvKamar.Rows[e.RowIndex].Cells["ROW_ID_BOOKING"].Value.ToString();
+
+                int nokamar = Convert.ToInt32(nokamar_str);
+                int row_id_booking = Convert.ToInt32(row_id_booking_str);
+
+                //buka form input peminjaman
+                PeminjamanFasilitasInput inputPeminjaman = new PeminjamanFasilitasInput(row_id_booking, nokamar);
+                inputPeminjaman.Show();
             }
         }
     }

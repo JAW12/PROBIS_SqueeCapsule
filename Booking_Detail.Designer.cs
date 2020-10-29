@@ -55,7 +55,6 @@
             this.NoKamar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Jenis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lblSTotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnAction = new System.Windows.Forms.Button();
@@ -300,8 +299,7 @@
             this.No,
             this.NoKamar,
             this.Jenis,
-            this.Subtotal,
-            this.Action});
+            this.Subtotal});
             this.dgvDetail.Location = new System.Drawing.Point(16, 329);
             this.dgvDetail.Name = "dgvDetail";
             this.dgvDetail.ReadOnly = true;
@@ -309,6 +307,7 @@
             this.dgvDetail.RowTemplate.Height = 24;
             this.dgvDetail.Size = new System.Drawing.Size(772, 432);
             this.dgvDetail.TabIndex = 0;
+            this.dgvDetail.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetail_CellDoubleClick);
             // 
             // No
             // 
@@ -337,13 +336,6 @@
             this.Subtotal.MinimumWidth = 6;
             this.Subtotal.Name = "Subtotal";
             this.Subtotal.ReadOnly = true;
-            // 
-            // Action
-            // 
-            this.Action.HeaderText = "Action";
-            this.Action.MinimumWidth = 6;
-            this.Action.Name = "Action";
-            this.Action.ReadOnly = true;
             // 
             // lblSTotal
             // 
@@ -416,6 +408,7 @@
             this.pbEdit.Size = new System.Drawing.Size(30, 30);
             this.pbEdit.TabIndex = 23;
             this.pbEdit.TabStop = false;
+            this.pbEdit.Click += new System.EventHandler(this.pbEdit_Click);
             // 
             // BookingDetail
             // 
@@ -492,11 +485,10 @@
         private System.Windows.Forms.Button btnAction;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.PictureBox pbEdit;
+        private System.Windows.Forms.PictureBox pbNota;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoKamar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Jenis;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
-        private System.Windows.Forms.DataGridViewButtonColumn Action;
-        private System.Windows.Forms.PictureBox pbNota;
     }
 }
