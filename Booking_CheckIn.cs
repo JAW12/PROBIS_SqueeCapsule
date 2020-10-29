@@ -25,7 +25,8 @@ namespace PROBIS_SqueeCapsule
 
         private void lblX_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            // Application.Exit();
+            this.Hide();
         }
 
         private void lbl__Click(object sender, EventArgs e)

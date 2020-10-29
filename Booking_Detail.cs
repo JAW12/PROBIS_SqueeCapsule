@@ -12,15 +12,24 @@ namespace PROBIS_SqueeCapsule
 {
     public partial class BookingDetail : Form
     {
+        private int row_id_booking;
+
         //lempar data dari booking_ubah
         public BookingDetail()
         {
             InitializeComponent();
         }
 
+        public BookingDetail(int row_id_booking)
+        {
+            InitializeComponent();
+            this.row_id_booking = row_id_booking;
+        }
+
         private void lblX_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
+            this.Hide();
         }
 
         private void lbl__Click(object sender, EventArgs e)
@@ -31,6 +40,11 @@ namespace PROBIS_SqueeCapsule
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private String formatSeparator(int input)
+        {
+            return String.Format("{0:#,##0.000}", input);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -48,13 +62,60 @@ namespace PROBIS_SqueeCapsule
             this.Hide();
         }
 
+        public void loadSuggestionKamar(int single, int family)
+        {
+            String query;
+            DataTable dt;
+
+            //reset dgv
+            dgvDetail.Rows.Clear();
+
+            query = "Select NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR from KAMAR K where STATUS_TERSEDIA = 1";
+            dt = Login.db.executeDataTable(query);
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "0" && single > 0)
+                {
+                    dgvDetail.Rows.Add(dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Single", dt.Rows[i]["HARGA_KAMAR"].ToString());
+                    single -= 1;
+                }
+                if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "1" && family > 0)
+                {
+                    dgvDetail.Rows.Add(dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Family", dt.Rows[i]["HARGA_KAMAR"].ToString());
+                    family -= 1;
+                }
+                if (single == 0 && family == 0)
+                {
+                    break;
+                }
+            }
+        }
+
+        public void loadBookedRooms()
+        {
+            String query;
+            DataTable dt;
+
+            //reset dgv
+            dgvDetail.Rows.Clear();
+
+            //get data
+            query = "Select NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR from KAMAR K where STATUS_TERSEDIA = 1";
+            dt = Login.db.executeDataTable(query);
+
+            dgvDetail.DataSource = dt;
+        }
+
         public void loadData()
         {
             int single, family;
             String query = "Select * from H_BOOKING H,TAMU T where ROW_ID_BOOKING=" + $"'{Login.id_booking}' AND H.ROW_ID_TAMU = T.ROW_ID_TAMU";
             DataTable dt = Login.db.executeDataTable(query);
             lblCIN.Text = dt.Rows[0]["TANGGAL_CHECK_IN"].ToString();
-            if(dt.Rows[0]["TANGGAL_CHECK_OUT"].ToString() == null)
+
+            //cek apakah null
+            if(dt.Rows[0]["TANGGAL_CHECK_OUT"] == DBNull.Value)
             {
                 lblCOUT.Text = "Belum diketahui";
             }
@@ -68,29 +129,44 @@ namespace PROBIS_SqueeCapsule
             family = Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_FAMILY"]);
             lblTotal.Text = dt.Rows[0]["TOTAL_HARGA"].ToString();
             lblNama.Text = dt.Rows[0]["NAMA_TAMU"].ToString();
-            lblEmail.Text = dt.Rows[0]["NOMOR_TELEPON"].ToString();
-            lblTelepon.Text = dt.Rows[0]["EMAIL"].ToString();
+            lblEmail.Text = dt.Rows[0]["EMAIL"].ToString();
+            lblTelepon.Text = dt.Rows[0]["NOMOR_TELEPON"].ToString();
             dgvDetail.Columns[3].Visible = false;
             dgvDetail.Columns[4].Visible = false;
-            query = "Select NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR from KAMAR K where STATUS_TERSEDIA = 1";
-            dt = Login.db.executeDataTable(query);
-            for (int i = 0; i < dt.Rows.Count; i++)
+
+            // atur judul
+            String kodebooking = dt.Rows[0]["ROW_ID_BOOKING"].ToString();
+            String tglInsert = dt.Rows[0]["INSERT_AT"].ToString();
+            String judul = "Kode Booking #" + kodebooking + " - " + tglInsert;
+            lblJudul.Text = judul;
+
+            //atur status
+            String statusbooking = dt.Rows[0]["STATUS_BOOKING"].ToString();
+            if (statusbooking == "0")
             {
-                if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "0" && single > 0)
-                {
-                    dgvDetail.Rows.Add(dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Single", dt.Rows[i]["HARGA_KAMAR"].ToString());
-                    single -= 1;
-                }
-                if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "1" && family > 0)
-                {
-                    dgvDetail.Rows.Add(dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Family", dt.Rows[i]["HARGA_KAMAR"].ToString());
-                    family -= 1;
-                }
-                if(single == 0 && family == 0)
-                {
-                    break;
-                }
+                lblStatus.Text = "Belum Check In";
+
+                //tampilkan suggestion kamar apabila belum check in
+                loadSuggestionKamar(single, family);
             }
+            else
+            {
+                if (statusbooking == "-1")
+                {
+                    lblStatus.Text = "Dibatalkan";
+                }
+                else if (statusbooking == "1")
+                {
+                    lblStatus.Text = "Sedang Menginap";
+                }
+                else if (statusbooking == "2")
+                {
+                    lblStatus.Text = "Sudah Check Out";
+                }
+
+                //tampilkan kamar yang dibooking apabila sudah checkin / dibatalkan
+                loadBookedRooms();
+            }            
         }
 
         private void BookingDetail_VisibleChanged(object sender, EventArgs e)
