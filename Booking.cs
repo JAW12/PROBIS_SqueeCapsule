@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -199,7 +200,7 @@ namespace PROBIS_SqueeCapsule
                 String checkout = dgvRow.Cells["Tgl Check Out"].Value.ToString();
                 if(checkout != "")
                 {
-                    dcheckout = Convert.ToDateTime(checkout);
+                    dcheckout = DateTime.ParseExact(checkout, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
 
                 if (dgvRow.Cells["Tgl Check Out"].Value.ToString() == "" && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
@@ -223,7 +224,7 @@ namespace PROBIS_SqueeCapsule
                 String checkout = dgvRow.Cells["Tgl Check Out"].Value.ToString();
                 if (checkout != "")
                 {
-                    dcheckout = Convert.ToDateTime(checkout);
+                    dcheckout = DateTime.ParseExact(checkout, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
 
                 if (dgvRow.Cells["Tgl Check Out"].Value.ToString() == "" && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")

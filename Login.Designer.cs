@@ -38,6 +38,7 @@
             this.pbUsername = new System.Windows.Forms.PictureBox();
             this.pbEye = new System.Windows.Forms.PictureBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.lblHelp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUsername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEye)).BeginInit();
@@ -145,12 +146,25 @@
             this.pbLogo.TabIndex = 0;
             this.pbLogo.TabStop = false;
             // 
+            // lblHelp
+            // 
+            this.lblHelp.AutoSize = true;
+            this.lblHelp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblHelp.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelp.Location = new System.Drawing.Point(430, 9);
+            this.lblHelp.Name = "lblHelp";
+            this.lblHelp.Size = new System.Drawing.Size(23, 25);
+            this.lblHelp.TabIndex = 7;
+            this.lblHelp.Text = "?";
+            this.lblHelp.Click += new System.EventHandler(this.lblHelp_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(502, 500);
+            this.Controls.Add(this.lblHelp);
             this.Controls.Add(this.pbPassword);
             this.Controls.Add(this.pbUsername);
             this.Controls.Add(this.pbEye);
@@ -186,6 +200,7 @@
         private System.Windows.Forms.PictureBox pbEye;
         private System.Windows.Forms.PictureBox pbUsername;
         private System.Windows.Forms.PictureBox pbPassword;
+        private System.Windows.Forms.Label lblHelp;
     }
 }
 

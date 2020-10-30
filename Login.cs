@@ -17,6 +17,7 @@ namespace PROBIS_SqueeCapsule
         public static Database db;
 
 
+        public static Help help;
         public static Login login;
         public static Home home;
         public static Booking booking;
@@ -136,6 +137,23 @@ namespace PROBIS_SqueeCapsule
                 MessageBox.Show("User tidak ada");
             }
             
+        }
+
+        private void lblHelp_Click(object sender, EventArgs e)
+        {
+            if (help != null)
+            {
+                reset();
+                help.setHelp("Halaman Login");
+                help.Show();
+            }
+            else
+            {
+                reset();
+                help = new Help();
+                help.setHelp("Halaman Login");
+                help.Show();
+            }
         }
     }
 }

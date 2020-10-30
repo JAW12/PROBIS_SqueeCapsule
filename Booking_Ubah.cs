@@ -226,7 +226,8 @@ namespace PROBIS_SqueeCapsule
         //mengganti isi text lblPerkiraan
         private void totalHarga(int single, int family)
         {
-            String hasil = Convert.ToString((single * 250000) + (family * 750000));
+            //String hasil = Convert.ToString((single * 250000) + (family * 750000));
+            String hasil = Login.db.getRupiah((single * 250000) + (family * 750000));
             //berikan format uang
             // hasil = ;
             lblPerkiraan.Text = hasil;

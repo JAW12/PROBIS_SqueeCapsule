@@ -204,5 +204,15 @@ namespace PROBIS_SqueeCapsule
                 conn.Close();
             }
         }
+
+        public String getRupiah (int harga)
+        {
+            return "Rp. " + getSeparator(harga);
+        }
+
+        public String getSeparator(int harga)
+        {
+            return harga.ToString("#, ##0");
+        }
     }
 }
