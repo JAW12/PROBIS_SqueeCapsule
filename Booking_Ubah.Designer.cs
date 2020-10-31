@@ -271,7 +271,9 @@
             // 
             // dateCIN
             // 
+            this.dateCIN.CustomFormat = "dd MMMM yyyy";
             this.dateCIN.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCIN.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateCIN.Location = new System.Drawing.Point(122, 201);
             this.dateCIN.Name = "dateCIN";
             this.dateCIN.Size = new System.Drawing.Size(250, 28);
@@ -280,7 +282,9 @@
             // 
             // dateCOUT
             // 
+            this.dateCOUT.CustomFormat = "dd MMMM yyyy";
             this.dateCOUT.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCOUT.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateCOUT.Location = new System.Drawing.Point(538, 201);
             this.dateCOUT.Name = "dateCOUT";
             this.dateCOUT.Size = new System.Drawing.Size(250, 28);

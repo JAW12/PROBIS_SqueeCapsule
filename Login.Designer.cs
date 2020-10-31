@@ -156,6 +156,7 @@
             this.lblHelp.Size = new System.Drawing.Size(23, 25);
             this.lblHelp.TabIndex = 7;
             this.lblHelp.Text = "?";
+            this.lblHelp.Visible = false;
             this.lblHelp.Click += new System.EventHandler(this.lblHelp_Click);
             // 
             // Login

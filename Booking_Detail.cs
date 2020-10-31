@@ -214,7 +214,7 @@ namespace PROBIS_SqueeCapsule
         {
             BookingUbah formUbah = new BookingUbah("Update", Login.id_booking);
 
-            formUbah.ShowDialog();
+            formUbah.Show();
         }
 
         private void dgvDetail_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
