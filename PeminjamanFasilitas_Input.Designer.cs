@@ -35,12 +35,6 @@
             this.btnKumpul = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.dgvFasilitas = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tersedia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sudah = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Jumlah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblSTotal = new System.Windows.Forms.Label();
             this.lblSNoKamar = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -92,6 +86,7 @@
             this.btnKumpul.TabIndex = 22;
             this.btnKumpul.Text = "Kumpul";
             this.btnKumpul.UseVisualStyleBackColor = false;
+            this.btnKumpul.Click += new System.EventHandler(this.btnKumpul_Click);
             // 
             // btnReset
             // 
@@ -105,6 +100,7 @@
             this.btnReset.TabIndex = 22;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // dgvFasilitas
             // 
@@ -112,63 +108,14 @@
             this.dgvFasilitas.AllowUserToDeleteRows = false;
             this.dgvFasilitas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFasilitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFasilitas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Nama,
-            this.Harga,
-            this.Tersedia,
-            this.Sudah,
-            this.Jumlah});
             this.dgvFasilitas.Location = new System.Drawing.Point(12, 122);
             this.dgvFasilitas.Name = "dgvFasilitas";
-            this.dgvFasilitas.ReadOnly = true;
             this.dgvFasilitas.RowHeadersWidth = 51;
             this.dgvFasilitas.RowTemplate.Height = 24;
             this.dgvFasilitas.Size = new System.Drawing.Size(772, 393);
             this.dgvFasilitas.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID Fasilitas";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
-            // Nama
-            // 
-            this.Nama.HeaderText = "Nama Fasilitas";
-            this.Nama.MinimumWidth = 6;
-            this.Nama.Name = "Nama";
-            this.Nama.ReadOnly = true;
-            // 
-            // Harga
-            // 
-            this.Harga.HeaderText = "Harga Peminjaman";
-            this.Harga.MinimumWidth = 6;
-            this.Harga.Name = "Harga";
-            this.Harga.ReadOnly = true;
-            // 
-            // Tersedia
-            // 
-            this.Tersedia.HeaderText = "Jumlah Tersedia";
-            this.Tersedia.MinimumWidth = 6;
-            this.Tersedia.Name = "Tersedia";
-            this.Tersedia.ReadOnly = true;
-            // 
-            // Sudah
-            // 
-            this.Sudah.HeaderText = "Jumlah Yang Sudah Ditambah";
-            this.Sudah.MinimumWidth = 6;
-            this.Sudah.Name = "Sudah";
-            this.Sudah.ReadOnly = true;
-            // 
-            // Jumlah
-            // 
-            this.Jumlah.HeaderText = "Jumlah Yang Dipesan";
-            this.Jumlah.MinimumWidth = 6;
-            this.Jumlah.Name = "Jumlah";
-            this.Jumlah.ReadOnly = true;
+            this.dgvFasilitas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFasilitas_CellEndEdit);
+            this.dgvFasilitas.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvFasilitas_EditingControlShowing);
             // 
             // lblSTotal
             // 
@@ -249,11 +196,5 @@
         private System.Windows.Forms.Label lblSNoKamar;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblNoKamar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nama;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Harga;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tersedia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sudah;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Jumlah;
     }
 }

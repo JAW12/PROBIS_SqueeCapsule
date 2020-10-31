@@ -28,6 +28,8 @@ namespace PROBIS_SqueeCapsule
             InitializeComponent();
             this.mode = "Insert";
             btnAction.Text = "Tambah";
+
+            setFormMode();
         }
 
         public BookingUbah(String mode, int idbooking)
@@ -43,7 +45,10 @@ namespace PROBIS_SqueeCapsule
         {
             if (mode == "Update")
             {
-                lblKodeBooking.Text = "Kode Booking : " + id_booking + " - Update Data Tamu";
+                String query = $"SELECT NVL(KODE_BOOKING, '#') FROM H_BOOKING WHERE ROW_ID_BOOKING = {id_booking}";
+                String kode_booking = Login.db.executeScalar(query).ToString();
+
+                lblKodeBooking.Text = kode_booking + " - Update Data Tamu";
 
                 //dateCIN.Enabled = false;
                 //dateCOUT.Enabled = false;
@@ -70,6 +75,10 @@ namespace PROBIS_SqueeCapsule
 
                 this.id_tamu = getIdTamu();
                 isiDataTamu();
+            }
+            else if (mode == "Insert")
+            {
+                lblKodeBooking.Text = "Tambah Data Booking";
             }
         }
 
@@ -444,12 +453,12 @@ namespace PROBIS_SqueeCapsule
 
         private void dateCIN_ValueChanged(object sender, EventArgs e)
         {
-                        
+            compareDates();
         }
 
         private void dateCOUT_ValueChanged(object sender, EventArgs e)
         {
-
+            compareDates();
         }
     }
 }

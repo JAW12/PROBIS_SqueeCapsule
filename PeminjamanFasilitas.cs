@@ -69,7 +69,7 @@ namespace PROBIS_SqueeCapsule
             }
         }
 
-        private void loadData()
+        public void loadData()
         {
             //ambil data penginapan yang status bookingnya = 1 (sedang menginap)
             String query = "SELECT ROW_ID_BOOKING, NOMOR_KAMAR AS \"Nomor Kamar\", NAMA_TAMU AS \"Nama Tamu\" FROM V_DATA_PENGINAPAN WHERE STATUS_BOOKING = 1";

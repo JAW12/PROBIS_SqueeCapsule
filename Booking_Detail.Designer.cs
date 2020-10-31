@@ -125,7 +125,7 @@
             this.lblSTelepon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSTelepon.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSTelepon.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSTelepon.Location = new System.Drawing.Point(440, 83);
+            this.lblSTelepon.Location = new System.Drawing.Point(425, 83);
             this.lblSTelepon.Name = "lblSTelepon";
             this.lblSTelepon.Size = new System.Drawing.Size(119, 20);
             this.lblSTelepon.TabIndex = 16;
@@ -158,7 +158,7 @@
             this.lblSFamily.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSFamily.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSFamily.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSFamily.Location = new System.Drawing.Point(485, 196);
+            this.lblSFamily.Location = new System.Drawing.Point(470, 196);
             this.lblSFamily.Name = "lblSFamily";
             this.lblSFamily.Size = new System.Drawing.Size(74, 20);
             this.lblSFamily.TabIndex = 16;
@@ -202,11 +202,12 @@
             this.lblSCOUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSCOUT.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSCOUT.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSCOUT.Location = new System.Drawing.Point(453, 273);
+            this.lblSCOUT.Location = new System.Drawing.Point(438, 273);
             this.lblSCOUT.Name = "lblSCOUT";
             this.lblSCOUT.Size = new System.Drawing.Size(106, 20);
             this.lblSCOUT.TabIndex = 17;
             this.lblSCOUT.Text = "Check Out:";
+            this.lblSCOUT.Click += new System.EventHandler(this.lblSCOUT_Click);
             // 
             // lblStatus
             // 
@@ -233,7 +234,7 @@
             // 
             this.lblFamily.AutoSize = true;
             this.lblFamily.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFamily.Location = new System.Drawing.Point(584, 196);
+            this.lblFamily.Location = new System.Drawing.Point(550, 196);
             this.lblFamily.Name = "lblFamily";
             this.lblFamily.Size = new System.Drawing.Size(162, 20);
             this.lblFamily.TabIndex = 16;
@@ -243,7 +244,7 @@
             // 
             this.lblCOUT.AutoSize = true;
             this.lblCOUT.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCOUT.Location = new System.Drawing.Point(584, 273);
+            this.lblCOUT.Location = new System.Drawing.Point(550, 273);
             this.lblCOUT.Name = "lblCOUT";
             this.lblCOUT.Size = new System.Drawing.Size(158, 20);
             this.lblCOUT.TabIndex = 16;
@@ -263,11 +264,12 @@
             // 
             this.lblTelepon.AutoSize = true;
             this.lblTelepon.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelepon.Location = new System.Drawing.Point(584, 83);
+            this.lblTelepon.Location = new System.Drawing.Point(563, 83);
             this.lblTelepon.Name = "lblTelepon";
             this.lblTelepon.Size = new System.Drawing.Size(141, 20);
             this.lblTelepon.TabIndex = 16;
             this.lblTelepon.Text = "081273568464";
+            this.lblTelepon.Click += new System.EventHandler(this.lblTelepon_Click);
             // 
             // lblEmail
             // 

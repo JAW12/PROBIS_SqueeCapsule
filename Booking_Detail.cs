@@ -162,9 +162,15 @@ namespace PROBIS_SqueeCapsule
             lblTelepon.Text = dt.Rows[0]["NOMOR_TELEPON"].ToString();
 
             // atur judul
-            String kodebooking = dt.Rows[0]["ROW_ID_BOOKING"].ToString();
+            String row_id_booking = dt.Rows[0]["ROW_ID_BOOKING"].ToString();
             String tglInsert = dt.Rows[0]["INSERT_AT"].ToString();
-            String judul = "Kode Booking #" + kodebooking + " - " + tglInsert;
+
+            String kode_booking = "#";
+            if (dt.Rows[0]["KODE_BOOKING"] != DBNull.Value)
+            {
+                kode_booking = dt.Rows[0]["KODE_BOOKING"].ToString();
+            }
+            String judul = kode_booking + " - " + tglInsert;
             lblJudul.Text = judul;
 
             //atur status
@@ -175,24 +181,44 @@ namespace PROBIS_SqueeCapsule
 
                 //tampilkan suggestion kamar apabila belum check in
                 loadSuggestionKamar(single, family);
+
+                // tampilkan btn check in
+                btnAction.Visible = true;
+                btnAction.Text = "Check In";
+
+                // tampilkan btn cancel
+                btnCancel.Visible = true;
             }
             else
             {
-                if (statusbooking == "-1")
-                {
-                    lblStatus.Text = "Dibatalkan";
-                }
-                else if (statusbooking == "1")
+                if (statusbooking == "1")
                 {
                     lblStatus.Text = "Sedang Menginap";
+
+                    // tampilkan btn check out
+                    btnAction.Visible = true;
+                    btnAction.Text = "Check Out";
                 }
-                else if (statusbooking == "2")
+                else
                 {
-                    lblStatus.Text = "Sudah Check Out";
+                    if (statusbooking == "-1")
+                    {
+                        lblStatus.Text = "Dibatalkan";
+                    }
+                    else if (statusbooking == "2")
+                    {
+                        lblStatus.Text = "Sudah Check Out";
+                    }
+
+                    //button check in / check out ga muncul
+                    btnAction.Visible = false;
                 }
 
                 //tampilkan kamar yang dibooking apabila sudah checkin / dibatalkan
                 loadBookedRooms();
+
+                //button cancel jg ga bakalan muncul
+                btnCancel.Visible = false;
             }
 
             //MessageBox.Show("Status Booking : " + statusbooking);
@@ -227,6 +253,16 @@ namespace PROBIS_SqueeCapsule
                 BookingDetailKamar detailkamar = new BookingDetailKamar(Login.id_booking, nokamar);
                 detailkamar.Show();
             }
+        }
+
+        private void lblSCOUT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTelepon_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
