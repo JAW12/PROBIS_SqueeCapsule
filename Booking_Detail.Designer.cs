@@ -451,6 +451,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingDetail";
             this.VisibleChanged += new System.EventHandler(this.BookingDetail_VisibleChanged);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BookingDetail_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNota)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEdit)).EndInit();

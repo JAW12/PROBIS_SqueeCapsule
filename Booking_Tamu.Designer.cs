@@ -38,6 +38,7 @@
             this.NamaTamu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NoTelp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblJudul = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,11 +133,22 @@
             this.Email.Name = "Email";
             this.Email.ReadOnly = true;
             // 
+            // lblJudul
+            // 
+            this.lblJudul.AutoSize = true;
+            this.lblJudul.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJudul.Location = new System.Drawing.Point(11, 9);
+            this.lblJudul.Name = "lblJudul";
+            this.lblJudul.Size = new System.Drawing.Size(131, 25);
+            this.lblJudul.TabIndex = 41;
+            this.lblJudul.Text = "Pilih Tamu";
+            // 
             // BookingTamu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 432);
+            this.Controls.Add(this.lblJudul);
             this.Controls.Add(this.dgvKamar);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.lblSSearch);
@@ -147,6 +159,7 @@
             this.Name = "BookingTamu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingTamu";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BookingTamu_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -163,5 +176,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NamaTamu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NoTelp;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.Label lblJudul;
     }
 }

@@ -32,12 +32,10 @@
             this.lbl_ = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
             this.lblH1 = new System.Windows.Forms.Label();
-            this.lblSNo = new System.Windows.Forms.Label();
             this.lblSHarga = new System.Windows.Forms.Label();
             this.lblSJenis = new System.Windows.Forms.Label();
             this.lblHarga = new System.Windows.Forms.Label();
             this.lblJenis = new System.Windows.Forms.Label();
-            this.lblNo = new System.Windows.Forms.Label();
             this.dgvPeminjaman = new System.Windows.Forms.DataGridView();
             this.lblSTotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -46,6 +44,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblHargakamar = new System.Windows.Forms.Label();
+            this.lblJudul = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeminjaman)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,21 +75,10 @@
             // lblH1
             // 
             this.lblH1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblH1.Location = new System.Drawing.Point(16, 108);
+            this.lblH1.Location = new System.Drawing.Point(18, 94);
             this.lblH1.Name = "lblH1";
             this.lblH1.Size = new System.Drawing.Size(772, 2);
             this.lblH1.TabIndex = 15;
-            // 
-            // lblSNo
-            // 
-            this.lblSNo.AutoSize = true;
-            this.lblSNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblSNo.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSNo.Location = new System.Drawing.Point(13, 28);
-            this.lblSNo.Name = "lblSNo";
-            this.lblSNo.Size = new System.Drawing.Size(108, 20);
-            this.lblSNo.TabIndex = 16;
-            this.lblSNo.Text = "No. Kamar:";
             // 
             // lblSHarga
             // 
@@ -98,7 +86,7 @@
             this.lblSHarga.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSHarga.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSHarga.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSHarga.Location = new System.Drawing.Point(440, 28);
+            this.lblSHarga.Location = new System.Drawing.Point(443, 54);
             this.lblSHarga.Name = "lblSHarga";
             this.lblSHarga.Size = new System.Drawing.Size(130, 20);
             this.lblSHarga.TabIndex = 16;
@@ -109,7 +97,7 @@
             this.lblSJenis.AutoSize = true;
             this.lblSJenis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSJenis.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSJenis.Location = new System.Drawing.Point(13, 68);
+            this.lblSJenis.Location = new System.Drawing.Point(15, 54);
             this.lblSJenis.Name = "lblSJenis";
             this.lblSJenis.Size = new System.Drawing.Size(122, 20);
             this.lblSJenis.TabIndex = 16;
@@ -119,7 +107,7 @@
             // 
             this.lblHarga.AutoSize = true;
             this.lblHarga.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHarga.Location = new System.Drawing.Point(584, 28);
+            this.lblHarga.Location = new System.Drawing.Point(587, 54);
             this.lblHarga.Name = "lblHarga";
             this.lblHarga.Size = new System.Drawing.Size(105, 20);
             this.lblHarga.TabIndex = 16;
@@ -129,21 +117,11 @@
             // 
             this.lblJenis.AutoSize = true;
             this.lblJenis.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblJenis.Location = new System.Drawing.Point(141, 68);
+            this.lblJenis.Location = new System.Drawing.Point(143, 54);
             this.lblJenis.Name = "lblJenis";
             this.lblJenis.Size = new System.Drawing.Size(63, 20);
             this.lblJenis.TabIndex = 16;
             this.lblJenis.Text = "Single";
-            // 
-            // lblNo
-            // 
-            this.lblNo.AutoSize = true;
-            this.lblNo.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNo.Location = new System.Drawing.Point(141, 28);
-            this.lblNo.Name = "lblNo";
-            this.lblNo.Size = new System.Drawing.Size(32, 20);
-            this.lblNo.TabIndex = 16;
-            this.lblNo.Text = "A1";
             // 
             // dgvPeminjaman
             // 
@@ -151,7 +129,7 @@
             this.dgvPeminjaman.AllowUserToDeleteRows = false;
             this.dgvPeminjaman.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPeminjaman.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPeminjaman.Location = new System.Drawing.Point(16, 149);
+            this.dgvPeminjaman.Location = new System.Drawing.Point(18, 135);
             this.dgvPeminjaman.Name = "dgvPeminjaman";
             this.dgvPeminjaman.ReadOnly = true;
             this.dgvPeminjaman.RowHeadersWidth = 51;
@@ -165,7 +143,7 @@
             this.lblSTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSTotal.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSTotal.ForeColor = System.Drawing.Color.Crimson;
-            this.lblSTotal.Location = new System.Drawing.Point(392, 660);
+            this.lblSTotal.Location = new System.Drawing.Point(394, 646);
             this.lblSTotal.Name = "lblSTotal";
             this.lblSTotal.Size = new System.Drawing.Size(132, 25);
             this.lblSTotal.TabIndex = 21;
@@ -175,7 +153,7 @@
             // 
             this.lblTotal.Font = new System.Drawing.Font("Verdana", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.Crimson;
-            this.lblTotal.Location = new System.Drawing.Point(562, 656);
+            this.lblTotal.Location = new System.Drawing.Point(564, 642);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(226, 33);
             this.lblTotal.TabIndex = 20;
@@ -187,7 +165,7 @@
             this.lblSJudul.AutoSize = true;
             this.lblSJudul.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSJudul.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSJudul.Location = new System.Drawing.Point(13, 123);
+            this.lblSJudul.Location = new System.Drawing.Point(15, 109);
             this.lblSJudul.Name = "lblSJudul";
             this.lblSJudul.Size = new System.Drawing.Size(236, 20);
             this.lblSJudul.TabIndex = 23;
@@ -196,7 +174,7 @@
             // lblTotalPeminjaman
             // 
             this.lblTotalPeminjaman.Font = new System.Drawing.Font("Verdana", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPeminjaman.Location = new System.Drawing.Point(562, 587);
+            this.lblTotalPeminjaman.Location = new System.Drawing.Point(564, 573);
             this.lblTotalPeminjaman.Name = "lblTotalPeminjaman";
             this.lblTotalPeminjaman.Size = new System.Drawing.Size(226, 33);
             this.lblTotalPeminjaman.TabIndex = 20;
@@ -209,7 +187,7 @@
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(208, 593);
+            this.label2.Location = new System.Drawing.Point(210, 579);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(301, 20);
             this.label2.TabIndex = 21;
@@ -221,7 +199,7 @@
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(343, 628);
+            this.label3.Location = new System.Drawing.Point(345, 614);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(174, 20);
             this.label3.TabIndex = 21;
@@ -230,18 +208,29 @@
             // lblHargakamar
             // 
             this.lblHargakamar.Font = new System.Drawing.Font("Verdana", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHargakamar.Location = new System.Drawing.Point(562, 622);
+            this.lblHargakamar.Location = new System.Drawing.Point(564, 608);
             this.lblHargakamar.Name = "lblHargakamar";
             this.lblHargakamar.Size = new System.Drawing.Size(226, 33);
             this.lblHargakamar.TabIndex = 20;
             this.lblHargakamar.Text = "Rp. 500.000.000";
             this.lblHargakamar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // lblJudul
+            // 
+            this.lblJudul.AutoSize = true;
+            this.lblJudul.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblJudul.Location = new System.Drawing.Point(12, 9);
+            this.lblJudul.Name = "lblJudul";
+            this.lblJudul.Size = new System.Drawing.Size(91, 25);
+            this.lblJudul.TabIndex = 41;
+            this.lblJudul.Text = "Kamar ";
+            // 
             // BookingDetailKamar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 705);
+            this.ClientSize = new System.Drawing.Size(800, 700);
+            this.Controls.Add(this.lblJudul);
             this.Controls.Add(this.lblSJudul);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -252,10 +241,8 @@
             this.Controls.Add(this.dgvPeminjaman);
             this.Controls.Add(this.lblSJenis);
             this.Controls.Add(this.lblSHarga);
-            this.Controls.Add(this.lblNo);
             this.Controls.Add(this.lblJenis);
             this.Controls.Add(this.lblHarga);
-            this.Controls.Add(this.lblSNo);
             this.Controls.Add(this.lblH1);
             this.Controls.Add(this.lbl_);
             this.Controls.Add(this.lblX);
@@ -264,6 +251,7 @@
             this.Name = "BookingDetailKamar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingDetailKamar";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BookingDetailKamar_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeminjaman)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -274,12 +262,10 @@
         private System.Windows.Forms.Label lbl_;
         private System.Windows.Forms.Label lblX;
         private System.Windows.Forms.Label lblH1;
-        private System.Windows.Forms.Label lblSNo;
         private System.Windows.Forms.Label lblSHarga;
         private System.Windows.Forms.Label lblSJenis;
         private System.Windows.Forms.Label lblHarga;
         private System.Windows.Forms.Label lblJenis;
-        private System.Windows.Forms.Label lblNo;
         private System.Windows.Forms.DataGridView dgvPeminjaman;
         private System.Windows.Forms.Label lblSTotal;
         private System.Windows.Forms.Label lblTotal;
@@ -288,5 +274,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblHargakamar;
+        private System.Windows.Forms.Label lblJudul;
     }
 }

@@ -93,7 +93,7 @@ namespace PROBIS_SqueeCapsule
                 }
 
 
-                lblNoKamar.Text = nomor_kamar + " - " + keteranganJenis;
+                lblJudul.Text = "Input Fasilitas Kamar " + nomor_kamar + " - " + keteranganJenis;
             }
         }
 
@@ -376,6 +376,22 @@ namespace PROBIS_SqueeCapsule
         private void btnKumpul_Click(object sender, EventArgs e)
         {
             RunOracleTransaction(Login.db.getConnection());
+        }
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        private void PeminjamanFasilitasInput_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }

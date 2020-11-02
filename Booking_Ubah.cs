@@ -78,7 +78,7 @@ namespace PROBIS_SqueeCapsule
             }
             else if (mode == "Insert")
             {
-                lblKodeBooking.Text = "Tambah Data Booking";
+                lblKodeBooking.Text = "# - Tambah Booking";
             }
         }
 
@@ -125,7 +125,7 @@ namespace PROBIS_SqueeCapsule
             }
             else if (mode == "Insert")
             {
-                // Application.Exit();
+                this.Hide();
             }
         }
 
@@ -459,6 +459,23 @@ namespace PROBIS_SqueeCapsule
         private void dateCOUT_ValueChanged(object sender, EventArgs e)
         {
             compareDates();
+        }
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void BookingUbah_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }

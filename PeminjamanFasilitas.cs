@@ -38,12 +38,16 @@ namespace PROBIS_SqueeCapsule
         {
             if (Login.booking != null)
             {
+                Login.booking.Left = this.Left;
+                Login.booking.Top = this.Top;
                 Login.booking.Show();
                 this.Hide();
             }
             else
             {
                 Login.booking = new Booking();
+                Login.booking.Left = this.Left;
+                Login.booking.Top = this.Top;
                 Login.booking.Show();
                 this.Hide();
             }
@@ -58,12 +62,16 @@ namespace PROBIS_SqueeCapsule
         {
             if (Login.stok_fasilitas != null)
             {
+                Login.stok_fasilitas.Left = this.Left;
+                Login.stok_fasilitas.Top = this.Top;
                 Login.stok_fasilitas.Show();
                 this.Hide();
             }
             else
             {
                 Login.stok_fasilitas = new StokFasilitas();
+                Login.stok_fasilitas.Left = this.Left;
+                Login.stok_fasilitas.Top = this.Top;
                 Login.stok_fasilitas.Show();
                 this.Hide();
             }
@@ -109,6 +117,23 @@ namespace PROBIS_SqueeCapsule
                 //buka form input peminjaman
                 PeminjamanFasilitasInput inputPeminjaman = new PeminjamanFasilitasInput(row_id_booking, nokamar);
                 inputPeminjaman.Show();
+            }
+        }
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void PeminjamanFasilitas_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
     }

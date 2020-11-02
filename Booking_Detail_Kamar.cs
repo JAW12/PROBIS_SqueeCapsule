@@ -69,7 +69,7 @@ namespace PROBIS_SqueeCapsule
             {
                 DataRow row = dt.Rows[0];
 
-                lblNo.Text = nomor_kamar.ToString();
+                lblJudul.Text = "Kamar " + nomor_kamar.ToString();
                 hargakamar = Convert.ToInt32(row["HARGA_KAMAR"].ToString());
                 lblHarga.Text = "Rp. " + formatSeparator(hargakamar);
                 lblHargakamar.Text = "Rp. " + formatSeparator(hargakamar);
@@ -111,6 +111,23 @@ namespace PROBIS_SqueeCapsule
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void BookingDetailKamar_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }

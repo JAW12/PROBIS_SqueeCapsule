@@ -389,6 +389,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingUbah";
             this.VisibleChanged += new System.EventHandler(this.BookingUbah_VisibleChanged);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BookingUbah_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.numericSingle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFamily)).EndInit();
             this.ResumeLayout(false);

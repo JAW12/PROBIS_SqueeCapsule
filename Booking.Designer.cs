@@ -449,6 +449,7 @@ namespace PROBIS_SqueeCapsule
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Booking";
             this.VisibleChanged += new System.EventHandler(this.Booking_VisibleChanged);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Booking_MouseDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooking)).EndInit();

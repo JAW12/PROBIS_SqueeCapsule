@@ -181,6 +181,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pbPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEye)).EndInit();
