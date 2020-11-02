@@ -26,6 +26,7 @@ namespace PROBIS_SqueeCapsule
         public static BookingDetail booking_detail;
         public static BookingDetailKamar booking_detail_kamar;
         public static BookingUbah booking_ubah;
+        public static BookingTamu booking_tamu;
         public static PeminjamanFasilitas peminjaman_fasilitas;
         public static PeminjamanFasilitasInput peminjaman_fasilitas_input;
         public static StokFasilitas stok_fasilitas;

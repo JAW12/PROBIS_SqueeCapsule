@@ -46,10 +46,10 @@ namespace PROBIS_SqueeCapsule
                 if (dgvKamar.Rows[e.RowIndex].Cells[3].Value == null || dgvKamar.Rows[e.RowIndex].Cells[3].Value.ToString() == "False")
                 {
                     dgvKamar.Rows[e.RowIndex].Cells[3].Value = true;
-                    if(dgvKamar.Rows[e.RowIndex].Cells[1].Value.ToString() == "Single")
+                    if(dgvKamar.Rows[e.RowIndex].Cells[2].Value.ToString() == "Single")
                     {
                         //kamarSingle.Add(dt.Rows[e.RowIndex]["ROW_ID_KAMAR"].ToString());
-                        namaKamarSingle.Add(dgvKamar.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        namaKamarSingle.Add(dgvKamar.Rows[e.RowIndex].Cells[1].Value.ToString());
                         totalSingle -= 1;
                         lblJSingle.Text = totalSingle.ToString();
                         //MessageBox.Show(kamarSingle[kamarSingle.Count-1]);
@@ -70,7 +70,7 @@ namespace PROBIS_SqueeCapsule
                     else
                     {
                         //kamarFamily.Add(dt.Rows[e.RowIndex]["ROW_ID_KAMAR"].ToString());
-                        namaKamarFamily.Add(dgvKamar.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        namaKamarFamily.Add(dgvKamar.Rows[e.RowIndex].Cells[1].Value.ToString());
                         //MessageBox.Show(kamarFamily[kamarFamily.Count - 1]);
                         totalFamily -= 1;
                         lblJFamily.Text = totalFamily.ToString();
@@ -92,18 +92,64 @@ namespace PROBIS_SqueeCapsule
                 else
                 {
                     dgvKamar.Rows[e.RowIndex].Cells[3].Value = false;
-                    //if (dgvKamar.Rows[e.RowIndex].Cells[3].Value.ToString() == "Single")
-                    //{
-                    //    kamarSingle.Add(dt.Rows[e.RowIndex]["ROW_ID_KAMAR"].ToString());
-                    //    namaKamarSingle.Add(dgvKamar.Rows[e.RowIndex].Cells[2].Value.ToString());
-                    //    MessageBox.Show(kamarSingle[kamarSingle.Count - 1]);
-                    //}
-                    //else
-                    //{
-                    //    kamarFamily.Add(dt.Rows[e.RowIndex]["ROW_ID_KAMAR"].ToString());
-                    //    namaKamarFamily.Add(dgvKamar.Rows[e.RowIndex].Cells[2].Value.ToString());
-                    //    MessageBox.Show(kamarFamily[kamarFamily.Count - 1]);
-                    //}
+                    if (dgvKamar.Rows[e.RowIndex].Cells[2].Value.ToString() == "Single")
+                    {
+                        for (int i = 0; i < namaKamarSingle.Count; i++)
+                        {
+                            if(namaKamarSingle[i] == dgvKamar.Rows[e.RowIndex].Cells[1].Value.ToString())
+                            {
+                                namaKamarSingle.RemoveAt(i);
+                                break;
+                            }
+                        }
+                        totalSingle += 1;
+                        lblJSingle.Text = totalSingle.ToString();
+                        //MessageBox.Show(kamarSingle[kamarSingle.Count-1]);
+                        string temp = "";
+                        for (int i = 0; i < namaKamarSingle.Count; i++)
+                        {
+                            if (i != namaKamarSingle.Count - 1)
+                            {
+                                temp += namaKamarSingle[i] + ", ";
+                            }
+                            else
+                            {
+                                temp += namaKamarSingle[i] + " (" + (namaKamarSingle.Count).ToString() + ")";
+                            }
+                        }
+                        lblPSingle.Text = temp;
+                        if(namaKamarSingle.Count <= 0)
+                            lblPSingle.Text = "(" + kamarSingle.Count().ToString() + ")";
+                    }
+                    else
+                    {
+                        for (int i = 0; i < namaKamarFamily.Count; i++)
+                        {
+                            if (namaKamarFamily[i] == dgvKamar.Rows[e.RowIndex].Cells[1].Value.ToString())
+                            {
+                                namaKamarFamily.RemoveAt(i);
+                                break;
+                            }
+                        }
+                        totalFamily += 1;
+                        lblJFamily.Text = totalFamily.ToString();
+                        //MessageBox.Show(kamarSingle[kamarSingle.Count-1]);
+                        string temp = "";
+                        for (int i = 0; i < namaKamarFamily.Count; i++)
+                        {
+                            if (i != namaKamarFamily.Count - 1)
+                            {
+                                temp += namaKamarFamily[i] + ", ";
+                            }
+                            else
+                            {
+                                temp += namaKamarFamily[i] + " (" + (namaKamarFamily.Count).ToString() + ")";
+                            }
+                        }
+                        lblPFamily.Text = temp;
+                        if (namaKamarFamily.Count <= 0)
+                            lblPFamily.Text = "(" + kamarFamily.Count().ToString() + ")";
+                    }
                 }
             }
         }
@@ -135,10 +181,23 @@ namespace PROBIS_SqueeCapsule
             }
         }
 
-        public void loadData()
+        private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if(tbSearch.Text.Contains("S") || tbSearch.Text.Contains("s"))
+                loadData("Select NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR from KAMAR K where STATUS_TERSEDIA = 1" + " AND JENIS_KAMAR = 0");
+                else if (tbSearch.Text.Contains("F") || tbSearch.Text.Contains("f"))
+                    loadData("Select NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR from KAMAR K where STATUS_TERSEDIA = 1" + " AND JENIS_KAMAR = 1");
+                else
+                    loadData();
+            }
+        }
+
+        public void loadData(String query2 = "")
         {
             dgvKamar.Rows.Clear();
-            String query = "Select distinct * from H_BOOKING H where ROW_ID_BOOKING=" + $"'{Login.id_booking}'";
+            string query = "Select distinct * from H_BOOKING H where ROW_ID_BOOKING=" + $"'{Login.id_booking}'";
             DataTable dt = Login.db.executeDataTable(query);
             single = Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_SINGLE"]);
             family = Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_FAMILY"]);
@@ -148,18 +207,19 @@ namespace PROBIS_SqueeCapsule
             kamarFamily.Clear();
             namaKamarSingle.Clear();
             namaKamarFamily.Clear();
-            query = "Select NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR from KAMAR K where STATUS_TERSEDIA = 1";
-            dt = Login.db.executeDataTable(query);
+            if (query2 == "")
+                query2 = "Select NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR from KAMAR K where STATUS_TERSEDIA = 1";
+            dt = Login.db.executeDataTable(query2);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "0")
                 {
-                    dgvKamar.Rows.Add(dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Single", dt.Rows[i]["HARGA_KAMAR"].ToString());
+                    dgvKamar.Rows.Add(i,dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Single");
                     totalSingle += 1;
                 }
                 if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "1")
                 {
-                    dgvKamar.Rows.Add(dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Family", dt.Rows[i]["HARGA_KAMAR"].ToString());
+                    dgvKamar.Rows.Add(i,dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Family");
                     totalFamily += 1;
                 }
             }
@@ -196,8 +256,6 @@ namespace PROBIS_SqueeCapsule
                 Login.db.executeNonQuery(query);
             }
             MessageBox.Show("Insert Successful");
-            Login.booking = new Booking();
-            Login.booking.Show();
             this.Hide();        }
 
         private void btnReset_Click(object sender, EventArgs e)

@@ -49,12 +49,12 @@ namespace PROBIS_SqueeCapsule
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            string query = "Select ROW_ID_TAMU from H_BOOKING where ROW_ID_BOOKING=" + $"'{Login.id_booking}'";
-            int idTamu = Convert.ToInt32(Login.db.executeScalar(query));
-            query = "Delete from H_BOOKING where ROW_ID_BOOKING=" + $"'{Login.id_booking}'";
+            //string query = "Select ROW_ID_TAMU from H_BOOKING where ROW_ID_BOOKING=" + $"'{Login.id_booking}'";
+            //int idTamu = Convert.ToInt32(Login.db.executeScalar(query));
+            string query = "UPDATE H_BOOKING SET STATUS_BOOKING=-1 where ROW_ID_BOOKING=" + $"'{Login.id_booking}'";
             Login.db.executeNonQuery(query);
-            query = "Delete from TAMU where ROW_ID_TAMU = " + idTamu;
-            Login.db.executeNonQuery(query);
+            //query = "Delete from TAMU where ROW_ID_TAMU = " + idTamu;
+            //Login.db.executeNonQuery(query);
             MessageBox.Show("Insert dibatalkan");
             Login.id_booking = -1;
             Login.booking = new Booking();
@@ -83,17 +83,20 @@ namespace PROBIS_SqueeCapsule
             query = "Select NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR from KAMAR K where STATUS_TERSEDIA = 1";
             dt = Login.db.executeDataTable(query);
 
+            int ctr = 1;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "0" && single > 0)
                 {
-                    dgvDetail.Rows.Add(dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Single", dt.Rows[i]["HARGA_KAMAR"].ToString());
+                    dgvDetail.Rows.Add(ctr,dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Single", dt.Rows[i]["HARGA_KAMAR"].ToString());
                     single -= 1;
+                    ctr++;
                 }
                 if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "1" && family > 0)
                 {
-                    dgvDetail.Rows.Add(dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Family", dt.Rows[i]["HARGA_KAMAR"].ToString());
+                    dgvDetail.Rows.Add(ctr,dt.Rows[i]["NOMOR_KAMAR"].ToString(), "Family", dt.Rows[i]["HARGA_KAMAR"].ToString());
                     family -= 1;
+                    ctr++;
                 }
                 if (single == 0 && family == 0)
                 {
@@ -231,8 +234,16 @@ namespace PROBIS_SqueeCapsule
 
         private void btnAction_Click(object sender, EventArgs e)
         {
-            Login.booking_checkin = new BookingCheckIn();
-            Login.booking_checkin.Show();
+            if(btnAction.Text == "Check In")
+            {
+                Login.booking_checkin = new BookingCheckIn();
+                Login.booking_checkin.Show();
+            }
+            else
+            {
+                Login.booking_checkout = new BookingCheckOut();
+                Login.booking_checkout.Show();
+            }
             this.Hide();
         }
 

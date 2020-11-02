@@ -17,7 +17,9 @@ namespace PROBIS_SqueeCapsule
         private String mode;
 
         //set variabel
-        private int id_tamu = 0;
+        public static int id_tamu = 0;
+
+        public static string nama, email, telp;
 
         private int id_booking;
 
@@ -73,7 +75,7 @@ namespace PROBIS_SqueeCapsule
 
                 btnAction.Text = "Simpan";
 
-                this.id_tamu = getIdTamu();
+                id_tamu = getIdTamu();
                 isiDataTamu();
             }
             else if (mode == "Insert")
@@ -271,8 +273,7 @@ namespace PROBIS_SqueeCapsule
                         if (cek)
                         {
                             MessageBox.Show("Insert Berhasil");
-                            String query = "Select ROW_ID_BOOKING from H_BOOKING WHERE TANGGAL_CHECK_IN=" +
-                            $"to_Date('{dateCIN.Value.ToString()}','dd/MM/yyyy hh24:mi:ss')";
+                            String query = "Select MAX(ROW_ID_BOOKING) from H_BOOKING";
                             int id_booking = Convert.ToInt32(Login.db.executeScalar(query));
                             Login.booking_detail = new BookingDetail();
                             Login.id_booking = id_booking;
@@ -318,6 +319,9 @@ namespace PROBIS_SqueeCapsule
         {
             // jangan dihard code insert gini. nanti update mode ku ga jalan - winda
             //mode = "Insert";
+            tbNama.Text = nama;
+            tbTelepon.Text = telp;
+            tbEmail.Text = email;
         }
 
         private bool Insert(String nama, String telp, String email, int single, int family, String checkindate, String checkoutdate, String cek)
@@ -400,16 +404,16 @@ namespace PROBIS_SqueeCapsule
         private int cekTamu(string nama,string telp, string email)
         {
             string query = "";
-            //select id yg baru diinsert
-            query = "Select COUNT(ROW_ID_TAMU) from TAMU where NAMA_TAMU=" + $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
+            query = $"Select COUNT(ROW_ID_TAMU) from TAMU where lower(NAMA_TAMU) like '%{nama.ToLower()}%'" + "OR NOMOR_TELEPON = " + $"'{telp}'" + "OR UPPER(EMAIL) = " + $"'{email.ToUpper()}'";
             int jumlah_tamu = Convert.ToInt32(Login.db.executeScalar(query));
             if(jumlah_tamu > 0)
             {
-                query = "Select ROW_ID_TAMU as count from TAMU where NAMA_TAMU=" + $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
-                int id_tamu = Convert.ToInt32(Login.db.executeScalar(query));
-                return id_tamu;
+                Login.booking_tamu = new BookingTamu();
+                Login.booking_tamu.Show();
+                this.Hide();
+                return 0;
             }
-            else
+            else if(nama!="" && telp!="" && email !="")
             {
                 //insert into tamu
                 query = "Insert into TAMU(ROW_ID_TAMU,NAMA_TAMU,NOMOR_TELEPON,EMAIL) VALUES(" +
@@ -421,6 +425,11 @@ namespace PROBIS_SqueeCapsule
                 query = "Select ROW_ID_TAMU as count from TAMU where NAMA_TAMU=" + $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
                 int id_tamu = Convert.ToInt32(Login.db.executeScalar(query));
                 return id_tamu;
+            }
+            else
+            {
+                MessageBox.Show("Tidak terdapat data yang sesuai, harap meng inputkan data baru");
+                return 0;
             }
         }
 

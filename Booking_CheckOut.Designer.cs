@@ -84,6 +84,7 @@
             this.btnBayar.TabIndex = 3;
             this.btnBayar.Text = "Bayar";
             this.btnBayar.UseVisualStyleBackColor = false;
+            this.btnBayar.Click += new System.EventHandler(this.btnBayar_Click);
             // 
             // btnReset
             // 
@@ -97,6 +98,7 @@
             this.btnReset.TabIndex = 4;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // lblSHarga
             // 
@@ -141,6 +143,7 @@
             this.tbTambahan.Size = new System.Drawing.Size(285, 32);
             this.tbTambahan.TabIndex = 0;
             this.tbTambahan.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbTambahan.TextChanged += new System.EventHandler(this.tbTambahan_TextChanged);
             // 
             // lblSKeterangan
             // 
@@ -206,6 +209,7 @@
             this.tbPembayaran.Size = new System.Drawing.Size(285, 32);
             this.tbPembayaran.TabIndex = 2;
             this.tbPembayaran.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbPembayaran.TextChanged += new System.EventHandler(this.tbPembayaran_TextChanged);
             // 
             // lblKembalian
             // 
@@ -267,6 +271,7 @@
             this.Name = "BookingCheckOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingCheckOut";
+            this.VisibleChanged += new System.EventHandler(this.BookingCheckOut_VisibleChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BookingCheckOut_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();

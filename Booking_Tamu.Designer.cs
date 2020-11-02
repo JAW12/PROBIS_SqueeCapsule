@@ -85,6 +85,8 @@
             this.tbSearch.Size = new System.Drawing.Size(250, 28);
             this.tbSearch.TabIndex = 0;
             this.tbSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbSearch.TextChanged += new System.EventHandler(this.tbSearch_TextChanged);
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
             // 
             // dgvKamar
             // 
@@ -104,6 +106,7 @@
             this.dgvKamar.RowTemplate.Height = 24;
             this.dgvKamar.Size = new System.Drawing.Size(772, 332);
             this.dgvKamar.TabIndex = 1;
+            this.dgvKamar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKamar_CellDoubleClick);
             // 
             // No
             // 
@@ -159,6 +162,7 @@
             this.Name = "BookingTamu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingTamu";
+            this.VisibleChanged += new System.EventHandler(this.BookingTamu_VisibleChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BookingTamu_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvKamar)).EndInit();
             this.ResumeLayout(false);

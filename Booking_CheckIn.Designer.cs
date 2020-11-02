@@ -139,6 +139,7 @@
             this.tbSearch.Size = new System.Drawing.Size(250, 28);
             this.tbSearch.TabIndex = 0;
             this.tbSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
             // 
             // dgvKamar
             // 
