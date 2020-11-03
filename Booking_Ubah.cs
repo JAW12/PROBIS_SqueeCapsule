@@ -319,9 +319,16 @@ namespace PROBIS_SqueeCapsule
         {
             // jangan dihard code insert gini. nanti update mode ku ga jalan - winda
             //mode = "Insert";
-            tbNama.Text = nama;
-            tbTelepon.Text = telp;
-            tbEmail.Text = email;
+            if (mode == "Insert")
+            {
+                tbNama.Text = nama;
+                tbTelepon.Text = telp;
+                tbEmail.Text = email;
+                string query = "Select max(ROW_ID_BOOKING) from h_booking";
+                int total = Convert.ToInt32(Login.db.executeScalar(query)) + 1;
+
+                lblKodeBooking.Text = "B"+DateTime.Now.ToLocalTime().ToString("yyyyMMdd")+total.ToString().PadLeft(3,'0');
+            }
         }
 
         private bool Insert(String nama, String telp, String email, int single, int family, String checkindate, String checkoutdate, String cek)

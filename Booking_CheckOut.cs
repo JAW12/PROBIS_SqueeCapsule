@@ -12,7 +12,7 @@ namespace PROBIS_SqueeCapsule
 {
     public partial class BookingCheckOut : Form
     {
-        int harga;
+        int harga,total;
         public BookingCheckOut()
         {
             InitializeComponent();
@@ -64,12 +64,12 @@ namespace PROBIS_SqueeCapsule
         {
             String query = "Select * from H_BOOKING H,TAMU T where ROW_ID_BOOKING=" + $"'{Login.id_booking}' AND H.ROW_ID_TAMU = T.ROW_ID_TAMU";
             DataTable dt = Login.db.executeDataTable(query);
-            lblJudul.Text = Login.id_booking.ToString();
+            lblJudul.Text = "Kode Booking " + dt.Rows[0]["KODE_BOOKING"].ToString();
             harga = Convert.ToInt32(dt.Rows[0]["TOTAL_HARGA"]);
-            lblHarga.Text = formatSeparator(harga);
+            lblHarga.Text = "Rp. " + formatSeparator(harga);
             reset();
-            lblTotal.Text = formatSeparator(harga + Convert.ToInt32(tbTambahan.Text));
-            lblKembalian.Text = formatSeparator(Convert.ToInt32(tbPembayaran.Text) - Convert.ToInt32(lblTotal.Text));
+            lblTotal.Text = "Rp. " + formatSeparator(harga);
+            lblKembalian.Text = "Rp. " + formatSeparator(0);
         }
 
         public void reset()
@@ -81,12 +81,24 @@ namespace PROBIS_SqueeCapsule
 
         private void tbTambahan_TextChanged(object sender, EventArgs e)
         {
-            lblTotal.Text = formatSeparator(harga + Convert.ToInt32(tbTambahan.Text));
+            if (tbTambahan.Text != "")
+            {
+                total = harga + Convert.ToInt32(tbTambahan.Text);
+                lblTotal.Text = "Rp. "  + formatSeparator(total);
+            }
+            else
+            {
+                total = 0;
+                lblTotal.Text = "Rp. " + formatSeparator(harga);
+            }
         }
 
         private void tbPembayaran_TextChanged(object sender, EventArgs e)
         {
-            lblKembalian.Text = formatSeparator(Convert.ToInt32(tbPembayaran.Text) - Convert.ToInt32(lblTotal.Text));
+            if (tbPembayaran.Text != "")
+                lblKembalian.Text = "Rp. " + formatSeparator(Convert.ToInt32(tbPembayaran.Text) - total);
+            else
+                lblKembalian.Text = "Rp. " + formatSeparator(0);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -96,7 +108,18 @@ namespace PROBIS_SqueeCapsule
 
         private void btnBayar_Click(object sender, EventArgs e)
         {
-            String query = $"Update H_Booking set TANGGAL_CHECK_OUT={DateTime.Now}, STATUS_BOOKING=2, SUBTOTAL={harga}, BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)}, KETERANGAN={tbKeterangan.Text}, TOTAL_HARGA={harga + Convert.ToInt32(tbTambahan.Text)} where ROW_ID_BOOKING=" + $"'{Login.id_booking}' AND H.ROW_ID_TAMU = T.ROW_ID_TAMU";
+            //String query = $"Update H_Booking set TANGGAL_CHECK_OUT={DateTime.Now.ToLocalTime()}, STATUS_BOOKING=2, SUBTOTAL={harga}, BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)}, KETERANGAN={tbKeterangan.Text}, TOTAL_HARGA={total} where ROW_ID_BOOKING={Login.id_booking}";
+            String query = $"Update H_Booking set STATUS_BOOKING=2, SUBTOTAL={harga}, BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)} where ROW_ID_BOOKING={Login.id_booking}";
+            Login.db.executeNonQuery(query);
+            query = $"Select ROW_ID_KAMAR FROM D_BOOKING_KAMAR WHERE ROW_ID_BOOKING={Login.id_booking}";
+            DataTable dt = Login.db.executeDataTable(query);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                query = $"Update KAMAR SET STATUS_TERSEDIA=1 WHERE ROW_ID_KAMAR={dt.Rows[0]["ROW_ID_KAMAR"].ToString()}";
+                Login.db.executeNonQuery(query);
+            }
+            MessageBox.Show("Checkout Successful");
+            this.Hide();
         }
     }
 }

@@ -219,7 +219,12 @@ namespace PROBIS_SqueeCapsule
 
                 //tampilkan kamar yang dibooking apabila sudah checkin / dibatalkan
                 loadBookedRooms();
-
+                if(statusbooking == "-1")
+                {
+                    dgvDetail.Columns["Subtotal"].Visible = false;
+                    lblTotal.Visible = false;
+                    lblSTotal.Visible = false;
+                }
                 //button cancel jg ga bakalan muncul
                 btnCancel.Visible = false;
             }

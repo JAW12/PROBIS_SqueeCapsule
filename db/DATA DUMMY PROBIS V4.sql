@@ -11,7 +11,7 @@ VALUES('', '201', 0, 250000, 0);
 
 INSERT INTO KAMAR 
     (ROW_ID_KAMAR, NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR, STATUS_TERSEDIA)
-VALUES('', '202', 0, 250000, 1);
+VALUES('', '202', 0, 250000, 0);
 
 INSERT INTO KAMAR 
     (ROW_ID_KAMAR, NOMOR_KAMAR, JENIS_KAMAR, HARGA_KAMAR, STATUS_TERSEDIA)
@@ -118,30 +118,30 @@ INSERT INTO H_BOOKING
     BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA, KODE_BOOKING)
 VALUES 
     ('', 1, 2, 0, 
-    to_date('21/03/2017 13:04:08','dd/MM/yyyy hh24:mi:ss'), 
-    to_date('23/03/2017 11:05:08','dd/MM/yyyy hh24:mi:ss'), 1, 500000,
-    150000, 'merusak shower', 650000,'');
+    to_date('21/10/2020 13:04:08','dd/MM/yyyy hh24:mi:ss'), 
+    to_date('23/10/2020 11:05:08','dd/MM/yyyy hh24:mi:ss'), 2, 500000,
+    150000, 'Merusak Shower', 650000,'');
 
 
 INSERT INTO H_BOOKING
     (ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,
     TANGGAL_CHECK_IN, TANGGAL_CHECK_OUT, STATUS_BOOKING, SUBTOTAL,
-    BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA)
+    BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA, KODE_BOOKING)
 VALUES 
     ('', 2, 2, 1, 
-    to_date('21/03/2017 13:04:08','dd/MM/yyyy hh24:mi:ss'), 
-    to_date('23/03/2017 11:05:08','dd/MM/yyyy hh24:mi:ss'), 2, 1200000,
-    0, '', 1200000);
+    to_date('25/10/2020 13:04:08','dd/MM/yyyy hh24:mi:ss'), 
+    to_date('27/10/2020 11:05:08','dd/MM/yyyy hh24:mi:ss'), 2, 1200000,
+    0, '', 1200000, '');
 
 INSERT INTO H_BOOKING
     (ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,
     TANGGAL_CHECK_IN, TANGGAL_CHECK_OUT, STATUS_BOOKING, SUBTOTAL,
-    BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA)
+    BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA, KODE_BOOKING)
 VALUES 
     ('', 2, 0, 2, 
-    to_date('21/03/2017 13:04:08','dd/MM/yyyy hh24:mi:ss'), 
-    to_date('23/03/2017 11:05:08','dd/MM/yyyy hh24:mi:ss'), 2, 1400000,
-    0, '', 1400000);
+    to_date('28/10/2020 13:04:08','dd/MM/yyyy hh24:mi:ss'), 
+    to_date('30/10/2020 11:05:08','dd/MM/yyyy hh24:mi:ss'), 2, 1400000,
+    0, '', 1400000, '');
 
 
 
@@ -149,16 +149,16 @@ VALUES
 INSERT INTO H_BOOKING
     (ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,
     TANGGAL_CHECK_IN, STATUS_BOOKING)
-VALUES 
-    ('', 3, 2, 0, 
-    to_date('21/03/2017 13:04:08','dd/MM/yyyy hh24:mi:ss'), 0);
+VALUES
+    ('', 3, 2, 0,
+    to_date('01/11/2020 13:04:08','dd/MM/yyyy hh24:mi:ss'), 0);
 
 INSERT INTO H_BOOKING
     (ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,
     TANGGAL_CHECK_IN, STATUS_BOOKING)
 VALUES 
     ('', 4, 2, 0, 
-    to_date('21/03/2017 13:04:08','dd/MM/yyyy hh24:mi:ss'), 0);
+    to_date('01/11/2020 13:04:08','dd/MM/yyyy hh24:mi:ss'), 0);
 -------------------------------
 
 
@@ -168,10 +168,10 @@ INSERT INTO H_BOOKING
     TANGGAL_CHECK_IN, TANGGAL_CHECK_OUT, STATUS_BOOKING, SUBTOTAL,
     BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA)
 VALUES
-    ('', 5, 0, 0, 
-    to_date('22/03/2017 13:04:08','dd/MM/yyyy hh24:mi:ss'), 
-    to_date('24/03/2017 11:05:08','dd/MM/yyyy hh24:mi:ss'), 1, 500000,
-    150000, 'merusak shower', 650000);
+    ('', 5, 1, 0, 
+    to_date('20/10/2020 13:04:08','dd/MM/yyyy hh24:mi:ss'), 
+    to_date('21/10/2020 11:05:08','dd/MM/yyyy hh24:mi:ss'), 2, 250000,
+    150000, 'Merusak Shower', 400000);
 
 INSERT INTO H_BOOKING
     (ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,
@@ -179,24 +179,24 @@ INSERT INTO H_BOOKING
     BIAYA_TAMBAHAN, KETERANGAN, TOTAL_HARGA)
 VALUES 
     ('', 6, 2, 0, 
-    to_date('22/03/2017 13:04:08','dd/MM/yyyy hh24:mi:ss'), 
-    to_date('24/03/2017 11:05:08','dd/MM/yyyy hh24:mi:ss'), 2, 2000000,
-    0, '', 2000000);
+    to_date('19/10/2020 13:04:08','dd/MM/yyyy hh24:mi:ss'), 
+    to_date('20/10/2020 11:05:08','dd/MM/yyyy hh24:mi:ss'), 2, 250000,
+    0, '', 250000);
 
 -- H_BOOKING : tanpa data checkout
 INSERT INTO H_BOOKING
     (ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,
     TANGGAL_CHECK_IN, STATUS_BOOKING)
 VALUES 
-    ('', 7, 2, 0, 
-    to_date('22/03/2017 13:04:08','dd/MM/yyyy hh24:mi:ss'), 0);
+    ('', 7, 0, 1, 
+    to_date('01/11/2020 13:04:08','dd/MM/yyyy hh24:mi:ss'), 0);
 ---------------------------------
 INSERT INTO H_BOOKING
     (ROW_ID_BOOKING, ROW_ID_TAMU, JUMLAH_KAMAR_SINGLE, JUMLAH_KAMAR_FAMILY,
     TANGGAL_CHECK_IN, STATUS_BOOKING)
 VALUES 
-    ('', 8, 2, 0, 
-    to_date('22/03/2017 13:04:08','dd/MM/yyyy hh24:mi:ss'), 0);
+    ('', 8, 0, 1, 
+    to_date('01/11/2020 13:04:08','dd/MM/yyyy hh24:mi:ss'), 0);
 
 
 -- D_BOOKING_KAMAR
@@ -228,14 +228,41 @@ INSERT INTO D_BOOKING_KAMAR
     (ROW_ID_BOOKING, ROW_ID_KAMAR)
 VALUES(3, 11);
 
+INSERT INTO D_BOOKING_KAMAR
+    (ROW_ID_BOOKING, ROW_ID_KAMAR)
+VALUES(4, 1);
 
 INSERT INTO D_BOOKING_KAMAR
     (ROW_ID_BOOKING, ROW_ID_KAMAR)
-VALUES(4, 6);
+VALUES(4, 2);
 
 INSERT INTO D_BOOKING_KAMAR
     (ROW_ID_BOOKING, ROW_ID_KAMAR)
-VALUES(5, 7);
+VALUES(5, 3);
+
+INSERT INTO D_BOOKING_KAMAR
+    (ROW_ID_BOOKING, ROW_ID_KAMAR)
+VALUES(5, 6);
+
+INSERT INTO D_BOOKING_KAMAR
+    (ROW_ID_BOOKING, ROW_ID_KAMAR)
+VALUES(6, 1);
+
+INSERT INTO D_BOOKING_KAMAR
+    (ROW_ID_BOOKING, ROW_ID_KAMAR)
+VALUES(6, 2);
+
+INSERT INTO D_BOOKING_KAMAR
+    (ROW_ID_BOOKING, ROW_ID_KAMAR)
+VALUES(7, 1);
+
+INSERT INTO D_BOOKING_KAMAR
+    (ROW_ID_BOOKING, ROW_ID_KAMAR)
+VALUES(8, 5);
+
+INSERT INTO D_BOOKING_KAMAR
+    (ROW_ID_BOOKING, ROW_ID_KAMAR)
+VALUES(9, 9);
 
 
 -- D_BOOKING_FASILITAS

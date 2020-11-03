@@ -233,30 +233,38 @@ namespace PROBIS_SqueeCapsule
 
         public void insert()
         {
+            string query = "";
             for (int i = 0; i < namaKamarSingle.Count; i++)
             {
-                string query = "Select ROW_ID_KAMAR FROM KAMAR WHERE NOMOR_KAMAR ="+namaKamarSingle[i]+"";
+                query = "Select ROW_ID_KAMAR FROM KAMAR WHERE NOMOR_KAMAR ="+namaKamarSingle[i]+"";
                 string result = Login.db.executeScalar(query).ToString();
                 kamarSingle.Add(result);
             }
             for (int i = 0; i < namaKamarFamily.Count; i++)
             {
-                string query = "Select ROW_ID_KAMAR FROM KAMAR WHERE NOMOR_KAMAR =" + namaKamarFamily[i] + "";
+                query = "Select ROW_ID_KAMAR FROM KAMAR WHERE NOMOR_KAMAR =" + namaKamarFamily[i] + "";
                 string result = Login.db.executeScalar(query).ToString();
                 kamarFamily.Add(result);
             }
             for (int i = 0; i < kamarSingle.Count; i++)
             {
-                string query = $"Insert into D_BOOKING_KAMAR VALUES({Login.id_booking},{kamarSingle[i]})";
+                query = $"Insert into D_BOOKING_KAMAR VALUES({Login.id_booking},{kamarSingle[i]})";
+                Login.db.executeNonQuery(query);
+                query = $"Update KAMAR SET STATUS_TERSEDIA=0 WHERE NOMOR_KAMAR =" + namaKamarSingle[i] + "";
                 Login.db.executeNonQuery(query);
             }
             for (int i = 0; i < kamarFamily.Count; i++)
             {
-                string query = $"Insert into D_BOOKING_KAMAR VALUES({Login.id_booking},{kamarFamily[i]})";
+                query = $"Insert into D_BOOKING_KAMAR VALUES({Login.id_booking},{kamarFamily[i]})";
+                Login.db.executeNonQuery(query);
+                query = $"Update KAMAR SET STATUS_TERSEDIA=0 WHERE NOMOR_KAMAR =" + namaKamarFamily[i] + "";
                 Login.db.executeNonQuery(query);
             }
+            query = $"Update H_Booking set STATUS_BOOKING=1 where ROW_ID_BOOKING=" + $"'{Login.id_booking}'";
+            Login.db.executeNonQuery(query);
             MessageBox.Show("Insert Successful");
-            this.Hide();        }
+            this.Hide();
+        }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
