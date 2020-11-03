@@ -134,9 +134,10 @@ namespace PROBIS_SqueeCapsule
                 DataTable dt = new DataTable();
                 DataTable temp = new DataTable();
                 String query = $"select " +
+                    $"hb.row_id_booking as \"Id Booking\", " + 
                     $"trim(to_char(hb.insert_at, 'Mon DD, YYYY')) as \"Tgl\", " +
                     $"t.nama_tamu as \"Nama Pemesan\", " +
-                    $"hb.row_id_booking as \"Kode Booking\", " +
+                    $"hb.kode_booking as \"Kode Booking\", " +
                     $"hb.jumlah_kamar_single as \"Jml Kamar Single\", " +
                     $"hb.jumlah_kamar_family as \"Jml Kamar Family\", " +
                     $"to_char(hb.tanggal_check_in, 'DD/MM/YYYY') as \"Tgl Check In\", " +
@@ -150,7 +151,7 @@ namespace PROBIS_SqueeCapsule
                     $"where t.row_id_tamu = hb.row_id_tamu " +
                     $"and hb.tanggal_check_out is null " +
                     $"and hb.tanggal_check_in <= to_date('{akhir}', 'DD/MM/YYYY') " +
-                    $"and (hb.row_id_booking like '%{kode}%' or lower(t.nama_tamu) like '%{kode.ToLower()}%') " +
+                    $"and (hb.kode_booking like '%{kode}%' or lower(t.nama_tamu) like '%{kode.ToLower()}%') " +
                     queryf;
                 OracleCommand cmd = new OracleCommand(query, conn);
                 cmd.Parameters.Add("tglAkhir", OracleDbType.Date).Value = tglAkhir;
@@ -160,9 +161,10 @@ namespace PROBIS_SqueeCapsule
 
                 temp = new DataTable();
                 query = $"select " +
+                    $"hb.row_id_booking as \"Id Booking\", " +
                     $"trim(to_char(hb.insert_at, 'Mon DD, YYYY')) as \"Tgl\", " +
                     $"t.nama_tamu as \"Nama Pemesan\", " +
-                    $"hb.row_id_booking as \"Kode Booking\", " +
+                    $"hb.kode_booking as \"Kode Booking\", " +
                     $"hb.jumlah_kamar_single as \"Jml Kamar Single\", " +
                     $"hb.jumlah_kamar_family as \"Jml Kamar Family\", " +
                     $"to_char(hb.tanggal_check_in, 'DD/MM/YYYY') as \"Tgl Check In\", " +
@@ -177,7 +179,7 @@ namespace PROBIS_SqueeCapsule
                     $"and hb.tanggal_check_out is not null " +
                     $"and hb.tanggal_check_in <= to_date('{akhir}', 'DD/MM/YYYY') " +
                     $"and hb.tanggal_check_out >= to_date('{awal}', 'DD/MM/YYYY') " +
-                    $"and (hb.row_id_booking like '%{kode}%' or lower(t.nama_tamu) like '%{kode.ToLower()}%') " +
+                    $"and (hb.kode_booking like '%{kode}%' or lower(t.nama_tamu) like '%{kode.ToLower()}%') " +
                     queryf;
                 cmd = new OracleCommand(query, conn);
                 cmd.Parameters.Add("tglAwal", OracleDbType.Date).Value = tglAwal;
@@ -189,6 +191,7 @@ namespace PROBIS_SqueeCapsule
                 conn.Close();
                 dgvBooking.Columns.Clear();
                 dgvBooking.DataSource = dt;
+                dgvBooking.Columns["Id Booking"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -209,11 +212,11 @@ namespace PROBIS_SqueeCapsule
                     dcheckout = DateTime.ParseExact(checkout, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
 
-                if (dgvRow.Cells["Tgl Check Out"].Value.ToString() == "" && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
+                if (dgvRow.Cells["Tgl Check Out"].Value.ToString() == "" && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan" && dgvRow.Cells["Status Booking"].Value.ToString() != "Sudah Check Out")
                 {
                     jml -= Convert.ToInt32(dgvRow.Cells["Jml Kamar Single"].Value);
                 }
-                else if (dgvRow.Cells["Tgl Check Out"].Value != null && dcheckout.ToShortDateString() != dateTglAwal.Value.ToShortDateString() && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
+                else if (dgvRow.Cells["Tgl Check Out"].Value != null && dcheckout.ToShortDateString() != dateTglAwal.Value.ToShortDateString() && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan" && dgvRow.Cells["Status Booking"].Value.ToString() != "Sudah Check Out")
                 {
                     jml -= Convert.ToInt32(dgvRow.Cells["Jml Kamar Single"].Value);
                 }
@@ -233,11 +236,11 @@ namespace PROBIS_SqueeCapsule
                     dcheckout = DateTime.ParseExact(checkout, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
 
-                if (dgvRow.Cells["Tgl Check Out"].Value.ToString() == "" && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
+                if (dgvRow.Cells["Tgl Check Out"].Value.ToString() == "" && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan" && dgvRow.Cells["Status Booking"].Value.ToString() != "Sudah Check Out")
                 {
                     jml -= Convert.ToInt32(dgvRow.Cells["Jml Kamar Family"].Value);
                 }
-                else if (dgvRow.Cells["Tgl Check Out"].Value != null && dcheckout.ToShortDateString() != dateTglAwal.Value.ToShortDateString() && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan")
+                else if (dgvRow.Cells["Tgl Check Out"].Value != null && dcheckout.ToShortDateString() != dateTglAwal.Value.ToShortDateString() && dgvRow.Cells["Status Booking"].Value.ToString() != "Dibatalkan" && dgvRow.Cells["Status Booking"].Value.ToString() != "Sudah Check Out")
                 {
                     jml -= Convert.ToInt32(dgvRow.Cells["Jml Kamar Family"].Value);
                 }
@@ -271,6 +274,12 @@ namespace PROBIS_SqueeCapsule
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+            if(cbFilter.SelectedIndex == 0)
+            {
+                loadJmlKamarSingle();
+                loadJmlKamarFamily();
+                cekEnableTambahBooking();
+            }
         }
 
         private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -285,7 +294,7 @@ namespace PROBIS_SqueeCapsule
         {
             if (e.RowIndex >= 0)
             {
-                String row_id_booking = dgvBooking.Rows[e.RowIndex].Cells["Kode Booking"].Value.ToString();
+                String row_id_booking = dgvBooking.Rows[e.RowIndex].Cells["Id Booking"].Value.ToString();
                 Login.id_booking = Convert.ToInt32(row_id_booking);
 
                 if (Login.booking_detail != null)
