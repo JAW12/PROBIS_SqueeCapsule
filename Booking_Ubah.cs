@@ -262,6 +262,8 @@ namespace PROBIS_SqueeCapsule
                 //data valid, cek mode insert/update
                 if (mode == "Insert")
                 {
+                    compareDates();
+
                     if (!tanggalValid)
                     {
                         MessageBox.Show("Tanggal check in tidak boleh melebihi tanggal check out");
@@ -453,15 +455,15 @@ namespace PROBIS_SqueeCapsule
                 > 0 − If date1 is later than date2
              */
 
-            DateTime dcin = Convert.ToDateTime(dateCIN.Value);
-            DateTime dcout = Convert.ToDateTime(dateCOUT.Value);
+            DateTime dcin = Convert.ToDateTime(dateCIN.Value).Date;
+            DateTime dcout = Convert.ToDateTime(dateCOUT.Value).Date;
 
             int result = DateTime.Compare(dcin, dcout);
             if (result > 0)
             {
                 tanggalValid = false;
             }
-            else
+            else if(result <= 0)
             {
                 tanggalValid = true;
             }
