@@ -111,7 +111,7 @@ namespace PROBIS_SqueeCapsule
             $"LEFT JOIN  " +
                 $"V_DETAIL_FASILITAS_KAMAR V " +
             $"ON" +
-                 $" V.ROW_ID_FASILITAS = F.ROW_ID_FASILITAS AND NOMOR_KAMAR = {nomor_kamar} " +
+                 $" V.ROW_ID_FASILITAS = F.ROW_ID_FASILITAS AND V.NOMOR_KAMAR = {nomor_kamar} AND V.ROW_ID_BOOKING = {row_id_booking}" +
             $"GROUP BY " +
                 $"V.ROW_ID_BOOKING, " +
                 $"V.STATUS_BOOKING, " +
