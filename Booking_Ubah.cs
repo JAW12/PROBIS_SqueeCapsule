@@ -321,6 +321,10 @@ namespace PROBIS_SqueeCapsule
         {
             // jangan dihard code insert gini. nanti update mode ku ga jalan - winda
             //mode = "Insert";
+            dateCIN.Format = DateTimePickerFormat.Custom;
+            dateCIN.CustomFormat = "dd MMMM yyyy";
+            dateCOUT.Format = DateTimePickerFormat.Custom;
+            dateCOUT.CustomFormat = "dd MMMM yyyy";
             if (mode == "Insert")
             {
                 tbNama.Text = nama;
@@ -337,7 +341,15 @@ namespace PROBIS_SqueeCapsule
         {
             String query = "Select * from kamar where STATUS_TERSEDIA = 1";
             DataTable dt = Login.db.executeDataTable(query);
-            int jumlah = (single * 250000) + (family * 750000);
+            int ycheckin = Convert.ToInt32(dateCIN.Value.ToString("yyyy"));
+            int ycheckout = Convert.ToInt32(dateCOUT.Value.ToString("yyyy"));
+            int mcheckin = Convert.ToInt32(dateCIN.Value.ToString("MM"));
+            int mcheckout = Convert.ToInt32(dateCOUT.Value.ToString("MM"));
+            int dcheckin = Convert.ToInt32(dateCIN.Value.ToString("dd"));
+            int dcheckout = Convert.ToInt32(dateCOUT.Value.ToString("dd"));
+            //int dcheckout = 0;
+            //int dcheckin = 0;
+            int jumlah = ((single * 250000) + (family * 750000))*((ycheckout-ycheckin)+(mcheckout-mcheckin)+(dcheckout-dcheckin)+1);
             string empty = "";
             //MessageBox.Show(id_tamu.ToString());
             //get kamar tersedia

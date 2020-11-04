@@ -56,7 +56,6 @@ namespace PROBIS_SqueeCapsule
             //query = "Delete from TAMU where ROW_ID_TAMU = " + idTamu;
             //Login.db.executeNonQuery(query);
             MessageBox.Show("Insert dibatalkan");
-            Login.id_booking = -1;
             Login.booking = new Booking();
             Login.booking.Show();
             this.Hide();

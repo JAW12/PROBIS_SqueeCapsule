@@ -109,16 +109,18 @@ namespace PROBIS_SqueeCapsule
         private void btnBayar_Click(object sender, EventArgs e)
         {
             //String query = $"Update H_Booking set TANGGAL_CHECK_OUT={DateTime.Now.ToLocalTime()}, STATUS_BOOKING=2, SUBTOTAL={harga}, BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)}, KETERANGAN={tbKeterangan.Text}, TOTAL_HARGA={total} where ROW_ID_BOOKING={Login.id_booking}";
-            String query = $"Update H_Booking set STATUS_BOOKING=2, SUBTOTAL={harga}, BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)} where ROW_ID_BOOKING={Login.id_booking}";
+            String query = $"Update H_Booking set TANGGAL_CHECK_OUT=to_Date('{DateTime.Now.ToLocalTime()}','dd/MM/yyyy hh24:mi:ss'),STATUS_BOOKING=2, SUBTOTAL={harga}, BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)},TOTAL_HARGA={total} where ROW_ID_BOOKING={Login.id_booking}";
             Login.db.executeNonQuery(query);
             query = $"Select ROW_ID_KAMAR FROM D_BOOKING_KAMAR WHERE ROW_ID_BOOKING={Login.id_booking}";
             DataTable dt = Login.db.executeDataTable(query);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                query = $"Update KAMAR SET STATUS_TERSEDIA=1 WHERE ROW_ID_KAMAR={dt.Rows[0]["ROW_ID_KAMAR"].ToString()}";
+                query = $"Update KAMAR SET STATUS_TERSEDIA=1 WHERE ROW_ID_KAMAR={dt.Rows[i]["ROW_ID_KAMAR"].ToString()}";
                 Login.db.executeNonQuery(query);
             }
             MessageBox.Show("Checkout Successful");
+            query = $"Update H_Booking set KETERANGAN='{tbKeterangan.Text}' where ROW_ID_BOOKING={Login.id_booking}";
+            Login.db.executeNonQuery(query);
             this.Hide();
         }
     }
