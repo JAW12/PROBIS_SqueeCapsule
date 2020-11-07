@@ -122,8 +122,8 @@ namespace PROBIS_SqueeCapsule
             // 
             this.logOutToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
-            this.logOutToolStripMenuItem.Text = "Log Out";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
+            this.logOutToolStripMenuItem.Text = "Keluar";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // lbl_
@@ -191,15 +191,15 @@ namespace PROBIS_SqueeCapsule
             this.lblSSearch.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSSearch.Location = new System.Drawing.Point(18, 139);
             this.lblSSearch.Name = "lblSSearch";
-            this.lblSSearch.Size = new System.Drawing.Size(91, 23);
+            this.lblSSearch.Size = new System.Drawing.Size(111, 23);
             this.lblSSearch.TabIndex = 6;
-            this.lblSSearch.Text = "Search :";
+            this.lblSSearch.Text = "Pencarian:";
             // 
             // tbSearch
             // 
             this.tbSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbSearch.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(115, 136);
+            this.tbSearch.Location = new System.Drawing.Point(135, 137);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(198, 29);
             this.tbSearch.TabIndex = 1;
@@ -448,6 +448,8 @@ namespace PROBIS_SqueeCapsule
             this.Name = "Booking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Booking";
+            this.Activated += new System.EventHandler(this.Booking_Activated);
+            this.Shown += new System.EventHandler(this.Booking_Shown);
             this.VisibleChanged += new System.EventHandler(this.Booking_VisibleChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Booking_MouseDown);
             this.menuStrip1.ResumeLayout(false);

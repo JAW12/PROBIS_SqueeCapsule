@@ -95,8 +95,8 @@
             // 
             this.logOutToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
-            this.logOutToolStripMenuItem.Text = "Log Out";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
+            this.logOutToolStripMenuItem.Text = "Keluar";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // lbl_
@@ -127,7 +127,7 @@
             // 
             this.tbSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbSearch.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(116, 62);
+            this.tbSearch.Location = new System.Drawing.Point(136, 63);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(207, 29);
             this.tbSearch.TabIndex = 0;
@@ -139,9 +139,9 @@
             this.lblSSearch.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSSearch.Location = new System.Drawing.Point(19, 65);
             this.lblSSearch.Name = "lblSSearch";
-            this.lblSSearch.Size = new System.Drawing.Size(91, 23);
+            this.lblSSearch.Size = new System.Drawing.Size(111, 23);
             this.lblSSearch.TabIndex = 8;
-            this.lblSSearch.Text = "Search :";
+            this.lblSSearch.Text = "Pencarian:";
             // 
             // dgvKamar
             // 

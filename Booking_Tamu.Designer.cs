@@ -73,14 +73,14 @@
             this.lblSSearch.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSSearch.Location = new System.Drawing.Point(14, 54);
             this.lblSSearch.Name = "lblSSearch";
-            this.lblSSearch.Size = new System.Drawing.Size(68, 20);
+            this.lblSSearch.Size = new System.Drawing.Size(100, 20);
             this.lblSSearch.TabIndex = 16;
-            this.lblSSearch.Text = "Search";
+            this.lblSSearch.Text = "Pencarian:";
             // 
             // tbSearch
             // 
             this.tbSearch.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(88, 52);
+            this.tbSearch.Location = new System.Drawing.Point(120, 51);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(250, 28);
             this.tbSearch.TabIndex = 0;

@@ -97,15 +97,19 @@ namespace PROBIS_SqueeCapsule
         {
             if(this.Visible == true)
             {
-                loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+                loadDGV();
                 loadJmlKamarSingle();
                 loadJmlKamarFamily();
                 cekEnableTambahBooking();
             }
         }
 
-        public void loadDGV(String kode, DateTime tglAwal, DateTime tglAkhir, String filter)
+        public void loadDGV()
         {
+            String kode = tbSearch.Text;
+            DateTime tglAwal = dateTglAwal.Value;
+            DateTime tglAkhir = dateTglAkhir.Value;
+            String filter = cbFilter.Text;
             String awal = tglAwal.ToString("dd/MM/yyyy");
             String akhir = tglAkhir.ToString("dd/MM/yyyy");
             String queryf = "";
@@ -257,7 +261,7 @@ namespace PROBIS_SqueeCapsule
 
         private void dateTglAwal_ValueChanged(object sender, EventArgs e)
         {
-            loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+            loadDGV();
             loadJmlKamarSingle();
             loadJmlKamarFamily();
             cekEnableTambahBooking();
@@ -265,7 +269,7 @@ namespace PROBIS_SqueeCapsule
 
         private void dateTglAkhir_ValueChanged(object sender, EventArgs e)
         {
-            loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+            loadDGV();
             loadJmlKamarSingle();
             loadJmlKamarFamily();
             cekEnableTambahBooking();
@@ -273,7 +277,7 @@ namespace PROBIS_SqueeCapsule
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+            loadDGV();
             if(cbFilter.SelectedIndex == 0)
             {
                 loadJmlKamarSingle();
@@ -286,7 +290,7 @@ namespace PROBIS_SqueeCapsule
         {
             if(e.KeyChar == (char)Keys.Enter)
             {
-                loadDGV(tbSearch.Text, dateTglAwal.Value, dateTglAkhir.Value, cbFilter.Text);
+                loadDGV();
             }
         }
 
@@ -324,6 +328,22 @@ namespace PROBIS_SqueeCapsule
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void Booking_Shown(object sender, EventArgs e)
+        {
+            loadDGV();
+            loadJmlKamarSingle();
+            loadJmlKamarFamily();
+            cekEnableTambahBooking();
+        }
+
+        private void Booking_Activated(object sender, EventArgs e)
+        {
+            loadDGV();
+            loadJmlKamarSingle();
+            loadJmlKamarFamily();
+            cekEnableTambahBooking();
         }
     }
 }
