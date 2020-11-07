@@ -121,6 +121,7 @@ namespace PROBIS_SqueeCapsule
             MessageBox.Show("Checkout Successful");
             query = $"Update H_Booking set KETERANGAN='{tbKeterangan.Text}' where ROW_ID_BOOKING={Login.id_booking}";
             Login.db.executeNonQuery(query);
+            Login.booking.loadDGV();
             this.Hide();
         }
     }

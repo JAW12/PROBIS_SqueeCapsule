@@ -280,6 +280,7 @@ namespace PROBIS_SqueeCapsule
                             Login.booking_detail = new BookingDetail();
                             Login.id_booking = id_booking;
                             Login.booking_detail.Show();
+                            Login.booking.loadDGV();
                             this.Hide();
                         }
                         else
@@ -309,6 +310,7 @@ namespace PROBIS_SqueeCapsule
             if (result)
             {
                 isiDataTamu();
+                Login.booking.loadDGV();
                 MessageBox.Show("Update data tamu berhasil");
             }
             else
