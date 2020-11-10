@@ -19,7 +19,7 @@ namespace PROBIS_SqueeCapsule
 
         private void lblX_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
         }
 
         private void lbl__Click(object sender, EventArgs e)
@@ -73,8 +73,7 @@ namespace PROBIS_SqueeCapsule
                 BookingUbah.telp = dgvKamar.Rows[e.RowIndex].Cells[2].Value.ToString();
                 BookingUbah.email = dgvKamar.Rows[e.RowIndex].Cells[3].Value.ToString();
                 string query = "Select ROW_ID_TAMU as count from TAMU where NAMA_TAMU=" + $"'{BookingUbah.nama}' AND NOMOR_TELEPON=" + $"'{BookingUbah.telp}' AND EMAIL=" + $"'{BookingUbah.email}'" + "";
-                Login.booking_ubah = new BookingUbah();
-                Login.booking_ubah.Show();
+                Login.booking_ubah.loadInsert();
                 this.Hide();
             }
         }

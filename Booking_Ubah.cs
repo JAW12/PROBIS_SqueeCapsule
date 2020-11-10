@@ -257,6 +257,10 @@ namespace PROBIS_SqueeCapsule
             {
                 MessageBox.Show("Ditemukan data yang tidak sesuai");
             }
+            else if(numericSingle.Value == 0 && numericFamily.Value == 0)
+            {
+                MessageBox.Show("Jumlah kamar tidak sesuai");
+            }
             else
             {
                 //data valid, cek mode insert/update
@@ -272,7 +276,7 @@ namespace PROBIS_SqueeCapsule
                     {
                         bool cek = Insert(tbNama.Text, tbTelepon.Text, tbEmail.Text, Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value), dateCIN.Value.ToString(), dateCOUT.Value.ToString(), dateCOUT.Text);
 
-                        if (cek)
+                        if (cek && id_tamu != 0)
                         {
                             MessageBox.Show("Insert Berhasil");
                             String query = "Select MAX(ROW_ID_BOOKING) from H_BOOKING";
@@ -282,6 +286,18 @@ namespace PROBIS_SqueeCapsule
                             Login.booking_detail.Show();
                             Login.booking.loadDGV();
                             this.Hide();
+                        }
+                        else if(cek && id_tamu == 0)
+                        {
+                            //insert into tamu
+                            string query = "Insert into TAMU(ROW_ID_TAMU,NAMA_TAMU,NOMOR_TELEPON,EMAIL) VALUES(" +
+                             $"'{1}'," +
+                            $"'{nama}'," +
+                            $"'{telp}'," +
+                            $"'{email}'" + ")";
+                            Login.db.executeNonQuery(query);
+                            query = "Select ROW_ID_TAMU as count from TAMU where NAMA_TAMU=" + $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
+                            id_tamu = Convert.ToInt32(Login.db.executeScalar(query));
                         }
                         else
                         {
@@ -329,14 +345,20 @@ namespace PROBIS_SqueeCapsule
             dateCOUT.CustomFormat = "dd MMMM yyyy";
             if (mode == "Insert")
             {
-                tbNama.Text = nama;
-                tbTelepon.Text = telp;
-                tbEmail.Text = email;
-                string query = "Select max(ROW_ID_BOOKING) from h_booking";
-                int total = Convert.ToInt32(Login.db.executeScalar(query)) + 1;
-
-                lblKodeBooking.Text = "B"+DateTime.Now.ToLocalTime().ToString("yyyyMMdd")+total.ToString().PadLeft(3,'0');
+                loadInsert();
             }
+        }
+
+
+        public void loadInsert()
+        {
+            tbNama.Text = nama;
+            tbTelepon.Text = telp;
+            tbEmail.Text = email;
+            string query = "Select max(ROW_ID_BOOKING) from h_booking";
+            int total = Convert.ToInt32(Login.db.executeScalar(query)) + 1;
+
+            lblKodeBooking.Text = "B" + DateTime.Now.ToLocalTime().ToString("yyyyMMdd") + total.ToString().PadLeft(3, '0');
         }
 
         private bool Insert(String nama, String telp, String email, int single, int family, String checkindate, String checkoutdate, String cek)
@@ -353,26 +375,6 @@ namespace PROBIS_SqueeCapsule
             //int dcheckin = 0;
             int jumlah = ((single * 250000) + (family * 750000))*((ycheckout-ycheckin)+(mcheckout-mcheckin)+(dcheckout-dcheckin)+1);
             string empty = "";
-            //MessageBox.Show(id_tamu.ToString());
-            //get kamar tersedia
-            //for (int i = 0; i < dt.Rows.Count; i++)
-            //{
-            //    if(dt.Rows[i]["STATUS_TERSEDIA"].ToString() == "1")
-            //    {
-            //        if (dt.Rows[i]["JENIS_KAMAR"].ToString() == "0")
-            //        {
-            //            kamarSingle.Add(dt.Rows[i]["ROW_ID_KAMAR"].ToString());
-            //        }
-            //        else
-            //        {
-            //            kamarFamily.Add(dt.Rows[i]["ROW_ID_KAMAR"].ToString());
-            //        }
-            //    }
-            //}
-            //if((kamarSingle.Count < single)||(kamarFamily.Count < family)){
-            //    return false;
-            //}
-
             //insert hbooking
             if (cek == DateTime.Now.ToLongDateString())
             {
@@ -406,15 +408,6 @@ namespace PROBIS_SqueeCapsule
                      ")";
             }
             Login.db.executeNonQuery(query);
-            //insert kamar
-            //for (int i = 0; i < single; i++)
-            //{
-            //    query = "UPDATE KAMAR SET STATUS_TERSEDIA="+
-            //    $"'{1}' WHERE ROW_ID_KAMAR=" +
-            //    $"'{kamarSingle.Count}'," +
-            //    ")";
-            //    Login.db.executeNonQuery(query);
-            //}
             return true;
         }
 
@@ -433,21 +426,7 @@ namespace PROBIS_SqueeCapsule
             {
                 Login.booking_tamu = new BookingTamu();
                 Login.booking_tamu.Show();
-                this.Hide();
                 return 0;
-            }
-            else if(nama!="" && telp!="" && email !="")
-            {
-                //insert into tamu
-                query = "Insert into TAMU(ROW_ID_TAMU,NAMA_TAMU,NOMOR_TELEPON,EMAIL) VALUES(" +
-                 $"'{1}'," +
-                $"'{nama}'," +
-                $"'{telp}'," +
-                $"'{email}'" + ")";
-                Login.db.executeNonQuery(query);
-                query = "Select ROW_ID_TAMU as count from TAMU where NAMA_TAMU=" + $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
-                int id_tamu = Convert.ToInt32(Login.db.executeScalar(query));
-                return id_tamu;
             }
             else
             {
@@ -458,7 +437,25 @@ namespace PROBIS_SqueeCapsule
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            isiDataTamu();
+            if (mode == "Insert")
+            {
+                reset();
+            }
+            else if(mode == "Update")
+            {
+                isiDataTamu();
+            }
+        }
+
+        private void reset()
+        {
+            tbNama.Text = "";
+            tbEmail.Text = "";
+            tbTelepon.Text = "";
+            numericFamily.Value = 0;
+            numericSingle.Value = 0;
+            dateCIN.Value = DateTime.Now;
+            dateCOUT.Value = DateTime.Now;
         }
 
         private void compareDates()

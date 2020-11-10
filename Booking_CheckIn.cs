@@ -51,6 +51,7 @@ namespace PROBIS_SqueeCapsule
                         //kamarSingle.Add(dt.Rows[e.RowIndex]["ROW_ID_KAMAR"].ToString());
                         namaKamarSingle.Add(dgvKamar.Rows[e.RowIndex].Cells[1].Value.ToString());
                         totalSingle -= 1;
+                        single -= 1;
                         lblJSingle.Text = totalSingle.ToString();
                         //MessageBox.Show(kamarSingle[kamarSingle.Count-1]);
                         string temp = "";
@@ -73,6 +74,7 @@ namespace PROBIS_SqueeCapsule
                         namaKamarFamily.Add(dgvKamar.Rows[e.RowIndex].Cells[1].Value.ToString());
                         //MessageBox.Show(kamarFamily[kamarFamily.Count - 1]);
                         totalFamily -= 1;
+                        family -= 1;
                         lblJFamily.Text = totalFamily.ToString();
                         string temp = "";
                         for (int i = 0; i < namaKamarFamily.Count; i++)
@@ -103,6 +105,7 @@ namespace PROBIS_SqueeCapsule
                             }
                         }
                         totalSingle += 1;
+                        single += 1;
                         lblJSingle.Text = totalSingle.ToString();
                         //MessageBox.Show(kamarSingle[kamarSingle.Count-1]);
                         string temp = "";
@@ -132,6 +135,7 @@ namespace PROBIS_SqueeCapsule
                             }
                         }
                         totalFamily += 1;
+                        family += 1;
                         lblJFamily.Text = totalFamily.ToString();
                         //MessageBox.Show(kamarSingle[kamarSingle.Count-1]);
                         string temp = "";
