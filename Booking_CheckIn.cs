@@ -53,6 +53,7 @@ namespace PROBIS_SqueeCapsule
                         totalSingle -= 1;
                         single -= 1;
                         lblJSingle.Text = totalSingle.ToString();
+                        lblTSingle.Text = single.ToString();
                         //MessageBox.Show(kamarSingle[kamarSingle.Count-1]);
                         string temp = "";
                         for (int i = 0; i < namaKamarSingle.Count; i++)
@@ -76,6 +77,7 @@ namespace PROBIS_SqueeCapsule
                         totalFamily -= 1;
                         family -= 1;
                         lblJFamily.Text = totalFamily.ToString();
+                        lblTFamily.Text = family.ToString();
                         string temp = "";
                         for (int i = 0; i < namaKamarFamily.Count; i++)
                         {
@@ -107,6 +109,7 @@ namespace PROBIS_SqueeCapsule
                         totalSingle += 1;
                         single += 1;
                         lblJSingle.Text = totalSingle.ToString();
+                        lblTSingle.Text = single.ToString();
                         //MessageBox.Show(kamarSingle[kamarSingle.Count-1]);
                         string temp = "";
                         for (int i = 0; i < namaKamarSingle.Count; i++)
@@ -137,6 +140,7 @@ namespace PROBIS_SqueeCapsule
                         totalFamily += 1;
                         family += 1;
                         lblJFamily.Text = totalFamily.ToString();
+                        lblTFamily.Text = family.ToString();
                         //MessageBox.Show(kamarSingle[kamarSingle.Count-1]);
                         string temp = "";
                         for (int i = 0; i < namaKamarFamily.Count; i++)
