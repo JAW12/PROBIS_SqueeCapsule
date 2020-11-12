@@ -124,6 +124,7 @@ namespace PROBIS_SqueeCapsule
             {                
                 this.Close();
                 Login.booking_detail.loadData();
+                Login.booking.loadDGV();
             }
             else if (mode == "Insert")
             {
@@ -257,10 +258,6 @@ namespace PROBIS_SqueeCapsule
             {
                 MessageBox.Show("Ditemukan data yang tidak sesuai");
             }
-            else if(numericSingle.Value == 0 && numericFamily.Value == 0)
-            {
-                MessageBox.Show("Jumlah kamar tidak sesuai");
-            }
             else
             {
                 //data valid, cek mode insert/update
@@ -270,7 +267,11 @@ namespace PROBIS_SqueeCapsule
 
                     if (!tanggalValid)
                     {
-                        MessageBox.Show("Tanggal check in tidak boleh melebihi tanggal check out");
+                        MessageBox.Show("Tanggal check in tidak boleh melebihi tanggal check out atau kurang dari hari ini");
+                    }
+                    else if (numericSingle.Value == 0 && numericFamily.Value == 0)
+                    {
+                        MessageBox.Show("Jumlah kamar tidak sesuai");
                     }
                     else
                     {
@@ -309,6 +310,8 @@ namespace PROBIS_SqueeCapsule
                 else if (mode == "Update")
                 {
                     ubahDataTamu();
+                    Login.booking_detail.loadData();
+                    Login.booking.loadDGV();
                 }
                 
             }
@@ -477,6 +480,19 @@ namespace PROBIS_SqueeCapsule
             else if(result <= 0)
             {
                 tanggalValid = true;
+            }
+
+            //ngecek dengan tanggal hr ini
+            //tanggal valid apabila tanggal check in >= tanggal hari ini
+            DateTime now = DateTime.Now.Date;
+            result = DateTime.Compare(dcin, now);
+            if (result < 0)
+            {
+                tanggalValid = false;
+            }
+            else 
+            {
+                tanggalValid = tanggalValid && true;
             }
         }
 

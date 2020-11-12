@@ -13,6 +13,9 @@ namespace PROBIS_SqueeCapsule
     public partial class BookingDetail : Form
     {
         private int row_id_booking;
+        
+        // untuk menampung total peminjaman fasilitas
+        int total_peminjaman_fasilitas;
 
         //lempar data dari booking_ubah
         public BookingDetail()
@@ -118,7 +121,7 @@ namespace PROBIS_SqueeCapsule
 
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                int harga = Convert.ToInt32(dt.Rows[i]["SUBTOTAL"]) + Convert.ToInt32(dt.Rows[i]["HARGA_KAMAR"]);
+                int harga = Convert.ToInt32(dt.Rows[i]["SUBTOTAL"]);
 
                 dgvDetail.Rows.Add(
                     (i + 1).ToString(),
@@ -126,8 +129,12 @@ namespace PROBIS_SqueeCapsule
                     dt.Rows[i]["JENIS_KAMAR"],
                     formatSeparator(harga)
                 );
+
+                total_peminjaman_fasilitas += harga;
+
             }
 
+            lblTotal.Text = "Rp. " + formatSeparator(total_peminjaman_fasilitas);
             //dgvDetail.DataSource = dt;
         }
 
@@ -147,18 +154,12 @@ namespace PROBIS_SqueeCapsule
             {
                 lblCOUT.Text = dt.Rows[0]["TANGGAL_CHECK_OUT"].ToString();
             }
+
             lblSingle.Text = dt.Rows[0]["JUMLAH_KAMAR_SINGLE"].ToString();
             single = Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_SINGLE"]);
             lblFamily.Text = dt.Rows[0]["JUMLAH_KAMAR_FAMILY"].ToString();
             family = Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_FAMILY"]);
-            if (dt.Rows[0]["TOTAL_HARGA"] == DBNull.Value)
-            {
-                lblTotal.Text = "Rp. 0,-";
-            }
-            else
-            {
-                lblTotal.Text = "Rp. " + formatSeparator(Convert.ToInt32(dt.Rows[0]["TOTAL_HARGA"]));
-            }
+
             lblNama.Text = dt.Rows[0]["NAMA_TAMU"].ToString();
             lblEmail.Text = dt.Rows[0]["EMAIL"].ToString();
             lblTelepon.Text = dt.Rows[0]["NOMOR_TELEPON"].ToString();
@@ -190,6 +191,8 @@ namespace PROBIS_SqueeCapsule
 
                 // tampilkan btn cancel
                 btnCancel.Visible = true;
+
+                lblTotal.Text = "Rp. 0";
             }
             else
             {
@@ -217,6 +220,7 @@ namespace PROBIS_SqueeCapsule
                 }
 
                 //tampilkan kamar yang dibooking apabila sudah checkin / dibatalkan
+                total_peminjaman_fasilitas = 0;
                 loadBookedRooms();
                 if(statusbooking == "-1")
                 {

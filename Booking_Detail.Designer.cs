@@ -345,11 +345,11 @@
             this.lblSTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSTotal.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSTotal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblSTotal.Location = new System.Drawing.Point(415, 779);
+            this.lblSTotal.Location = new System.Drawing.Point(288, 779);
             this.lblSTotal.Name = "lblSTotal";
-            this.lblSTotal.Size = new System.Drawing.Size(144, 25);
+            this.lblSTotal.Size = new System.Drawing.Size(294, 25);
             this.lblSTotal.TabIndex = 21;
-            this.lblSTotal.Text = "Total Harga :";
+            this.lblSTotal.Text = "Total Peminjaman Fasilitas :";
             // 
             // lblTotal
             // 

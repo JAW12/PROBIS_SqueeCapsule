@@ -65,7 +65,18 @@ namespace PROBIS_SqueeCapsule
             String query = "Select * from H_BOOKING H,TAMU T where ROW_ID_BOOKING=" + $"'{Login.id_booking}' AND H.ROW_ID_TAMU = T.ROW_ID_TAMU";
             DataTable dt = Login.db.executeDataTable(query);
             lblJudul.Text = "Kode Booking " + dt.Rows[0]["KODE_BOOKING"].ToString();
-            harga = Convert.ToInt32(dt.Rows[0]["TOTAL_HARGA"]);
+
+            // KASIH PENGECEKAN APAKAH DIA NULL
+            // KALO GAADA NTAR ERROR - winda
+            if (dt.Rows[0]["TOTAL_HARGA"] == DBNull.Value)
+            {
+                harga = 0;
+            }
+            else
+            {
+                harga = Convert.ToInt32(dt.Rows[0]["TOTAL_HARGA"]);
+            }
+            
             lblHarga.Text = "Rp. " + formatSeparator(harga);
             reset();
             lblTotal.Text = "Rp. " + formatSeparator(harga);

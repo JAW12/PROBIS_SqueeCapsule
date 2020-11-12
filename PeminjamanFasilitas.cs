@@ -87,23 +87,6 @@ namespace PROBIS_SqueeCapsule
             dgvKamar.Columns["ROW_ID_BOOKING"].Visible = false;
         }
 
-        private void tbSearch_KeyUp(object sender, KeyEventArgs e)
-        {
-            String keyword = tbSearch.Text.ToString().ToUpper();
-            if (keyword.Length == 0)
-            {
-                loadData();
-            }
-            else
-            {
-                String query = $"SELECT ROW_ID_BOOKING, NOMOR_KAMAR AS \"Nomor Kamar\", NAMA_TAMU AS \"Nama Tamu\" FROM V_DATA_PENGINAPAN WHERE STATUS_BOOKING = 1 AND UPPER(NAMA_TAMU) LIKE '%{keyword}%' OR STATUS_BOOKING = 1 AND NOMOR_KAMAR LIKE '%{keyword}%'";
-                DataTable dt = Login.db.executeDataTable(query);
-                dgvKamar.DataSource = dt;
-
-                dgvKamar.Columns["ROW_ID_BOOKING"].Visible = false;
-            }
-        }
-
         private void dgvKamar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -134,6 +117,31 @@ namespace PROBIS_SqueeCapsule
             {
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void PeminjamanFasilitas_VisibleChanged(object sender, EventArgs e)
+        {
+            loadData();
+        }
+
+        private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                String keyword = tbSearch.Text.ToString().ToUpper();
+                if (keyword.Length == 0)
+                {
+                    loadData();
+                }
+                else
+                {
+                    String query = $"SELECT ROW_ID_BOOKING, NOMOR_KAMAR AS \"Nomor Kamar\", NAMA_TAMU AS \"Nama Tamu\" FROM V_DATA_PENGINAPAN WHERE STATUS_BOOKING = 1 AND UPPER(NAMA_TAMU) LIKE '%{keyword}%' OR STATUS_BOOKING = 1 AND NOMOR_KAMAR LIKE '%{keyword}%'";
+                    DataTable dt = Login.db.executeDataTable(query);
+                    dgvKamar.DataSource = dt;
+
+                    dgvKamar.Columns["ROW_ID_BOOKING"].Visible = false;
+                }
             }
         }
     }

@@ -271,10 +271,6 @@ namespace PROBIS_SqueeCapsule
             try
             {
                 updateDataPeminjamanFasilitas(ref command);
-
-                //connection.Close();
-                //connection.Open();
-
                 transaction.Commit();
 
                 // load ulang data
@@ -284,9 +280,6 @@ namespace PROBIS_SqueeCapsule
             }
             catch (Exception e)
             {
-                //connection.Close();
-                //connection.Open();
-
                 transaction.Rollback();
                 MessageBox.Show(e.ToString());
             }
@@ -301,6 +294,7 @@ namespace PROBIS_SqueeCapsule
             command.CommandText = query;
             int row_id_kamar = Convert.ToInt32(command.ExecuteScalar());
 
+            int totalBiayaPeminjaman = 0;
             foreach (DataGridViewRow row in dgvFasilitas.Rows)
             {
                 int row_id_fasilitas = Convert.ToInt32(row.Cells["ROW_ID_FASILITAS"].Value.ToString());
@@ -327,6 +321,7 @@ namespace PROBIS_SqueeCapsule
 
                 int subtotal = biayaPeminjaman * (currJumlahSudahDipinjam + jumlahPemesanan);
 
+                totalBiayaPeminjaman += subtotal;
 
                 //kurangi stok fasilitas
                 query = $"UPDATE FASILITAS SET JUMLAH_TERSEDIA = {currJumlahTersedia} WHERE ROW_ID_FASILITAS = {row_id_fasilitas}";
@@ -368,7 +363,6 @@ namespace PROBIS_SqueeCapsule
                     command.CommandText = query;
                     command.ExecuteNonQuery();
                 }
-
             }
         }
 
@@ -376,6 +370,7 @@ namespace PROBIS_SqueeCapsule
         private void btnKumpul_Click(object sender, EventArgs e)
         {
             RunOracleTransaction(Login.db.getConnection());
+            Login.peminjaman_fasilitas.loadData();
         }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
