@@ -250,6 +250,7 @@ namespace PROBIS_SqueeCapsule
             else
             {
                 Login.booking_checkout = new BookingCheckOut();
+                Login.booking_checkout.totalFasilitas = total_peminjaman_fasilitas;
                 Login.booking_checkout.Show();
             }
             this.Hide();

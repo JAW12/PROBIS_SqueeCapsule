@@ -358,6 +358,9 @@ namespace PROBIS_SqueeCapsule
             tbNama.Text = nama;
             tbTelepon.Text = telp;
             tbEmail.Text = email;
+            tbNama.BackColor = Color.White;
+            tbTelepon.BackColor = Color.White;
+            tbEmail.BackColor = Color.White;
             string query = "Select max(ROW_ID_BOOKING) from h_booking";
             int total = Convert.ToInt32(Login.db.executeScalar(query)) + 1;
 
@@ -366,17 +369,9 @@ namespace PROBIS_SqueeCapsule
 
         private bool Insert(String nama, String telp, String email, int single, int family, String checkindate, String checkoutdate, String cek)
         {
-            String query = "Select * from kamar where STATUS_TERSEDIA = 1";
-            DataTable dt = Login.db.executeDataTable(query);
-            int ycheckin = Convert.ToInt32(dateCIN.Value.ToString("yyyy"));
-            int ycheckout = Convert.ToInt32(dateCOUT.Value.ToString("yyyy"));
-            int mcheckin = Convert.ToInt32(dateCIN.Value.ToString("MM"));
-            int mcheckout = Convert.ToInt32(dateCOUT.Value.ToString("MM"));
-            int dcheckin = Convert.ToInt32(dateCIN.Value.ToString("dd"));
-            int dcheckout = Convert.ToInt32(dateCOUT.Value.ToString("dd"));
-            //int dcheckout = 0;
-            //int dcheckin = 0;
-            int jumlah = ((single * 250000) + (family * 750000))*((ycheckout-ycheckin)+(mcheckout-mcheckin)+(dcheckout-dcheckin)+1);
+            //String query = "Select * from kamar where STATUS_TERSEDIA = 1";
+            String query = "";
+            //DataTable dt = Login.db.executeDataTable(query);
             string empty = "";
             //insert hbooking
             if (cek == DateTime.Now.ToLongDateString())
@@ -388,10 +383,10 @@ namespace PROBIS_SqueeCapsule
                     $"'{family}'," +
                     $"to_Date('{checkindate}','dd/MM/yyyy hh24:mi:ss'), " +
                     $"'{0}'," +
-                    $"'{jumlah}'," +
+                    $"'{0}'," +
                     $"'{0}'," +
                     $"'{empty}'," +
-                    $"'{jumlah}'" +
+                    $"'{0}'" +
                      ")";
             }
             else
@@ -404,10 +399,10 @@ namespace PROBIS_SqueeCapsule
                     $"to_Date('{checkindate}','dd/MM/yyyy hh24:mi:ss'), " +
                     $"to_Date('{checkoutdate}','dd/MM/yyyy hh24:mi:ss'), " +
                     $"'{0}'," +
-                    $"'{jumlah}'," +
+                    $"'{0}'," +
                     $"'{0}'," +
                     $"'{empty}'," +
-                    $"'{jumlah}'" +
+                    $"'{0}'" +
                      ")";
             }
             Login.db.executeNonQuery(query);

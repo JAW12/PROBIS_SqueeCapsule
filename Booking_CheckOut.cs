@@ -13,6 +13,7 @@ namespace PROBIS_SqueeCapsule
     public partial class BookingCheckOut : Form
     {
         int harga,total;
+        public int totalFasilitas;
         public BookingCheckOut()
         {
             InitializeComponent();
@@ -68,18 +69,46 @@ namespace PROBIS_SqueeCapsule
 
             // KASIH PENGECEKAN APAKAH DIA NULL
             // KALO GAADA NTAR ERROR - winda
-            if (dt.Rows[0]["TOTAL_HARGA"] == DBNull.Value)
+            //if (dt.Rows[0]["TOTAL_HARGA"] == DBNull.Value)
+            //{
+            //    harga = 0;
+            //}
+            //else
+            //{
+            //    harga = Convert.ToInt32(dt.Rows[0]["TOTAL_HARGA"]);
+            //}
+            DateTime checkIn = (DateTime)dt.Rows[0]["TANGGAL_CHECK_IN"];
+            DateTime checkOut;
+            if (dt.Rows[0]["TANGGAL_CHECK_OUT"] == DBNull.Value)
             {
-                harga = 0;
+                checkOut = DateTime.Now.ToLocalTime();
             }
             else
             {
-                harga = Convert.ToInt32(dt.Rows[0]["TOTAL_HARGA"]);
+                checkOut = (DateTime)dt.Rows[0]["TANGGAL_CHECK_OUT"];
             }
-            
-            lblHarga.Text = "Rp. " + formatSeparator(harga);
+            int ycheckin = Convert.ToInt32(checkIn.ToString("yyyy"));
+            int ycheckout = Convert.ToInt32(checkOut.ToString("yyyy"));
+            int mcheckin = Convert.ToInt32(checkIn.ToString("MM"));
+            int mcheckout = Convert.ToInt32(checkOut.ToString("MM"));
+            int dcheckin = Convert.ToInt32(checkIn.ToString("dd"));
+            int dcheckout = Convert.ToInt32(checkOut.ToString("dd"));
+            int hour = DateTime.Now.ToLocalTime().Hour;
+            int minute = DateTime.Now.ToLocalTime().Minute;
+            harga = 2;
+            if (hour > 12 && minute > 0)
+            {
+                harga = ((Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_SINGLE"]) * 250000) + (Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_FAMILY"]) * 750000)) * ((ycheckout - ycheckin) + (mcheckout - mcheckin) + (dcheckout - dcheckin) + 1);
+            }
+            else
+            {
+                harga = ((Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_SINGLE"]) * 250000) + (Convert.ToInt32(dt.Rows[0]["JUMLAH_KAMAR_FAMILY"]) * 750000)) * ((ycheckout - ycheckin) + (mcheckout - mcheckin) + (dcheckout - dcheckin));
+            }
+            total = harga;
+            lblHarga.Text = "Rp. " + formatSeparator(total);
             reset();
-            lblTotal.Text = "Rp. " + formatSeparator(harga);
+            total = total + totalFasilitas;
+            lblTotal.Text = "Rp. " + formatSeparator(total);
             lblKembalian.Text = "Rp. " + formatSeparator(0);
         }
 
@@ -99,8 +128,7 @@ namespace PROBIS_SqueeCapsule
             }
             else
             {
-                total = 0;
-                lblTotal.Text = "Rp. " + formatSeparator(harga);
+                lblTotal.Text = "Rp. " + formatSeparator(total);
             }
         }
 
@@ -119,8 +147,7 @@ namespace PROBIS_SqueeCapsule
 
         private void btnBayar_Click(object sender, EventArgs e)
         {
-            //String query = $"Update H_Booking set TANGGAL_CHECK_OUT={DateTime.Now.ToLocalTime()}, STATUS_BOOKING=2, SUBTOTAL={harga}, BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)}, KETERANGAN={tbKeterangan.Text}, TOTAL_HARGA={total} where ROW_ID_BOOKING={Login.id_booking}";
-            String query = $"Update H_Booking set TANGGAL_CHECK_OUT=to_Date('{DateTime.Now.ToLocalTime()}','dd/MM/yyyy hh24:mi:ss'),STATUS_BOOKING=2, SUBTOTAL={harga}, BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)},TOTAL_HARGA={total} where ROW_ID_BOOKING={Login.id_booking}";
+            String query = $"Update H_Booking set TANGGAL_CHECK_OUT=to_Date('{DateTime.Now.ToLocalTime()}','dd/MM/yyyy hh24:mi:ss'),STATUS_BOOKING=2,TOTAL_HARGA={total} where ROW_ID_BOOKING={Login.id_booking}";
             Login.db.executeNonQuery(query);
             query = $"Select ROW_ID_KAMAR FROM D_BOOKING_KAMAR WHERE ROW_ID_BOOKING={Login.id_booking}";
             DataTable dt = Login.db.executeDataTable(query);
@@ -130,8 +157,11 @@ namespace PROBIS_SqueeCapsule
                 Login.db.executeNonQuery(query);
             }
             MessageBox.Show("Checkout Successful");
-            query = $"Update H_Booking set KETERANGAN='{tbKeterangan.Text}' where ROW_ID_BOOKING=//{Login.id_booking}";
-            Login.db.executeNonQuery(query);
+            if(tbTambahan.Text!="" && tbKeterangan.Text != "")
+            {
+                query = $"Update H_Booking set KETERANGAN='{tbKeterangan.Text}', BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)} where ROW_ID_BOOKING=//{Login.id_booking}";
+                Login.db.executeNonQuery(query);
+            }
             Login.booking.loadDGV();
             this.Hide();
             MessageBox.Show(Login.id_booking+"");
