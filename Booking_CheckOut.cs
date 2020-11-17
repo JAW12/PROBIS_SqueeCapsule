@@ -159,7 +159,7 @@ namespace PROBIS_SqueeCapsule
             MessageBox.Show("Checkout Successful");
             if(tbTambahan.Text!="" && tbKeterangan.Text != "")
             {
-                query = $"Update H_Booking set KETERANGAN='{tbKeterangan.Text}', BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)} where ROW_ID_BOOKING=//{Login.id_booking}";
+                query = $"Update H_Booking set KETERANGAN='{tbKeterangan.Text}',BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)} where ROW_ID_BOOKING='{Login.id_booking}'";
                 Login.db.executeNonQuery(query);
             }
             Login.booking.loadDGV();
