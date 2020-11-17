@@ -294,7 +294,7 @@ namespace PROBIS_SqueeCapsule
             command.CommandText = query;
             int row_id_kamar = Convert.ToInt32(command.ExecuteScalar());
 
-            int totalBiayaPeminjaman = 0;
+            //int totalBiayaPeminjaman = 0;
             foreach (DataGridViewRow row in dgvFasilitas.Rows)
             {
                 int row_id_fasilitas = Convert.ToInt32(row.Cells["ROW_ID_FASILITAS"].Value.ToString());
@@ -304,65 +304,72 @@ namespace PROBIS_SqueeCapsule
                 int currSubtotal = Convert.ToInt32(row.Cells["Subtotal"].Value.ToString());
 
                 int biayaPeminjaman = Convert.ToInt32(row.Cells["Biaya"].Value.ToString());
-
-                //default jumlah sudah dipinjam = 0
-                int currJumlahSudahDipinjam = 0;
-                if (row.Cells["Jumlah Sudah Dipinjam"].Value != null)
-                {
-                    currJumlahSudahDipinjam = Convert.ToInt32(row.Cells["Jumlah Sudah Dipinjam"].Value.ToString());
-                }
+                
 
                 // default jumlah pemesanan = 0
                 int jumlahPemesanan = 0;
                 if (row.Cells["JumlahPemesanan"].Value != null)
                 {
                     jumlahPemesanan = Convert.ToInt32(row.Cells["JumlahPemesanan"].Value.ToString());
-                }
 
-                int subtotal = biayaPeminjaman * (currJumlahSudahDipinjam + jumlahPemesanan);
+                    if (jumlahPemesanan > 0)
+                    {
+                        //default jumlah sudah dipinjam = 0
+                        int currJumlahSudahDipinjam = 0;
+                        if (row.Cells["Jumlah Sudah Dipinjam"].Value != null)
+                        {
+                            currJumlahSudahDipinjam = Convert.ToInt32(row.Cells["Jumlah Sudah Dipinjam"].Value.ToString());
+                        }
 
-                totalBiayaPeminjaman += subtotal;
+                        //int subtotal = biayaPeminjaman * (currJumlahSudahDipinjam + jumlahPemesanan);
+                        int subtotal = biayaPeminjaman * jumlahPemesanan;
 
-                //kurangi stok fasilitas
-                query = $"UPDATE FASILITAS SET JUMLAH_TERSEDIA = {currJumlahTersedia} WHERE ROW_ID_FASILITAS = {row_id_fasilitas}";
-                command.CommandText = query;
-                command.ExecuteNonQuery();
+                        //totalBiayaPeminjaman += subtotal;
 
-                //tambah subtotal di h_booking
-                query = $"UPDATE H_BOOKING SET SUBTOTAL = SUBTOTAL + {biayaPeminjaman} WHERE ROW_ID_BOOKING = {row_id_booking}";
-                command.CommandText = query;
-                command.ExecuteNonQuery();
+                        //kurangi stok fasilitas
+                        query = $"UPDATE FASILITAS SET JUMLAH_TERSEDIA = {currJumlahTersedia} WHERE ROW_ID_FASILITAS = {row_id_fasilitas}";
+                        command.CommandText = query;
+                        command.ExecuteNonQuery();
 
-                //cek apakah row peminjaman sudah ada di db
-                query =
-                    $"SELECT NVL(COUNT(ROW_ID_BOOKING),0) FROM D_BOOKING_FASILITAS " +
-                    $"WHERE ROW_ID_BOOKING = {row_id_booking} AND ROW_ID_KAMAR = {row_id_kamar} AND ROW_ID_FASILITAS = {row_id_fasilitas}";
-                command.CommandText = query;
-                int resultcount = Convert.ToInt32(command.ExecuteScalar());
+                        //tambah subtotal di h_booking
+                        query = $"UPDATE H_BOOKING SET SUBTOTAL = NVL(SUBTOTAL,0) + {subtotal} WHERE ROW_ID_BOOKING = {row_id_booking}";
+                        command.CommandText = query;
+                        command.ExecuteNonQuery();
 
-                if (command.Connection.State == ConnectionState.Closed)
-                {
-                    command.Connection.Open();
-                }
+                        //cek apakah row peminjaman sudah ada di db
+                        query =
+                            $"SELECT NVL(COUNT(ROW_ID_BOOKING),0) FROM D_BOOKING_FASILITAS " +
+                            $"WHERE ROW_ID_BOOKING = {row_id_booking} AND ROW_ID_KAMAR = {row_id_kamar} AND ROW_ID_FASILITAS = {row_id_fasilitas}";
+                        command.CommandText = query;
+                        int resultcount = Convert.ToInt32(command.ExecuteScalar());
 
-                if (resultcount > 0)
-                {
-                    // kalo sudah ada berarti update
-                    query = $"UPDATE D_BOOKING_FASILITAS SET JUMLAH_PEMINJAMAN = JUMLAH_PEMINJAMAN + {jumlahPemesanan}, SUBTOTAL = {subtotal} WHERE ROW_ID_BOOKING = {row_id_booking} AND ROW_ID_FASILITAS = {row_id_fasilitas} AND ROW_ID_KAMAR = {row_id_kamar}";
+                        if (command.Connection.State == ConnectionState.Closed)
+                        {
+                            command.Connection.Open();
+                        }
 
-                    command.CommandText = query;
-                    command.ExecuteNonQuery();
-                }
-                else
-                {
-                    // kalo belum ada berarti insert
-                    query = $"INSERT INTO D_BOOKING_FASILITAS" +
-                        $"(ROW_ID_BOOKING, ROW_ID_FASILITAS, ROW_ID_KAMAR, JUMLAH_PEMINJAMAN, BIAYA_PEMINJAMAN, SUBTOTAL) " +
-                        $"VALUES({row_id_booking},{row_id_fasilitas},{row_id_kamar},{jumlahPemesanan},{biayaPeminjaman},{subtotal})";
+                        if (resultcount > 0)
+                        {
+                            // kalo sudah ada berarti update
+                            query = $"UPDATE D_BOOKING_FASILITAS SET JUMLAH_PEMINJAMAN = NVL(JUMLAH_PEMINJAMAN,0) + {jumlahPemesanan}, SUBTOTAL = {subtotal} WHERE ROW_ID_BOOKING = {row_id_booking} AND ROW_ID_FASILITAS = {row_id_fasilitas} AND ROW_ID_KAMAR = {row_id_kamar}";
 
-                    command.CommandText = query;
-                    command.ExecuteNonQuery();
-                }
+                            command.CommandText = query;
+                            command.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            // kalo belum ada berarti insert
+                            query = $"INSERT INTO D_BOOKING_FASILITAS" +
+                                $"(ROW_ID_BOOKING, ROW_ID_FASILITAS, ROW_ID_KAMAR, JUMLAH_PEMINJAMAN, BIAYA_PEMINJAMAN, SUBTOTAL) " +
+                                $"VALUES({row_id_booking},{row_id_fasilitas},{row_id_kamar},{jumlahPemesanan},{biayaPeminjaman},{subtotal})";
+
+                            command.CommandText = query;
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    
+                }                
             }
         }
 
