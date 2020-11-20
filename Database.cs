@@ -41,8 +41,14 @@ namespace PROBIS_SqueeCapsule
                                 "(DESCRIPTION=" +
                                 "(ADDRESS_LIST= (ADDRESS=(PROTOCOL=TCP)" +
                                 "(HOST= " + GetLocalIPAddress() + ")(PORT=1521)))" +
-                                "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=ORCL)));" +
-                                "user id=proyekbisnis1;password=proyekbisnis1"); 
+                                "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));" +
+                                "user id=proyekbisnis1;password=proyekbisnis1");
+            //conn = new OracleConnection($"Data Source=" +
+            //        "(DESCRIPTION=" +
+            //        "(ADDRESS_LIST= (ADDRESS=(PROTOCOL=TCP)" +
+            //        "(HOST= " + GetLocalIPAddress() + ")(PORT=1521)))" +
+            //        "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=ORCL)));" +
+            //        "user id=proyekbisnis1;password=proyekbisnis1");
             try
             {
                 conn.Open();

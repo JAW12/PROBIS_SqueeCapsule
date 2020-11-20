@@ -21,7 +21,7 @@ namespace PROBIS_SqueeCapsule
 
         private void lblX_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
         }
 
         private void lbl__Click(object sender, EventArgs e)
@@ -121,23 +121,39 @@ namespace PROBIS_SqueeCapsule
 
         private void tbTambahan_TextChanged(object sender, EventArgs e)
         {
-            if (tbTambahan.Text != "")
+            try
             {
-                total = harga + Convert.ToInt32(tbTambahan.Text);
-                lblTotal.Text = "Rp. "  + formatSeparator(total);
+                if (tbTambahan.Text != "")
+                {
+                    total = harga + Convert.ToInt32(tbTambahan.Text);
+                    lblTotal.Text = "Rp. " + formatSeparator(total);
+                }
+                else
+                {
+                    lblTotal.Text = "Rp. " + formatSeparator(total);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblTotal.Text = "Rp. " + formatSeparator(total);
+                tbTambahan.Text = "";
+                MessageBox.Show("Biaya tambahan hanya dapat berupa angka");
             }
         }
 
         private void tbPembayaran_TextChanged(object sender, EventArgs e)
         {
-            if (tbPembayaran.Text != "")
-                lblKembalian.Text = "Rp. " + formatSeparator(Convert.ToInt32(tbPembayaran.Text) - total);
-            else
-                lblKembalian.Text = "Rp. " + formatSeparator(0);
+            try
+            {
+                if (tbPembayaran.Text != "")
+                    lblKembalian.Text = "Rp. " + formatSeparator(Convert.ToInt32(tbPembayaran.Text) - total);
+                else
+                    lblKembalian.Text = "Rp. " + formatSeparator(0);
+            }
+            catch (Exception ex)
+            {
+                tbPembayaran.Text = "";
+                MessageBox.Show("Pembayaran hanya dapat berupa angka");
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -147,30 +163,37 @@ namespace PROBIS_SqueeCapsule
 
         private void btnBayar_Click(object sender, EventArgs e)
         {
-            String query = $"Update H_Booking set TANGGAL_CHECK_OUT=to_Date('{DateTime.Now.ToLocalTime()}','dd/MM/yyyy hh24:mi:ss'),STATUS_BOOKING=2,TOTAL_HARGA={total} where ROW_ID_BOOKING={Login.id_booking}";
-            Login.db.executeNonQuery(query);
-            query = $"Select ROW_ID_KAMAR FROM D_BOOKING_KAMAR WHERE ROW_ID_BOOKING={Login.id_booking}";
-            DataTable dt = Login.db.executeDataTable(query);
-            for (int i = 0; i < dt.Rows.Count; i++)
+            try
             {
-                query = $"Update KAMAR SET STATUS_TERSEDIA=1 WHERE ROW_ID_KAMAR={dt.Rows[i]["ROW_ID_KAMAR"].ToString()}";
+                String query = $"Update H_Booking set TANGGAL_CHECK_OUT=to_Date('{DateTime.Now.ToLocalTime()}','dd/MM/yyyy hh24:mi:ss'),STATUS_BOOKING=2,TOTAL_HARGA={total} where ROW_ID_BOOKING={Login.id_booking}";
                 Login.db.executeNonQuery(query);
+                query = $"Select ROW_ID_KAMAR FROM D_BOOKING_KAMAR WHERE ROW_ID_BOOKING={Login.id_booking}";
+                DataTable dt = Login.db.executeDataTable(query);
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    query = $"Update KAMAR SET STATUS_TERSEDIA=1 WHERE ROW_ID_KAMAR={dt.Rows[i]["ROW_ID_KAMAR"].ToString()}";
+                    Login.db.executeNonQuery(query);
+                }
+                if (tbTambahan.Text != "" && tbKeterangan.Text != "")
+                {
+                    query = $"Update H_Booking set KETERANGAN='{tbKeterangan.Text}',BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)} where ROW_ID_BOOKING='{Login.id_booking}'";
+                    Login.db.executeNonQuery(query);
+                }
+                MessageBox.Show("Sukses melakukan proses checkout");
+                Login.booking.loadDGV();
+                this.Hide();
+                MessageBox.Show(Login.id_booking + "");
+                //CRNota rpt = new CRNota();
+                //rpt.SetDatabaseLogon("proyekbisnis1", "proyekbisnis1", "orcl", "");
+                //Nota nota = new Nota();
+                //rpt.SetParameterValue(0, Login.id_booking);
+                //nota.crystalReportViewer1.ReportSource = rpt;
+                //nota.ShowDialog();
             }
-            MessageBox.Show("Checkout Successful");
-            if(tbTambahan.Text!="" && tbKeterangan.Text != "")
+            catch (Exception ex)
             {
-                query = $"Update H_Booking set KETERANGAN='{tbKeterangan.Text}',BIAYA_TAMBAHAN={Convert.ToInt32(tbTambahan.Text)} where ROW_ID_BOOKING='{Login.id_booking}'";
-                Login.db.executeNonQuery(query);
+                MessageBox.Show("Terdapat nilai yang tidak valid, harap inputkan data lagi");
             }
-            Login.booking.loadDGV();
-            this.Hide();
-            MessageBox.Show(Login.id_booking+"");
-            //CRNota rpt = new CRNota();
-            //rpt.SetDatabaseLogon("proyekbisnis1", "proyekbisnis1", "orcl", "");
-            //Nota nota = new Nota();
-            //rpt.SetParameterValue(0, Login.id_booking);
-            //nota.crystalReportViewer1.ReportSource = rpt;
-            //nota.ShowDialog();
         }
     }
 }

@@ -275,7 +275,7 @@ namespace PROBIS_SqueeCapsule
                     }
                     else
                     {
-                        bool cek = Insert(tbNama.Text, tbTelepon.Text, tbEmail.Text, Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value), dateCIN.Value.ToString(), dateCOUT.Value.ToString(), dateCOUT.Text);
+                        bool cek = Insert(tbNama.Text, tbTelepon.Text, tbEmail.Text, Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value), dateCIN.Value.ToString("dd MMMM yyyy"), dateCOUT.Value.ToString("dd MMMM yyyy"), dateCOUT.Text);
 
                         if (cek && id_tamu != 0)
                         {
