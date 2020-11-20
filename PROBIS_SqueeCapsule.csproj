@@ -69,6 +69,12 @@
       <DependentUpon>CRNota.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Fasilitas.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Fasilitas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Help.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,12 @@
       <DependentUpon>Booking_Tamu.cs</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="LaporanFasilitas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaporanFasilitas.Designer.cs">
+      <DependentUpon>LaporanFasilitas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model.cs" />
     <Compile Include="Nota.cs">
       <SubType>Form</SubType>
@@ -161,11 +173,18 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRNota.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fasilitas.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Fasilitas.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Booking_Tamu.resx">
       <DependentUpon>Booking_Tamu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaporanFasilitas.resx">
+      <DependentUpon>LaporanFasilitas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nota.resx">
       <DependentUpon>Nota.cs</DependentUpon>

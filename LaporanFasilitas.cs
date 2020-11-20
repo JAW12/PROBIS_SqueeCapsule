@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PROBIS_SqueeCapsule
 {
-    public partial class Nota : Form
+    public partial class LaporanFasilitas : Form
     {
-        public Nota()
+        public LaporanFasilitas()
         {
             InitializeComponent();
         }

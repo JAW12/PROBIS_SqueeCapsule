@@ -66,7 +66,7 @@
             // 
             this.bookingToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bookingToolStripMenuItem.Name = "bookingToolStripMenuItem";
-            this.bookingToolStripMenuItem.Size = new System.Drawing.Size(107, 29);
+            this.bookingToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.bookingToolStripMenuItem.Text = "Booking";
             this.bookingToolStripMenuItem.Click += new System.EventHandler(this.bookingToolStripMenuItem_Click);
             // 
@@ -74,7 +74,7 @@
             // 
             this.peminjamanFasilitasToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.peminjamanFasilitasToolStripMenuItem.Name = "peminjamanFasilitasToolStripMenuItem";
-            this.peminjamanFasilitasToolStripMenuItem.Size = new System.Drawing.Size(239, 29);
+            this.peminjamanFasilitasToolStripMenuItem.Size = new System.Drawing.Size(237, 29);
             this.peminjamanFasilitasToolStripMenuItem.Text = "Peminjaman Fasilitas";
             this.peminjamanFasilitasToolStripMenuItem.Click += new System.EventHandler(this.peminjamanFasilitasToolStripMenuItem_Click);
             // 
@@ -85,20 +85,21 @@
             this.stokFasilitasToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stokFasilitasToolStripMenuItem.ForeColor = System.Drawing.Color.SlateBlue;
             this.stokFasilitasToolStripMenuItem.Name = "stokFasilitasToolStripMenuItem";
-            this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
+            this.stokFasilitasToolStripMenuItem.Size = new System.Drawing.Size(158, 29);
             this.stokFasilitasToolStripMenuItem.Text = "Stok Fasilitas";
             // 
             // laporanToolStripMenuItem
             // 
             this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
-            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(320, 30);
+            this.laporanToolStripMenuItem.Size = new System.Drawing.Size(312, 30);
             this.laporanToolStripMenuItem.Text = "Laporan Stok Fasilitas";
+            this.laporanToolStripMenuItem.Click += new System.EventHandler(this.laporanToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 
             this.logOutToolStripMenuItem.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(89, 29);
             this.logOutToolStripMenuItem.Text = "Keluar";
             this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
