@@ -275,6 +275,20 @@ namespace PROBIS_SqueeCapsule
                     }
                     else
                     {
+
+                        if(id_tamu == 0)
+                        {
+                            //insert into tamu
+                            string query = "Insert into TAMU(ROW_ID_TAMU,NAMA_TAMU,NOMOR_TELEPON,EMAIL) VALUES(" +
+                             $"'{1}'," +
+                            $"'{tbNama.Text}'," +
+                            $"'{tbTelepon.Text}'," +
+                            $"'{tbEmail.Text}'" + ")";
+                            Login.db.executeNonQuery(query);
+                            query = "Select ROW_ID_TAMU as count from TAMU where NAMA_TAMU=" + $"'{tbNama.Text}' AND NOMOR_TELEPON=" + $"'{tbTelepon.Text}' AND EMAIL=" + $"'{tbEmail.Text}'" + "";
+                            id_tamu = Convert.ToInt32(Login.db.executeScalar(query));
+                        }
+
                         bool cek = Insert(tbNama.Text, tbTelepon.Text, tbEmail.Text, Convert.ToInt32(numericSingle.Value), Convert.ToInt32(numericFamily.Value), dateCIN.Value.ToString("dd MMMM yyyy"), dateCOUT.Value.ToString("dd MMMM yyyy"), dateCOUT.Text);
 
                         if (cek && id_tamu != 0)
@@ -287,18 +301,6 @@ namespace PROBIS_SqueeCapsule
                             Login.booking_detail.Show();
                             Login.booking.loadDGV();
                             this.Hide();
-                        }
-                        else if(cek && id_tamu == 0)
-                        {
-                            //insert into tamu
-                            string query = "Insert into TAMU(ROW_ID_TAMU,NAMA_TAMU,NOMOR_TELEPON,EMAIL) VALUES(" +
-                             $"'{1}'," +
-                            $"'{nama}'," +
-                            $"'{telp}'," +
-                            $"'{email}'" + ")";
-                            Login.db.executeNonQuery(query);
-                            query = "Select ROW_ID_TAMU as count from TAMU where NAMA_TAMU=" + $"'{nama}' AND NOMOR_TELEPON=" + $"'{telp}' AND EMAIL=" + $"'{email}'" + "";
-                            id_tamu = Convert.ToInt32(Login.db.executeScalar(query));
                         }
                         else
                         {
