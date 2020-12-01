@@ -16,14 +16,14 @@ namespace PROBIS_SqueeCapsule {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CRNota : ReportClass {
+    public class CRCheckout : ReportClass {
         
-        public CRNota() {
+        public CRCheckout() {
         }
         
         public override string ResourceName {
             get {
-                return "CRNota.rpt";
+                return "CRCheckout.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PROBIS_SqueeCapsule {
         
         public override string FullResourceName {
             get {
-                return "PROBIS_SqueeCapsule.CRNota.rpt";
+                return "PROBIS_SqueeCapsule.CRCheckout.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace PROBIS_SqueeCapsule {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,7 +82,7 @@ namespace PROBIS_SqueeCapsule {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section DetailSection2 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,7 +90,7 @@ namespace PROBIS_SqueeCapsule {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[5];
             }
@@ -98,7 +98,7 @@ namespace PROBIS_SqueeCapsule {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[6];
             }
@@ -106,7 +106,7 @@ namespace PROBIS_SqueeCapsule {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
                 return this.ReportDefinition.Sections[7];
             }
@@ -114,15 +114,7 @@ namespace PROBIS_SqueeCapsule {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
-            get {
-                return this.ReportDefinition.Sections[8];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_nomornota {
+        public CrystalDecisions.Shared.IParameterField Parameter_param1 {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -130,9 +122,9 @@ namespace PROBIS_SqueeCapsule {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCRNota : Component, ICachedReport {
+    public class CachedCRCheckout : Component, ICachedReport {
         
-        public CachedCRNota() {
+        public CachedCRCheckout() {
         }
         
         [Browsable(false)]
@@ -169,7 +161,7 @@ namespace PROBIS_SqueeCapsule {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CRNota rpt = new CRNota();
+            CRCheckout rpt = new CRCheckout();
             rpt.Site = this.Site;
             return rpt;
         }

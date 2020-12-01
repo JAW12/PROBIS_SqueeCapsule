@@ -345,5 +345,33 @@ namespace PROBIS_SqueeCapsule
             loadJmlKamarFamily();
             cekEnableTambahBooking();
         }
+
+        private void pbLaporan_Click(object sender, EventArgs e)
+        {
+            DateTime tglAwal1 = dateTglAwal.Value;
+            DateTime tglAkhir1 = dateTglAkhir.Value;
+            String awal = tglAwal1.ToString("dd/MM/yyyy");
+            String akhir = tglAkhir1.ToString("dd/MM/yyyy");
+            grafik rpt = new grafik();
+            rpt.SetDatabaseLogon("proyekbisnis1", "proyekbisnis1", "orcl", "");
+            
+            rpt.SetParameterValue(0, awal);
+            rpt.SetParameterValue(1, akhir);
+            LaporanGrafik grafik = new LaporanGrafik();
+            grafik.crystalReportViewer1.ReportSource = rpt;
+            grafik.ShowDialog();
+        }
+
+        private void pbGrafik_Click(object sender, EventArgs e)
+        {
+            DateTime tglAwal1 = dateTglAwal.Value;
+            String awal = tglAwal1.ToString("dd/MM/yyyy");
+            CRlaporan rpt = new CRlaporan();
+            rpt.SetDatabaseLogon("proyekbisnis1", "proyekbisnis1", "orcl", "");
+            rpt.SetParameterValue(0, awal);
+            Laporantable table = new Laporantable();
+            table.crystalReportViewer1.ReportSource = rpt;
+            table.ShowDialog();
+        }
     }
 }

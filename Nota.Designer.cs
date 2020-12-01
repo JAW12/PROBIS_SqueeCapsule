@@ -51,6 +51,7 @@
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "Nota";
             this.Text = "Nota";
+            this.Load += new System.EventHandler(this.Nota_Load);
             this.ResumeLayout(false);
 
         }

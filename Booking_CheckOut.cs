@@ -66,7 +66,7 @@ namespace PROBIS_SqueeCapsule
             String query = "Select * from H_BOOKING H,TAMU T where ROW_ID_BOOKING=" + $"'{Login.id_booking}' AND H.ROW_ID_TAMU = T.ROW_ID_TAMU";
             DataTable dt = Login.db.executeDataTable(query);
             lblJudul.Text = "Kode Booking " + dt.Rows[0]["KODE_BOOKING"].ToString();
-
+   
             // KASIH PENGECEKAN APAKAH DIA NULL
             // KALO GAADA NTAR ERROR - winda
             //if (dt.Rows[0]["TOTAL_HARGA"] == DBNull.Value)
@@ -180,15 +180,18 @@ namespace PROBIS_SqueeCapsule
                     Login.db.executeNonQuery(query);
                 }
                 MessageBox.Show("Sukses melakukan proses checkout");
+                String query2 = "Select * from H_BOOKING H,TAMU T where ROW_ID_BOOKING=" + $"'{Login.id_booking}' AND H.ROW_ID_TAMU = T.ROW_ID_TAMU";
+                DataTable dt2 = Login.db.executeDataTable(query2);
+                CRCheckout rpt = new CRCheckout();
+                rpt.SetDatabaseLogon("proyekbisnis1", "proyekbisnis1", "orcl", "");
+                rpt.SetParameterValue(0, dt2.Rows[0]["KODE_BOOKING"].ToString());
+                Nota nota = new Nota();
+                nota.crystalReportViewer1.ReportSource = rpt;
+                nota.ShowDialog();
                 Login.booking.loadDGV();
                 this.Hide();
-                MessageBox.Show(Login.id_booking + "");
-                //CRNota rpt = new CRNota();
-                //rpt.SetDatabaseLogon("proyekbisnis1", "proyekbisnis1", "orcl", "");
-                //Nota nota = new Nota();
-                //rpt.SetParameterValue(0, Login.id_booking);
-                //nota.crystalReportViewer1.ReportSource = rpt;
-                //nota.ShowDialog();
+
+               
             }
             catch (Exception ex)
             {

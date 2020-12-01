@@ -1,6 +1,6 @@
 ﻿namespace PROBIS_SqueeCapsule
 {
-    partial class LaporanFasilitas
+    partial class LaporanGrafik
     {
         /// <summary>
         /// Required designer variable.
@@ -42,14 +42,14 @@
             this.crystalReportViewer1.Size = new System.Drawing.Size(800, 450);
             this.crystalReportViewer1.TabIndex = 0;
             // 
-            // LaporanFasilitas
+            // LaporanGrafik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.crystalReportViewer1);
-            this.Name = "LaporanFasilitas";
-            this.Text = "LaporanFasilitas";
+            this.Name = "LaporanGrafik";
+            this.Text = "LaporanGrafik";
             this.ResumeLayout(false);
 
         }

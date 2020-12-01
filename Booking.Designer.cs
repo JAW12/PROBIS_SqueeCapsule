@@ -404,6 +404,7 @@ namespace PROBIS_SqueeCapsule
             this.pbLaporan.Size = new System.Drawing.Size(48, 50);
             this.pbLaporan.TabIndex = 24;
             this.pbLaporan.TabStop = false;
+            this.pbLaporan.Click += new System.EventHandler(this.pbLaporan_Click);
             // 
             // pbGrafik
             // 
@@ -415,6 +416,7 @@ namespace PROBIS_SqueeCapsule
             this.pbGrafik.Size = new System.Drawing.Size(48, 50);
             this.pbGrafik.TabIndex = 24;
             this.pbGrafik.TabStop = false;
+            this.pbGrafik.Click += new System.EventHandler(this.pbGrafik_Click);
             // 
             // Booking
             // 

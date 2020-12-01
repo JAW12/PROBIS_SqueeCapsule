@@ -89,7 +89,8 @@ namespace PROBIS_SqueeCapsule
         private void loadDataPeminjaman()
         {
             //datagridview
-            String query = $"SELECT NAMA_FASILITAS AS \"Nama Fasilitas\", JUMLAH_PEMINJAMAN AS \"Jumlah\", BIAYA_PEMINJAMAN AS \"Biaya Peminjaman\", SUBTOTAL AS \"Subtotal\" FROM V_DETAIL_FASILITAS_KAMAR WHERE ROW_ID_BOOKING = {row_id_booking} AND NOMOR_KAMAR = {nomor_kamar}";
+            //String query = $"SELECT NAMA_FASILITAS AS \"Nama Fasilitas\", JUMLAH_PEMINJAMAN AS \"Jumlah\", BIAYA_PEMINJAMAN AS \"Biaya Peminjaman\", SUBTOTAL AS \"Subtotal\" FROM V_DETAIL_FASILITAS_KAMAR WHERE ROW_ID_BOOKING = {row_id_booking} AND NOMOR_KAMAR = {nomor_kamar}";
+            String query = $"SELECT NAMA_FASILITAS AS \"Nama Fasilitas\", JUMLAH_PEMINJAMAN AS \"Jumlah\", SUBTOTAL AS \"Subtotal\" FROM V_DETAIL_FASILITAS_KAMAR WHERE ROW_ID_BOOKING = {row_id_booking} AND NOMOR_KAMAR = {nomor_kamar}";
             DataTable dt = Login.db.executeDataTable(query);
             dgvPeminjaman.DataSource = dt;
 

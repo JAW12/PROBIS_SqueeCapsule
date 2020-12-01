@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace PROBIS_SqueeCapsule
 {
-    public partial class Nota : Form
+    public partial class Laporantable : Form
     {
-        public Nota()
+        public Laporantable()
         {
             InitializeComponent();
-        }
-
-        private void crystalReportViewer1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Nota_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

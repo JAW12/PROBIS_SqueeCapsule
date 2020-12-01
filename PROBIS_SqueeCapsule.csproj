@@ -63,16 +63,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CRNota.cs">
+    <Compile Include="CRCheckout.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CRNota.rpt</DependentUpon>
+      <DependentUpon>CRCheckout.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CRlaporan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRlaporan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Fasilitas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Fasilitas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="grafik.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>grafik.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Help.cs">
@@ -93,6 +105,18 @@
     </Compile>
     <Compile Include="LaporanFasilitas.Designer.cs">
       <DependentUpon>LaporanFasilitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LaporanGrafik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaporanGrafik.Designer.cs">
+      <DependentUpon>LaporanGrafik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Laporantable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laporantable.Designer.cs">
+      <DependentUpon>Laporantable.cs</DependentUpon>
     </Compile>
     <Compile Include="Model.cs" />
     <Compile Include="Nota.cs">
@@ -169,13 +193,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CRNota.rpt">
+    <EmbeddedResource Include="CRCheckout.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CRNota.cs</LastGenOutput>
+      <LastGenOutput>CRCheckout.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRlaporan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRlaporan.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Fasilitas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Fasilitas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="grafik.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>grafik.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.cs</DependentUpon>
@@ -185,6 +217,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LaporanFasilitas.resx">
       <DependentUpon>LaporanFasilitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaporanGrafik.resx">
+      <DependentUpon>LaporanGrafik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporantable.resx">
+      <DependentUpon>Laporantable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nota.resx">
       <DependentUpon>Nota.cs</DependentUpon>
