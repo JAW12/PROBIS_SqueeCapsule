@@ -125,7 +125,7 @@ namespace PROBIS_SqueeCapsule
             {
                 if (tbTambahan.Text != "")
                 {
-                    total = harga + Convert.ToInt32(tbTambahan.Text);
+                    total = harga + Convert.ToInt32(tbTambahan.Text) + totalFasilitas;
                     lblTotal.Text = "Rp. " + formatSeparator(total);
                 }
                 else
