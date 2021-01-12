@@ -117,6 +117,7 @@ namespace PROBIS_SqueeCapsule
             this.laporanToolStripMenuItem.Name = "laporanToolStripMenuItem";
             this.laporanToolStripMenuItem.Size = new System.Drawing.Size(312, 30);
             this.laporanToolStripMenuItem.Text = "Laporan Stok Fasilitas";
+            this.laporanToolStripMenuItem.Click += new System.EventHandler(this.laporanToolStripMenuItem_Click);
             // 
             // logOutToolStripMenuItem
             // 

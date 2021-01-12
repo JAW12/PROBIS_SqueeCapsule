@@ -50,6 +50,7 @@
             this.Controls.Add(this.crystalReportViewer1);
             this.Name = "LaporanFasilitas";
             this.Text = "LaporanFasilitas";
+            this.Load += new System.EventHandler(this.LaporanFasilitas_Load);
             this.ResumeLayout(false);
 
         }

@@ -372,5 +372,14 @@ namespace PROBIS_SqueeCapsule
             table.crystalReportViewer1.ReportSource = rpt;
             table.ShowDialog();
         }
+
+        private void laporanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Fasilitasv2 rpt = new Fasilitasv2();
+            rpt.SetDatabaseLogon("proyekbisnis1", "proyekbisnis1", "orcl", "");
+            LaporanFasilitas table = new LaporanFasilitas();
+            table.crystalReportViewer1.ReportSource = rpt;
+            table.ShowDialog();
+        }
     }
 }

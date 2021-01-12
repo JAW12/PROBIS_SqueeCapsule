@@ -16,5 +16,10 @@ namespace PROBIS_SqueeCapsule
         {
             InitializeComponent();
         }
+
+        private void LaporanFasilitas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

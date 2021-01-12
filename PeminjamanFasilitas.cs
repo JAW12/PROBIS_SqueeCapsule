@@ -147,11 +147,7 @@ namespace PROBIS_SqueeCapsule
 
         private void laporanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Fasilitas rpt = new Fasilitas();
-            rpt.SetDatabaseLogon("proyekbisnis1", "proyekbisnis1", "orcl", "");
-            LaporanFasilitas fasilitas = new LaporanFasilitas();
-            fasilitas.crystalReportViewer1.ReportSource = fasilitas;
-            fasilitas.ShowDialog();
+            
             
         }
     }

@@ -100,11 +100,11 @@ namespace PROBIS_SqueeCapsule
 
         private void laporanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Fasilitas rpt = new Fasilitas();
+            Fasilitasv2 rpt = new Fasilitasv2();
             rpt.SetDatabaseLogon("proyekbisnis1", "proyekbisnis1", "orcl", "");
-            LaporanFasilitas fasilitas = new LaporanFasilitas();
-            fasilitas.crystalReportViewer1.ReportSource = rpt;
-            fasilitas.ShowDialog();
+            LaporanFasilitas table = new LaporanFasilitas();
+            table.crystalReportViewer1.ReportSource = rpt;
+            table.ShowDialog();
         }
     }
 }
