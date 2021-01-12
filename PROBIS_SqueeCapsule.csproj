@@ -75,16 +75,28 @@
       <DependentUpon>CRlaporan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Crystagrafik.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Crystagrafik.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Fasilitas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Fasilitas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="grafik.cs">
+    <Compile Include="Fasilitas1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>grafik.rpt</DependentUpon>
+      <DependentUpon>Fasilitas.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Fasilitasv2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Fasilitasv2.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Help.cs">
@@ -201,13 +213,17 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRlaporan.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Crystagrafik.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Crystagrafik.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fasilitas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Fasilitas.cs</LastGenOutput>
+      <LastGenOutput>Fasilitas1.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="grafik.rpt">
+    <EmbeddedResource Include="Fasilitasv2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>grafik.cs</LastGenOutput>
+      <LastGenOutput>Fasilitasv2.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Help.resx">
       <DependentUpon>Help.cs</DependentUpon>

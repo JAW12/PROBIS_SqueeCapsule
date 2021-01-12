@@ -352,11 +352,10 @@ namespace PROBIS_SqueeCapsule
             DateTime tglAkhir1 = dateTglAkhir.Value;
             String awal = tglAwal1.ToString("dd/MM/yyyy");
             String akhir = tglAkhir1.ToString("dd/MM/yyyy");
-            grafik rpt = new grafik();
+            Crystagrafik rpt = new Crystagrafik();
             rpt.SetDatabaseLogon("proyekbisnis1", "proyekbisnis1", "orcl", "");
             
             rpt.SetParameterValue(0, awal);
-            rpt.SetParameterValue(1, akhir);
             LaporanGrafik grafik = new LaporanGrafik();
             grafik.crystalReportViewer1.ReportSource = rpt;
             grafik.ShowDialog();

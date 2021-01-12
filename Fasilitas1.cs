@@ -16,14 +16,14 @@ namespace PROBIS_SqueeCapsule {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class grafik : ReportClass {
+    public class Fasilitas : ReportClass {
         
-        public grafik() {
+        public Fasilitas() {
         }
         
         public override string ResourceName {
             get {
-                return "grafik.rpt";
+                return "Fasilitas.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PROBIS_SqueeCapsule {
         
         public override string FullResourceName {
             get {
-                return "PROBIS_SqueeCapsule.grafik.rpt";
+                return "PROBIS_SqueeCapsule.Fasilitas.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace PROBIS_SqueeCapsule {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace PROBIS_SqueeCapsule {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,49 +82,17 @@ namespace PROBIS_SqueeCapsule {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[6];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_paramawal {
-            get {
-                return this.DataDefinition.ParameterFields[0];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_paramakhir {
-            get {
-                return this.DataDefinition.ParameterFields[1];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class Cachedgrafik : Component, ICachedReport {
+    public class CachedFasilitas : Component, ICachedReport {
         
-        public Cachedgrafik() {
+        public CachedFasilitas() {
         }
         
         [Browsable(false)]
@@ -161,7 +129,7 @@ namespace PROBIS_SqueeCapsule {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            grafik rpt = new grafik();
+            Fasilitas rpt = new Fasilitas();
             rpt.Site = this.Site;
             return rpt;
         }
